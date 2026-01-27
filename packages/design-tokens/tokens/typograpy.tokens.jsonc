@@ -1,0 +1,44 @@
+{
+  "$schema": "schema.json",
+  "fontSize": {
+    "t1": {
+      "$value": "11px"
+    },
+    "t2": {
+      "$value": "12px"
+    },
+    "t3": {
+      "$value": "13px"
+    },
+    "t4": {
+      "$value": "14px"
+    },
+    "t5": {
+      "$value": "15px"
+    },
+    "t6": {
+      "$value": "16px"
+    },
+    "t7": {
+      "$value": "18px"
+    },
+    "t8": {
+      "$value": "20px"
+    },
+    "t9": {
+      "$value": "24px"
+    },
+    "t10": {
+      "$value": "28px"
+    },
+    "t11": {
+      "$value": "34px"
+    },
+    "t12": {
+      "$value": "42px"
+    },
+    "t13": {
+      "$value": "48px"
+    }
+  }
+}
