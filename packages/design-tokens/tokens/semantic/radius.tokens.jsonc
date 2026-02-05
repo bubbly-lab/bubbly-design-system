@@ -1,0 +1,25 @@
+{
+  "radius": {
+    "r100": {
+      "$value": "{dimension.4}"
+    },
+    "r200": {
+      "$value": "{dimension.8}"
+    },
+    "r250": {
+      "$value": "{dimension.10}"
+    },
+    "r300": {
+      "$value": "{dimension.12}"
+    },
+    "r400": {
+      "$value": "{dimension.16}"
+    },
+    "r500": {
+      "$value": "{dimension.20}"
+    },
+    "full": {
+      "$value": "999px"
+    }
+  }
+}
