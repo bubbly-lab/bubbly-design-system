@@ -44,8 +44,8 @@
 - 이 디자인 시스템의 기본 폰트는 **[Pretendard Variable](https://github.com/orioncactus/pretendard)** 입니다.
 - 폰트 로딩은 `assets/font.json` 의 CSS import 토큰으로 처리합니다.
 - `text.fonts.default` 토큰이 시스템 기본 폰트를 나타냅니다.
-- 모든 typography 토큰은 `fontFamily` 에 `"{text.fonts.default}"` 를 참조해야 합니다.
-    - 이를 통해 CSS/JS 빌드 결과에 올바른 폰트가 포함됩니다.
+- 폰트는 전역으로 적용합니다. (`body { font-family: var(--text-fonts-default) }` 등)
+    - typography 토큰에는 `fontFamily` 를 포함하지 않습니다. 폰트는 전역 관심사이므로 개별 토큰이 들고 다니지 않습니다.
 
 ### Typography
 
@@ -56,13 +56,11 @@
 {
   "title1": {
     "$value": {
-      "fontFamily": "{text.fonts.default}",
       "fontWeight": "{fontWeight.bold}",
       "fontSize": "{fontSize.t10}",
       "lineHeight": "{lineHeight.t10}"
     }
   }
-}
 ```
 
 - 하나의 typography에 font-weight가 여러 개라면 아래와 같이 font-weight를 suffix로 붙입니다.
@@ -71,7 +69,6 @@
 {
   "body1-bold": {
     "$value": {
-      "fontFamily": "{text.fonts.default}",
       "fontWeight": "{fontWeight.bold}",
       "fontSize": "{fontSize.t6}",
       "lineHeight": "{lineHeight.t7}"
@@ -79,11 +76,9 @@
   },
   "body1-regular": {
     "$value": {
-      "fontFamily": "{text.fonts.default}",
       "fontWeight": "{fontWeight.regular}",
       "fontSize": "{fontSize.t6}",
       "lineHeight": "{lineHeight.t7}"
     }
   }
-}
 ```
