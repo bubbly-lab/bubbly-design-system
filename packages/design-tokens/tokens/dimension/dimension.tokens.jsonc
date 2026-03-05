@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema.json",
   "dimension": {
     "2": {
       "$type": "dimension",

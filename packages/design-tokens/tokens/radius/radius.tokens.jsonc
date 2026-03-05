@@ -1,5 +1,7 @@
 {
+  "$schema": "../schema.json",
   "radius": {
+    "$type": "dimension",
     "r100": {
       "$value": "{dimension.4}"
     },

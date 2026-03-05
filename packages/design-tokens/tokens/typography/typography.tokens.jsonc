@@ -1,6 +1,7 @@
 {
   "$schema": "../schema.json",
   "fontSize": {
+    "$type": "dimension",
     "t1": {
       "$value": "11px"
     },
@@ -43,6 +44,7 @@
   },
 
   "lineHeight": {
+    "$type": "dimension",
     "t1": {
       "$value": "15px"
     },
