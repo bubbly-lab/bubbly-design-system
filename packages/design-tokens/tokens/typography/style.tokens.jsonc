@@ -2,21 +2,24 @@
   "$schema": "../schema.json",
   "text": {
     "fonts": {
+      "$type": "fontFamily",
       "sans": {
-        "$type": "fontFamily",
         "$value": "Pretendard Variable, sans-serif"
       },
+      // default font는 css 전반에 별도로 적용시키는 폰트를 의미합니다.
+      // 모든 typography 토큰은 이 폰트를 참조합니다.
       "default": {
-        "$type": "fontFamily",
         "$value": "{text.fonts.sans}"
       }
     }
   },
 
   "typography": {
+    "$type": "typography",
+
     "display1": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t13}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t13}"
@@ -24,8 +27,8 @@
     },
 
     "display2": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t12}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t12}"
@@ -33,8 +36,8 @@
     },
 
     "display3": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t11}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t11}"
@@ -42,16 +45,16 @@
     },
 
     "title1-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t10}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t10}"
       }
     },
     "title1-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t10}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t10}"
@@ -59,16 +62,16 @@
     },
 
     "title2-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t9}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t9}"
       }
     },
     "title2-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t9}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t9}"
@@ -76,16 +79,16 @@
     },
 
     "title3-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t8}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t8}"
       }
     },
     "title3-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t8}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t8}"
@@ -93,16 +96,16 @@
     },
 
     "title4-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t7}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t7}"
       }
     },
     "title4-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t7}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t7}"
@@ -110,24 +113,24 @@
     },
 
     "body1-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t6}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t7}"
       }
     },
     "body1-medium": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t6}",
         "fontWeight": "{fontWeight.medium}",
         "lineHeight": "{lineHeight.t7}"
       }
     },
     "body1-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t6}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t7}"
@@ -135,24 +138,24 @@
     },
 
     "body2-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t5}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t6}"
       }
     },
     "body2-medium": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t5}",
         "fontWeight": "{fontWeight.medium}",
         "lineHeight": "{lineHeight.t6}"
       }
     },
     "body2-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t5}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t6}"
@@ -160,16 +163,16 @@
     },
 
     "label1-semibold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t6}",
         "fontWeight": "{fontWeight.semibold}",
         "lineHeight": "{lineHeight.t6}"
       }
     },
     "label1-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t6}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t6}"
@@ -177,16 +180,16 @@
     },
 
     "label2-semibold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t4}",
         "fontWeight": "{fontWeight.semibold}",
         "lineHeight": "{lineHeight.t4}"
       }
     },
     "label2-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t4}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t4}"
@@ -194,16 +197,16 @@
     },
 
     "label3-semibold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t2}",
         "fontWeight": "{fontWeight.semibold}",
         "lineHeight": "{lineHeight.t2}"
       }
     },
     "label3-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t2}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t2}"
@@ -211,16 +214,16 @@
     },
 
     "caption1-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t3}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t3}"
       }
     },
     "caption1-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t3}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t3}"
@@ -228,16 +231,16 @@
     },
 
     "caption2-bold": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t2}",
         "fontWeight": "{fontWeight.bold}",
         "lineHeight": "{lineHeight.t2}"
       }
     },
     "caption2-regular": {
-      "$type": "typography",
       "$value": {
+        "fontFamily": "{text.fonts.default}",
         "fontSize": "{fontSize.t2}",
         "fontWeight": "{fontWeight.regular}",
         "lineHeight": "{lineHeight.t2}"
