@@ -9,7 +9,8 @@
 
 ### Naming
 
-- reserved name (`$type`, `$value`, `$description` 등) 이 아니라면 **kebab-case** 를 사용합니다.
+- 토큰명은 **kebab-case** 를 사용합니다. (예: `title1-bold`, `body1-regular`)
+- 그룹명은 **camelCase** 를 허용합니다. CSS/DTCG 프로퍼티명과 일치하는 경우 camelCase가 자연스럽고, JS export 키와의 일관성을 유지합니다. (예: `fontSize`, `lineHeight`, `fontWeight`)
 - 그룹명은 **단수형** 을 사용합니다. (예: `color`, `dimension`, `radius`)
 
 ### `$type` 선언
