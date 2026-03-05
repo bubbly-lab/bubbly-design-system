@@ -1,0 +1,223 @@
+{
+  "$schema": "../schema.json",
+  "text": {
+    "fonts": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": "Pretendard Variable, sans-serif"
+      },
+      // default font는 css 전반에 별도로 적용시키는 폰트를 의미합니다.
+      // 따라서 default 폰트를 쓰는 typography는 별도로 폰트를 적용시키지 않아도 됩니다.
+      "default": {
+        "$value": "{text.fonts.sans}"
+      }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+
+    "display1": {
+      "$value": {
+        "fontSize": "{fontSize.t13}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t13}"
+      }
+    },
+
+    "display2": {
+      "$value": {
+        "fontSize": "{fontSize.t12}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t12}"
+      }
+    },
+
+    "display3": {
+      "$value": {
+        "fontSize": "{fontSize.t11}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t11}"
+      }
+    },
+
+    "title1-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t10}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t10}"
+      }
+    },
+    "title1-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t10}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t10}"
+      }
+    },
+
+    "title2-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t9}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t9}"
+      }
+    },
+    "title2-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t9}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t9}"
+      }
+    },
+
+    "title3-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t8}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t8}"
+      }
+    },
+    "title3-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t8}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t8}"
+      }
+    },
+
+    "title4-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t7}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t7}"
+      }
+    },
+    "title4-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t7}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t7}"
+      }
+    },
+
+    "body1-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t6}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t7}"
+      }
+    },
+    "body1-medium": {
+      "$value": {
+        "fontSize": "{fontSize.t6}",
+        "fontWeight": "{fontWeight.medium}",
+        "lineHeight": "{lineHeight.t7}"
+      }
+    },
+    "body1-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t6}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t7}"
+      }
+    },
+
+    "body2-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t5}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t6}"
+      }
+    },
+    "body2-medium": {
+      "$value": {
+        "fontSize": "{fontSize.t5}",
+        "fontWeight": "{fontWeight.medium}",
+        "lineHeight": "{lineHeight.t6}"
+      }
+    },
+    "body2-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t5}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t6}"
+      }
+    },
+
+    "label1-semibold": {
+      "$value": {
+        "fontSize": "{fontSize.t6}",
+        "fontWeight": "{fontWeight.semibold}",
+        "lineHeight": "{lineHeight.t6}"
+      }
+    },
+    "label1-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t6}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t6}"
+      }
+    },
+
+    "label2-semibold": {
+      "$value": {
+        "fontSize": "{fontSize.t4}",
+        "fontWeight": "{fontWeight.semibold}",
+        "lineHeight": "{lineHeight.t4}"
+      }
+    },
+    "label2-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t4}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t4}"
+      }
+    },
+
+    "label3-semibold": {
+      "$value": {
+        "fontSize": "{fontSize.t2}",
+        "fontWeight": "{fontWeight.semibold}",
+        "lineHeight": "{lineHeight.t2}"
+      }
+    },
+    "label3-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t2}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t2}"
+      }
+    },
+
+    "caption1-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t3}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t3}"
+      }
+    },
+    "caption1-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t3}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t3}"
+      }
+    },
+
+    "caption2-bold": {
+      "$value": {
+        "fontSize": "{fontSize.t2}",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "{lineHeight.t2}"
+      }
+    },
+    "caption2-regular": {
+      "$value": {
+        "fontSize": "{fontSize.t2}",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "{lineHeight.t2}"
+      }
+    }
+  }
+}

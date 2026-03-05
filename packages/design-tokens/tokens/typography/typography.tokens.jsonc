@@ -1,0 +1,96 @@
+{
+  "$schema": "../schema.json",
+  "fontSize": {
+    "$type": "dimension",
+    "t1": {
+      "$value": "11px"
+    },
+    "t2": {
+      "$value": "12px"
+    },
+    "t3": {
+      "$value": "13px"
+    },
+    "t4": {
+      "$value": "14px"
+    },
+    "t5": {
+      "$value": "15px"
+    },
+    "t6": {
+      "$value": "16px"
+    },
+    "t7": {
+      "$value": "18px"
+    },
+    "t8": {
+      "$value": "20px"
+    },
+    "t9": {
+      "$value": "24px"
+    },
+    "t10": {
+      "$value": "28px"
+    },
+    "t11": {
+      "$value": "34px"
+    },
+    "t12": {
+      "$value": "42px"
+    },
+    "t13": {
+      "$value": "48px"
+    }
+  },
+
+  "lineHeight": {
+    "$type": "dimension",
+    "t1": {
+      "$value": "15px"
+    },
+    "t2": {
+      "$value": "16px"
+    },
+    "t3": {
+      "$value": "18px"
+    },
+    "t4": {
+      "$value": "20px"
+    },
+    "t5": {
+      "$value": "22px"
+    },
+    "t6": {
+      "$value": "24px"
+    },
+    "t7": {
+      "$value": "26px"
+    },
+    "t8": {
+      "$value": "28px"
+    },
+    "t9": {
+      "$value": "34px"
+    },
+    "t10": {
+      "$value": "40px"
+    },
+    "t11": {
+      "$value": "48px"
+    },
+    "t12": {
+      "$value": "58px"
+    },
+    "t13": {
+      "$value": "68px"
+    }
+  },
+
+  "fontWeight": {
+    "$type": "fontWeight",
+    "regular": { "$value": 400 },
+    "medium": { "$value": 500 },
+    "semibold": { "$value": 600 },
+    "bold": { "$value": 700 }
+  }
+}
