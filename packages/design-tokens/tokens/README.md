@@ -2,8 +2,9 @@
 
 - token 값들을 담는 json 파일은 [DTCG 포맷](https://www.designtokens.org/tr/third-editors-draft/format/)을 따르는 것을 원칙으로 합니다.
     - 예외적으로 파일 이름은 *.tokens.json (or *.tokens.jsonc) 이여야 합니다. *.tokens 는 사용하지 않습니다.
-- schema.json 파일은 최소한의 포맷 검증을 위해 사용하는 파일입니다.
-    - DTCG 포맷과 완벽히 호환되게 만드는 것이 목표입니다.
+- `schema.json` 은 에디터 힌팅(자동완성, 구조 검증)을 위한 **구조 전용** JSON Schema 입니다.
+    - 토큰/그룹 구조와 `$type` enum 만 검증합니다. `$value` 내용은 검증하지 않습니다.
+    - `$value` 타입별 검증은 `npm run validate` (프로그래매틱 검증)이 담당합니다.
 
 ## Conventions
 
@@ -37,7 +38,14 @@
 ### `$schema` 선언
 
 - 모든 토큰 파일의 최상위에 `"$schema": "../schema.json"` 을 선언합니다.
-- 이는 에디터의 자동 완성 및 검증 기능을 위한 것입니다.
+- 이는 에디터의 자동 완성 및 구조 검증(토큰/그룹 형태, `$type` enum)을 위한 것입니다.
+- `$value` 내용 검증은 JSON Schema 의 한계(`$type` 상속 처리 불가)로 인해 별도 스크립트에서 수행합니다.
+
+### 토큰 검증
+
+- `npm run validate` 를 실행하면 프로그래매틱 검증이 수행됩니다.
+- Style Dictionary 의 `typeDtcgDelegate` 로 `$type` 상속을 해결한 뒤, 각 토큰의 `$value` 가 해당 타입에 맞는지 검증합니다.
+- 새 토큰 타입이나 값 포맷을 추가할 때는 `validate-tokens.js` 의 validators 를 함께 업데이트합니다.
 
 ### Font
 
