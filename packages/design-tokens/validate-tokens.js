@@ -172,6 +172,42 @@ function isAlias(value) {
 }
 
 // ---------------------------------------------------------------------------
+// Alias reference extraction — finds all {path.to.token} refs in a value
+// ---------------------------------------------------------------------------
+
+/**
+ * Recursively extracts alias references from a token value.
+ * Handles top-level aliases ("{dimension.4}") and aliases nested inside
+ * composite values (e.g. typography's { fontSize: "{fontSize.t13}" }).
+ *
+ * Returns array of { ref, location } where ref is the dot-path.
+ */
+function collectAliasRefs(value, location = '$value') {
+  const refs = [];
+
+  if (typeof value === 'string') {
+    if (ALIAS_RE.test(value)) {
+      refs.push({ ref: value.slice(1, -1), location });
+    }
+    return refs;
+  }
+
+  if (Array.isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      refs.push(...collectAliasRefs(value[i], `${location}[${i}]`));
+    }
+    return refs;
+  }
+
+  if (typeof value === 'object' && value !== null) {
+    for (const [key, val] of Object.entries(value)) {
+      refs.push(...collectAliasRefs(val, `${location}.${key}`));
+    }
+  }
+
+  return refs;
+}
+// ---------------------------------------------------------------------------
 // Validators per $type
 // Each returns null if valid, or an error message string.
 // ---------------------------------------------------------------------------
@@ -392,7 +428,22 @@ function main() {
     }
   }
 
-  // 4. Report
+  // 4. Validate alias references
+  const knownPaths = new Set(tokens.map(t => t.path));
+
+  for (const token of tokens) {
+    const aliasRefs = collectAliasRefs(token.value);
+    for (const { ref, location } of aliasRefs) {
+      if (!knownPaths.has(ref)) {
+        errors.push({
+          path: token.path,
+          message: `Broken alias: {${ref}} (at ${location}) — target token not found`,
+        });
+      }
+    }
+  }
+
+  // 5. Report
   if (errors.length > 0) {
     console.error(`\n\u274c ${errors.length} validation error(s):\n`);
     for (const { path, message } of errors) {
