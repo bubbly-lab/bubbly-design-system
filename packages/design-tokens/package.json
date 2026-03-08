@@ -19,7 +19,8 @@
   "license": "MIT",
   "scripts": {
     "build": "style-dictionary build",
-    "dev": "style-dictionary build --watch"
+    "dev": "style-dictionary build --watch",
+    "validate": "node validate-tokens.js"
   },
   "devDependencies": {
     "style-dictionary": "^5.1.1"
