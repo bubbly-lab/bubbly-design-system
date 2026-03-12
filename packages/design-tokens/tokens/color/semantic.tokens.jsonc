@@ -47,9 +47,9 @@
       "default": {
         "$value": "{color.green.400}"
       },
-      "default-hover": {
-        "$value": "{color.green.400}"
-      },
+      //   "default-hover": {
+      //     "$value": ""
+      //   },
       "subtle": {
         "$value": "{color.green.300}"
       }
