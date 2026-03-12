@@ -1,119 +1,94 @@
 {
   "$schema": "../schema.json",
+  "$type": "color",
   // content
   "content": {
     "brand": {
       "strong": {
-        "$type": "color",
         "$value": "{color.violet.400}"
       },
       "default": {
-        "$type": "color",
         "$value": "{color.violet.300}"
       },
       //   "default-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       "subtle": {
-        "$type": "color",
         "$value": "{color.violet.200}"
       }
       //   "subtle-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       //   "inverse": {
-      //     "$type": "color",
       //     "$value": ""
       //   }
     },
     "neutral": {
       "strong": {
-        "$type": "color",
         "$value": "{color.neutral.50}"
       },
       "default": {
-        "$type": "color",
         "$value": "{color.neutral.300}"
       },
       //   "default-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       "subtle": {
-        "$type": "color",
         "$value": "{color.neutral.500}"
       },
       //   "subtle-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       "inverse": {
-        "$type": "color",
         "$value": "{color.neutral.900}"
       }
     },
     "positive": {
       "default": {
-        "$type": "color",
         "$value": "{color.green.400}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.green.400}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "{color.green.300}"
       }
       //   "subtle-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   }
     },
     "warning": {
       "default": {
-        "$type": "color",
         "$value": "{color.yellow.400}"
       },
       //   "default-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       "subtle": {
-        "$type": "color",
         "$value": "{color.yellow.300}"
       }
       //   "subtle-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   }
     },
     "critical": {
       "default": {
-        "$type": "color",
         "$value": "{color.red.400}"
       },
       //   "default-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   },
       "subtle": {
-        "$type": "color",
         "$value": "{color.red.300}"
       }
       //   "subtle-hover": {
-      //     "$type": "color",
       //     "$value": ""
       //   }
     },
     "disabled": {
-      "$type": "color",
       "$value": "{color.neutral.600}"
     },
     "placeholder": {
-      "$type": "color",
       "$value": "{color.neutral.700}"
     }
   },
@@ -121,130 +96,102 @@
   "surface": {
     "brand": {
       "default": {
-        "$type": "color",
         "$value": "{color.violet.400}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.violet.300}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.violet.400} / {opacity.20})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.violet.400} / {opacity.30})"
       },
       "subtle-selected": {
-        "$type": "color",
         "$value": "rgb({color.violet.400} / {opacity.30})"
       },
       "subtle-selected-hover": {
-        "$type": "color",
         "$value": "rgb({color.violet.400} / {opacity.40})"
       }
     },
     "neutral": {
-      "strong": { "$type": "color", "$value": "{color.neutral.700}" },
+      "strong": { "$value": "{color.neutral.700}" },
       "default": {
-        "$type": "color",
         "$value": "rgb({color.neutral.700} / {opacity.30})"
       },
       "subtle": {
-        "$type": "color",
         "$value": "{color.neutral.900}"
       },
       "selected": {
-        "$type": "color",
         "$value": "rgb({color.neutral.500} / {opacity.20})"
       },
       "inverse": {
-        "$type": "color",
         "$value": "{color.neutral.100}"
       }
     },
     "floating": {
       "default": {
-        "$type": "color",
         "$value": "{color.neutral.800}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "{color.neutral.900}"
       }
     },
     "positive": {
       "default": {
-        "$type": "color",
         "$value": "{color.green.400}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.green.300}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.green.400} / {opacity.20})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.green.400} / {opacity.30})"
       }
     },
     "warning": {
       "default": {
-        "$type": "color",
         "$value": "{color.yellow.400}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.yellow.300}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.yellow.400} / {opacity.20})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.yellow.400} / {opacity.30})"
       }
     },
     "critical": {
       "default": {
-        "$type": "color",
         "$value": "{color.red.400}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.red.300}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.red.400} / {opacity.20})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.red.400} / {opacity.30})"
       }
     },
     "disabled": {
-      "$type": "color",
       "$value": "{color.neutral.800}"
     },
     // "transparent": {
-    //   "$type": "color",
     //   "$value": "rgb({color.neutral.0} / {opacity.0})"
     // },
     "transparent-hover": {
-      "$type": "color",
       "$value": "rgb({color.neutral.500} / {opacity.20})"
     }
   },
   // state-layer
   "state-layer": {
     "neutral-hover": {
-      "$type": "color",
       "$value": "rgb({color.neutral.500} / {opacity.20})"
     }
   },
@@ -252,83 +199,67 @@
   "border": {
     "brand": {
       "default": {
-        "$type": "color",
         "$value": "{color.violet.300}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.violet.200}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.violet.300} / {opacity.30})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.violet.300} / {opacity.40})"
       }
     },
     "neutral": {
       "strong": {
-        "$type": "color",
         "$value": "{color.neutral.700}"
       },
       "strong-hover": {
-        "$type": "color",
         "$value": "{color.neutral.600}"
       },
       "default": {
-        "$type": "color",
         "$value": "{color.neutral.800}"
       },
       "default-hover": {
-        "$type": "color",
         "$value": "{color.neutral.700}"
       },
       "subtle": {
-        "$type": "color",
         "$value": "rgb({color.neutral.800} / {opacity.60})"
       },
       "subtle-hover": {
-        "$type": "color",
         "$value": "rgb({color.neutral.700} / {opacity.60})"
       },
       "inverse": {
-        "$type": "color",
         "$value": "{color.neutral.100}"
       }
     },
     "positive": {
-      "default": { "$type": "color", "$value": "{color.green.400}" }
+      "default": { "$value": "{color.green.400}" }
     },
     "warning": {
-      "inverse": { "$type": "color", "$value": "{color.yellow.400}" }
+      "inverse": { "$value": "{color.yellow.400}" }
     },
     "critical": {
-      "inverse": { "$type": "color", "$value": "{color.red.400}" }
+      "inverse": { "$value": "{color.red.400}" }
     },
     "disabled": {
-      "$type": "color",
       "$value": "rgb({color.neutral.600} / {opacity.20})"
     }
   },
   // background
   "background": {
     "default": {
-      "$type": "color",
       "$value": "{color.neutral.950}"
     },
     "subtle": {
-      "$type": "color",
       "$value": "{color.neutral.900}"
     },
     "overlay": {
       "default": {
-        "$type": "color",
         "$value": "rgb({color.neutral.950} / {opacity.80})"
       }
       //   "subtle": {
-      //     "$type": "color",
       //     "$value": ""
       //   }
     }
@@ -336,11 +267,9 @@
   // static
   "static": {
     "white": {
-      "$type": "color",
       "$value": "{color.neutral.0}"
     },
     "black": {
-      "$type": "color",
       "$value": "{color.neutral.1000}"
     }
   }
