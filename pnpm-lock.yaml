@@ -21,12 +21,6 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
-  packages/css:
-    dependencies:
-      '@bubbly-design-system/design-tokens':
-        specifier: workspace:*
-        version: link:../design-tokens
-
   packages/design-tokens:
     devDependencies:
       style-dictionary:
