@@ -7,7 +7,7 @@ import {
 
 export default defineConfig({
   preflight: false,
-  include: ['./src/**/*.{ts,tsx}'],
+  include: ['./src/**/*.{ts,tsx}', './.storybook/**/*.{ts,tsx}'],
   exclude: [],
   outdir: 'styled-system',
   jsxFramework: 'react',
