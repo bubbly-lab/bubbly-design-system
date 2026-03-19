@@ -2,6 +2,7 @@
   "name": "@bubbly-design-system/react",
   "version": "0.0.0",
   "description": "",
+  "type": "module",
   "keywords": [
     "bubbly-design-system",
     "bubbly-lab",
@@ -14,5 +15,41 @@
     "directory": "packages/react"
   },
   "author": "@bubbly-lab/dev",
-  "license": "MIT"
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "codegen": "panda codegen --clean",
+    "build:js": "tsdown",
+    "cssgen": "panda cssgen --outfile dist/styles.css --minify",
+    "build": "pnpm codegen && pnpm build:js && pnpm cssgen"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.34.1"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.52.0",
+    "tsdown": "^0.21.4"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
 }
