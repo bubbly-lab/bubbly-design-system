@@ -188,6 +188,34 @@ Figma 자동화 파이프라인(seed-design의 rootage 방식) 대신, AI 에이
 
 현재 토큰은 다크 테마 단일 정의입니다. Panda CSS의 `semanticTokens`에서 `value`로 현재 다크 값만 넣되, 이후 라이트 모드가 필요해지면 `{ base: '...', _light: '...' }` 형태로 확장 가능한 구조를 유지합니다.
 
+## DTCG → Panda 변환 결정사항
+
+`design-tokens/scripts/to-panda.js`에서 DTCG 토큰을 Panda CSS 형식으로 변환할 때 적용한 결정사항입니다.
+
+### dimension → spacing + sizes 이중 매핑
+
+DTCG 스펙의 `dimension` 타입은 spacing(padding, gap)과 sizing(width, height) 용도를 구분하지 않습니다. Panda CSS는 이를 `spacing`과 `sizes`로 분리하므로 변환 시 매핑이 필요합니다.
+
+디자인팀에 dimension 토큰을 분리해달라고 요청하지 않기로 했습니다. spacing/sizes 구분은 CSS 프레임워크의 소비 측 관심사이지 디자인 토큰 정의의 관심사가 아니기 때문입니다. 디자인팀은 하나의 dimension 스케일만 관리하고, 변환 스크립트에서 동일한 값을 `spacing`과 `sizes` 양쪽에 출력합니다.
+
+- 디자인 토큰 측: `dimension` 단일 스케일 유지 (변경 없음)
+- 변환 스크립트: `spacing`과 `sizes`에 동일한 값을 이중 출력
+- 소비 측: `spacing.12` (패딩), `sizes.48` (높이) 용도에 맞게 사용
+
+### semantic token 값 형식 (다크모드 단일)
+
+현재 다크 테마만 지원하므로, semantic token은 plain value 형식을 사용합니다.
+
+```ts
+// 현재: plain value
+{ value: '{colors.violet.400}' }
+
+// 라이트 모드 추가 시: conditional value로 변경
+{ value: { base: '{colors.violet.400}', _light: '{colors.violet.600}' } }
+```
+
+라이트 모드가 필요해지면 `to-panda.js`의 출력 형식을 conditional value로 변경하고, DTCG 토큰 파일에 라이트 값을 추가합니다.
+
 ## 의도적으로 하지 않는 것
 
 | 하지 않는 것 | 이유 |
