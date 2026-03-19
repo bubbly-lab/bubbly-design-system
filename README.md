@@ -11,9 +11,19 @@
 
 ## 시작하기
 
+Node.js 24 이상과 pnpm이 필요합니다.
+
 ```bash
+corepack enable    # pnpm 자동 설치 (Node.js 내장)
 pnpm install
-pnpm build
+pnpm build        # design-tokens 빌드 → react 패키지 빌드
+```
+
+Storybook으로 컴포넌트를 확인하려면:
+
+```bash
+cd packages/react
+pnpm storybook    # http://localhost:6006
 ```
 
 ## 문서

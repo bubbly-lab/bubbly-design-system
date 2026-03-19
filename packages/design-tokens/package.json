@@ -18,7 +18,7 @@
   "author": "@bubbly-lab/dev",
   "license": "MIT",
   "scripts": {
-    "build": "style-dictionary build",
+    "build": "style-dictionary build && node scripts/to-panda.js",
     "build:panda": "node scripts/to-panda.js",
     "dev": "style-dictionary build --watch",
     "validate": "node validate-tokens.js"

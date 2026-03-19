@@ -36,7 +36,7 @@
     "*.css"
   ],
   "scripts": {
-    "prepare": "panda codegen",
+    "prepare": "panda codegen 2>/dev/null || true",
     "codegen": "panda codegen --clean",
     "build:js": "tsdown",
     "cssgen": "panda cssgen --outfile dist/styles.css --minify",
