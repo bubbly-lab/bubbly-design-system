@@ -19,6 +19,7 @@
   "license": "MIT",
   "scripts": {
     "build": "style-dictionary build",
+    "build:panda": "node scripts/to-panda.js",
     "dev": "style-dictionary build --watch",
     "validate": "node validate-tokens.js"
   },
