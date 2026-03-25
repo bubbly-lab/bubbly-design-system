@@ -98,9 +98,7 @@ ${outline}
   const variant: IconVariant = hasFilled ? 'filled' : 'outline';
   const onlyVariant = indentBlock(readSvgContent(iconName, variant), 8);
 
-  return `        <>
-${onlyVariant}
-        </>`;
+  return onlyVariant;
 }
 
 function generateComponent(iconName: string, variants: IconVariants): string {
