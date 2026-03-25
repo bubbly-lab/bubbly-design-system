@@ -1,0 +1,128 @@
+{
+  "home": {
+    "outline": "1063:6082",
+    "filled": "1063:6117"
+  },
+  "userCircle": {
+    "outline": "1063:6077",
+    "filled": "1063:6140"
+  },
+  "lock": {
+    "outline": "1063:6103",
+    "filled": "1063:6121"
+  },
+  "mail": {
+    "outline": "1063:6148",
+    "filled": "1063:6152"
+  },
+  "location": {
+    "outline": "1063:6097",
+    "filled": "1063:6134"
+  },
+  "pencil": {
+    "outline": "1063:6166",
+    "filled": "1063:6187"
+  },
+  "bubble": {
+    "outline": "1063:6191",
+    "filled": "1063:6193"
+  },
+  "plus": {
+    "outline": "1063:6217"
+  },
+  "questionCircle": {
+    "outline": "1063:6195",
+    "filled": "1063:6201"
+  },
+  "infoCircle": {
+    "outline": "1063:6092",
+    "filled": "1063:6207"
+  },
+  "star": {
+    "filled": "1063:6052"
+  },
+  "starHalf": {
+    "filled": "1063:6056"
+  },
+  "starEmpty": {
+    "filled": "1063:6059"
+  },
+  "search": {
+    "outline": "1063:6040"
+  },
+  "close": {
+    "outline": "1063:6084"
+  },
+  "closeCircle": {
+    "outline": "1063:6088"
+  },
+  "check": {
+    "outline": "1063:6132"
+  },
+  "menu": {
+    "outline": "1063:6161"
+  },
+  "warningCircle": {
+    "outline": "1063:6170"
+  },
+  "filter": {
+    "outline": "1063:6175"
+  },
+  "chevronRight": {
+    "outline": "1063:6069"
+  },
+  "chevronLeft": {
+    "outline": "1063:6071"
+  },
+  "chevronUp": {
+    "outline": "1063:6073"
+  },
+  "chevronDown": {
+    "outline": "1063:6075"
+  },
+  "kebab": {
+    "outline": "1063:6179"
+  },
+  "bullet": {
+    "outline": "1063:6199"
+  },
+  "arrowRight": {
+    "outline": "1063:6061"
+  },
+  "arrowLeft": {
+    "outline": "1063:6063"
+  },
+  "arrowUp": {
+    "outline": "1063:6065"
+  },
+  "arrowDown": {
+    "outline": "1063:6067"
+  },
+  "reload": {
+    "outline": "1063:6177"
+  },
+  "loading": {
+    "outline": "1063:6228"
+  },
+  "link": {
+    "outline": "1063:6044"
+  },
+  "copy": {
+    "outline": "1063:6046"
+  },
+  "imgNone": {
+    "outline": "1063:6101"
+  },
+  "minus": {
+    "outline": "1063:6221"
+  },
+  "unlock": {
+    "outline": "1063:6111"
+  },
+  "externalLink": {
+    "outline": "1063:6223"
+  },
+  "time": {
+    "outline": "3140:5826"
+  }
+}
