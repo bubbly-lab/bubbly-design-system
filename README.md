@@ -22,7 +22,6 @@ pnpm build        # design-tokens 빌드 → react 패키지 빌드
 Storybook으로 컴포넌트를 확인하려면:
 
 ```bash
-cd packages/react
 pnpm storybook    # http://localhost:6006
 ```
 

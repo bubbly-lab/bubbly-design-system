@@ -4,6 +4,7 @@ import {
   textStyles,
   tokens,
 } from '../design-tokens/build/panda/tokens';
+import { buttonRecipe } from './src/recipes/button';
 
 export default defineConfig({
   preflight: false,
@@ -12,10 +13,16 @@ export default defineConfig({
   outdir: 'styled-system',
   jsxFramework: 'react',
   minify: true,
+  staticCss: {
+    recipes: '*',
+  },
 
   theme: {
     tokens,
     semanticTokens,
     textStyles,
+    recipes: {
+      button: buttonRecipe,
+    },
   },
 });
