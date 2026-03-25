@@ -1,0 +1,35 @@
+'use client';
+
+import { forwardRef } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import type { IconProps } from '../types';
+
+const IconSearch: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>> = forwardRef<SVGSVGElement, IconProps>(
+  function IconSearch({ size = '1em', filled = false, color = 'currentColor', title, ...props }, ref) {
+    void color;
+    const hasA11y = Boolean(title ?? props['aria-label'] ?? props['aria-labelledby']);
+
+    return (
+      <svg
+        ref={ref}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        fill="currentColor"
+        aria-hidden={hasA11y ? undefined : true}
+        role={hasA11y ? 'img' : undefined}
+        {...props}
+      >
+        {title && <title>{title}</title>}
+        <>
+        <path fill="currentColor" fillRule="evenodd" d="M11.0002 3.30005C15.2527 3.30015 18.7004 6.74772 18.7004 11.0002C18.7004 12.8743 18.0292 14.5909 16.9163 15.926L20.4954 19.5051C20.7685 19.7785 20.7686 20.2221 20.4954 20.4954C20.2221 20.7687 19.7785 20.7685 19.5051 20.4954L15.926 16.9163C14.5909 18.0292 12.8743 18.7004 11.0002 18.7004C6.74772 18.7004 3.30015 15.2527 3.30005 11.0002C3.30005 6.74765 6.74765 3.30005 11.0002 3.30005ZM11.0002 4.70044C7.52085 4.70044 4.70044 7.52085 4.70044 11.0002C4.70055 14.4795 7.52092 17.3 11.0002 17.3C14.4795 17.2999 17.2999 14.4795 17.3 11.0002C17.3 7.52092 14.4795 4.70055 11.0002 4.70044Z" clipRule="evenodd"/>
+        </>
+      </svg>
+    );
+  }
+);
+
+IconSearch.displayName = 'IconSearch';
+
+export { IconSearch };
