@@ -33,6 +33,13 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "generate": "tsx scripts/generate.ts",
