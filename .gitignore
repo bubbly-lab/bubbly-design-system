@@ -9,3 +9,10 @@ build/
 # code editors
 .idea
 .vscode
+
+# secrets
+.env
+
+# oh-my-opencode / sisyphus runtime state
+.sisyphus/*
+!.sisyphus/rules/

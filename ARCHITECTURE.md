@@ -78,6 +78,11 @@ packages/
 │       ├── css/tokens.css     ← 이메일 등 외부 소비자용
 │       └── panda/tokens.ts    ← React 패키지가 소비
 │
+├── icons/             ← Figma 아이콘 → React 컴포넌트 (NEW)
+│   ├── scripts/       ← Figma API + SVGO + React 생성
+│   ├── src/icons/     ← 생성된 컴포넌트 (git committed)
+│   └── dist/          ← tsdown 빌드 출력
+│
 └── react/             ← Panda CSS + Ark UI + Storybook
     ├── panda.config.ts    ← design-tokens 빌드 출력을 import
     ├── tsdown.config.ts
@@ -180,11 +185,13 @@ export * as Checkbox from './checkbox'
 
 ## Figma 동기화
 
-Figma 자동화 파이프라인(seed-design의 rootage 방식) 대신, AI 에이전트를 통해 Figma 디자인을 읽고 토큰/컴포넌트 코드를 생성합니다.
+디자인 토큰은 AI 에이전트(`figma-mcp-bridge` 스킬)를 통해 Figma 디자인을 읽고 DTCG 토큰/컴포넌트 코드를 생성합니다.
 
-- `figma-mcp-bridge` 스킬을 통해 Figma MCP에 접근
-- Figma에서 디자인 컨텍스트(레이아웃, 색상, 타이포그래피 등)를 추출
-- DTCG 토큰 또는 컴포넌트 코드로 변환
+아이콘은 Figma REST API 기반 스크립트로 자동 추출합니다:
+
+- `pnpm --filter @bubbly-design-system/icons generate` 명령으로 실행
+- Figma → SVG 추출 → SVGO 최적화 → React 컴포넌트 생성 파이프라인
+- 생성된 컴포넌트는 git에 커밋 (generated code as committed source)
 
 ## 다크모드
 
@@ -225,7 +232,6 @@ DTCG 스펙의 `dimension` 타입은 spacing(padding, gap)과 sizing(width, heig
 | 자체 Headless 레이어 개발 | Ark UI가 대체 |
 | 자체 토큰 빌드 도구 개발 | Style Dictionary + Panda CSS로 충분 |
 | 자체 CSS 생성 도구 개발 | Panda CSS의 Recipe 시스템이 대체 |
-| Figma 자동화 파이프라인 구축 | AI 에이전트가 대체 |
 | 런타임 CSS-in-JS | RSC 비호환 (styled-components/Emotion 탈출이 목적) |
 | 범용 디자인 시스템 | rumyscape + 버블리랩 프로덕트 최적화에 집중 |
 | 모든 것의 자동화 | 사이드프로젝트 팀 규모에서 오히려 작업 시간 증가 |

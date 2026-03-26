@@ -1,0 +1,63 @@
+{
+  "name": "@bubbly-design-system/icons",
+  "version": "0.0.0",
+  "description": "Bubbly Design System icon components",
+  "type": "module",
+  "keywords": [
+    "bubbly-design-system",
+    "bubbly-lab",
+    "design-system",
+    "icons"
+  ],
+  "homepage": "https://github.com/rumyscape/bubbly-design-system",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rumyscape/bubbly-design-system.git",
+    "directory": "packages/icons"
+  },
+  "author": "@bubbly-lab/dev",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsdown",
+    "generate": "tsx scripts/generate.ts",
+    "test": "vitest run",
+    "check-types": "tsc --noEmit",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/react": "^10.3.0",
+    "@storybook/react-vite": "^10.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "storybook": "^10.3.0",
+    "svgo": "^4.0.1",
+    "tsx": "^4.21.0",
+    "tsdown": "^0.21.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.4.1",
+    "vitest": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}
