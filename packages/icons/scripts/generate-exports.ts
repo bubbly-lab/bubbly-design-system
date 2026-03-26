@@ -16,7 +16,9 @@ const INDEX_PATH = path.join(PACKAGE_ROOT, 'src', 'index.ts');
 async function main(): Promise<void> {
   const files = fs
     .readdirSync(ICONS_DIR)
-    .filter((file: string) => file.endsWith('.tsx'))
+    .filter(
+      (file: string) => file.endsWith('.tsx') && !file.endsWith('.stories.tsx'),
+    )
     .sort((a: string, b: string) => a.localeCompare(b));
 
   const iconExports = files.map((file: string) => {
