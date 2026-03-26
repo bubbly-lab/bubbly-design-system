@@ -14,7 +14,6 @@ const REPO_ROOT = decodeURIComponent(
   new URL('../../../', scriptDirUrl).pathname,
 );
 
-const FILE_KEY = 'REDACTED';
 const FIGMA_API = 'https://api.figma.com/v1';
 const BATCH_SIZE = 50;
 
@@ -25,7 +24,7 @@ function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function loadFigmaPat(): string {
+function loadEnv(): { pat: string; fileKey: string } {
   const envPath = `${REPO_ROOT}.env`;
   if (!fs.existsSync(envPath)) {
     throw new Error(`.env not found at ${envPath}`);
@@ -33,6 +32,7 @@ function loadFigmaPat(): string {
 
   const content = fs.readFileSync(envPath, 'utf-8') as string;
   const lines = content.split(/\r?\n/);
+  const values: Record<string, string> = {};
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
@@ -46,10 +46,6 @@ function loadFigmaPat(): string {
     }
 
     const key = line.slice(0, separatorIndex).trim();
-    if (key !== 'FIGMA_PAT') {
-      continue;
-    }
-
     let value = line.slice(separatorIndex + 1).trim();
     if (
       (value.startsWith('"') && value.endsWith('"')) ||
@@ -58,14 +54,20 @@ function loadFigmaPat(): string {
       value = value.slice(1, -1);
     }
 
-    if (!value) {
-      throw new Error('FIGMA_PAT is empty in .env');
-    }
-
-    return value;
+    values[key] = value;
   }
 
-  throw new Error('FIGMA_PAT not found in .env');
+  const pat = values['FIGMA_PAT'];
+  if (!pat) {
+    throw new Error('FIGMA_PAT not found or empty in .env');
+  }
+
+  const fileKey = values['FIGMA_FILE_KEY'];
+  if (!fileKey) {
+    throw new Error('FIGMA_FILE_KEY not found or empty in .env');
+  }
+
+  return { pat, fileKey };
 }
 
 async function figmaFetch(url: string, pat: string): Promise<Response> {
@@ -110,13 +112,14 @@ function chunk<T>(items: T[], size: number): T[][] {
 async function fetchSvgUrls(
   nodeIds: string[],
   pat: string,
+  fileKey: string,
 ): Promise<Record<string, string>> {
   const result: Record<string, string> = {};
   const batches = chunk(nodeIds, BATCH_SIZE);
 
   for (const [index, batch] of batches.entries()) {
     const ids = batch.join(',');
-    const url = `${FIGMA_API}/images/${FILE_KEY}?ids=${encodeURIComponent(ids)}&format=svg&svg_simplify_stroke=true&svg_include_id=false`;
+    const url = `${FIGMA_API}/images/${fileKey}?ids=${encodeURIComponent(ids)}&format=svg&svg_simplify_stroke=true&svg_include_id=false`;
 
     console.log(
       `[fetch-figma] Requesting batch ${index + 1}/${batches.length} (${batch.length} ids)...`,
@@ -148,7 +151,7 @@ async function downloadSvg(url: string, outputPath: string): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const pat = loadFigmaPat();
+  const { pat, fileKey } = loadEnv();
   const manifestPath = `${SCRIPT_DIR}icon-manifest.json`;
   const manifest = JSON.parse(
     fs.readFileSync(manifestPath, 'utf-8') as string,
@@ -174,7 +177,7 @@ async function main(): Promise<void> {
     `[fetch-figma] Fetching SVG URLs for ${allNodeIds.length} variants...`,
   );
 
-  const svgUrls = await fetchSvgUrls(allNodeIds, pat);
+  const svgUrls = await fetchSvgUrls(allNodeIds, pat, fileKey);
   const svgDir = `${PACKAGE_ROOT}svg`;
   fs.mkdirSync(svgDir, { recursive: true });
 

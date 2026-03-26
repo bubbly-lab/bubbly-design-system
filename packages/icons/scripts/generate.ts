@@ -18,13 +18,17 @@ type Step = {
 };
 
 const steps: Step[] = [
-  { name: 'Step 1: Fetch SVGs from Figma', fileName: 'fetch-figma.ts' },
+  { name: 'Step 1: Fetch SVGs', fileName: 'fetch-figma.ts' },
   { name: 'Step 2: Optimize SVGs (SVGO)', fileName: 'optimize-svgs.ts' },
   {
     name: 'Step 3: Generate React components',
     fileName: 'generate-components.ts',
   },
   { name: 'Step 4: Generate barrel exports', fileName: 'generate-exports.ts' },
+  {
+    name: 'Step 5: Generate Storybook stories',
+    fileName: 'generate-stories.ts',
+  },
 ];
 
 function runScript(step: Step): void {

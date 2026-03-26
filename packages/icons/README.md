@@ -1,6 +1,6 @@
 # @bubbly-design-system/icons
 
-Bubbly Design System의 아이콘 패키지. Figma에서 자동 추출된 39개의 React SVG 컴포넌트를 제공합니다.
+Bubbly Design System의 아이콘 패키지. 39개의 React SVG 컴포넌트를 제공합니다.
 
 - **Tree-shakeable** — 사용한 아이콘만 번들에 포함
 - **`currentColor` 기반** — CSS `color` 속성으로 색상 제어
@@ -180,12 +180,12 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 
 ### 아이콘 추가/수정 방법
 
-아이콘은 Figma에서 자동 생성됩니다. `src/icons/` 파일을 직접 수정하지 마세요.
+`src/icons/` 파일을 직접 수정하지 마세요. 아이콘은 파이프라인을 통해 자동 생성됩니다.
 
 **파이프라인 구조:**
 
 ```
-Figma REST API
+SVG 소스 (외부)
     ↓ scripts/fetch-figma.ts
 svg/{name}/{variant}.svg          ← 원본 SVG (git 추적)
     ↓ scripts/optimize-svgs.ts    (SVGO v4)
@@ -199,40 +199,40 @@ src/index.ts                      ← barrel export (git 추적)
 **전체 파이프라인 실행:**
 
 ```bash
-# 루트 .env에 FIGMA_PAT 필요
+# 루트 .env에 FIGMA_PAT, FIGMA_FILE_KEY 필요
 pnpm --filter @bubbly-design-system/icons generate
 ```
 
 **개별 스크립트 실행 (packages/icons/ 에서):**
 
 ```bash
-npx tsx scripts/fetch-figma.ts        # Figma에서 SVG 다운로드
+npx tsx scripts/fetch-figma.ts        # SVG 다운로드
 npx tsx scripts/optimize-svgs.ts      # SVGO 최적화
 npx tsx scripts/generate-components.ts # React 컴포넌트 생성
 npx tsx scripts/generate-exports.ts   # barrel index.ts 생성
 ```
 
-### Figma 아이콘 추가
+### 아이콘 추가
 
-1. Figma 파일(`REDACTED`)의 아이콘 페이지에 COMPONENT_SET 추가
-2. `scripts/icon-manifest.json`에 항목 추가:
+1. `scripts/icon-manifest.json`에 항목 추가:
    ```json
    "newIcon": {
-     "outline": "FIGMA_NODE_ID",
-     "filled": "FIGMA_NODE_ID"
+     "outline": "NODE_ID",
+     "filled": "NODE_ID"
    }
    ```
    variant가 하나뿐이면 해당 key만 작성합니다.
-3. 파이프라인 실행: `pnpm --filter @bubbly-design-system/icons generate`
-4. 생성된 파일 커밋
+2. 파이프라인 실행: `pnpm --filter @bubbly-design-system/icons generate`
+3. 생성된 파일 커밋
 
 ### 환경 설정
 
-루트 `.env` 파일에 Figma Personal Access Token이 필요합니다:
+루트 `.env` 파일에 다음 값이 필요합니다:
 
 ```bash
 # .env (루트)
 FIGMA_PAT=your_figma_personal_access_token
+FIGMA_FILE_KEY=your_figma_file_key
 ```
 
 `.env.example`을 참고하세요.
@@ -255,14 +255,14 @@ pnpm --filter @bubbly-design-system/icons test
 ```
 packages/icons/
 ├── scripts/
-│   ├── fetch-figma.ts          # Figma REST API → SVG 다운로드
+│   ├── fetch-figma.ts          # SVG 다운로드 (외부 소스)
 │   │                           # 429 rate limit 자동 재시도 (Retry-After)
 │   ├── optimize-svgs.ts        # SVGO v4 최적화 (in-place)
 │   │                           # width/height 제거, currentColor 변환
 │   ├── generate-components.ts  # SVG → React 컴포넌트 코드 생성
 │   ├── generate-exports.ts     # src/index.ts barrel export 생성
 │   ├── generate.ts             # 위 4개를 순서대로 실행하는 오케스트레이터
-│   ├── icon-manifest.json      # 아이콘 이름 → Figma nodeId 매핑
+│   ├── icon-manifest.json      # 아이콘 이름 → nodeId 매핑
 │   └── __tests__/              # 빌드 스크립트 단위 테스트 (Vitest)
 ├── src/
 │   ├── types.ts                # IconProps 인터페이스
