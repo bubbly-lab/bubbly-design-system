@@ -1,3 +1,4 @@
+export type { IconProps } from './types';
 export { IconArrowDown } from './icons/IconArrowDown';
 export { IconArrowLeft } from './icons/IconArrowLeft';
 export { IconArrowRight } from './icons/IconArrowRight';
@@ -37,4 +38,3 @@ export { IconTime } from './icons/IconTime';
 export { IconUnlock } from './icons/IconUnlock';
 export { IconUserCircle } from './icons/IconUserCircle';
 export { IconWarningCircle } from './icons/IconWarningCircle';
-export type { IconProps } from './types';

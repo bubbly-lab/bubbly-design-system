@@ -1,46 +1,32 @@
 'use client';
 
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import type { IconProps } from '../types';
 
-const IconCopy: ForwardRefExoticComponent<
-  IconProps & RefAttributes<SVGSVGElement>
-> = forwardRef<SVGSVGElement, IconProps>(function IconCopy(
-  { size = '1em', filled = false, color = 'currentColor', title, ...props },
-  ref,
-) {
-  void color;
-  const hasA11y = Boolean(
-    title ?? props['aria-label'] ?? props['aria-labelledby'],
-  );
+const IconCopy: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>> = forwardRef<SVGSVGElement, IconProps>(
+  function IconCopy({ size = '1em', filled = false, color = 'currentColor', title, ...props }, ref) {
+    void color;
+    const hasA11y = Boolean(title ?? props['aria-label'] ?? props['aria-labelledby']);
 
-  return (
-    <svg
-      ref={ref}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      fill="currentColor"
-      aria-hidden={hasA11y ? undefined : true}
-      role={hasA11y ? 'img' : undefined}
-      {...props}
-    >
-      {title && <title>{title}</title>}
-      <path
+    return (
+      <svg
+        ref={ref}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
         fill="currentColor"
-        fillRule="evenodd"
-        d="M18.0002 8.30005C19.4913 8.30015 20.7004 9.50914 20.7004 11.0002V18.0002C20.7003 19.4913 19.4913 20.7003 18.0002 20.7004H11.0002C9.50914 20.7004 8.30015 19.4913 8.30005 18.0002V11.0002C8.30005 9.50908 9.50908 8.30005 11.0002 8.30005H18.0002ZM11.0002 9.70044C10.2823 9.70044 9.70044 10.2823 9.70044 11.0002V18.0002C9.70055 18.7181 10.2823 19.3 11.0002 19.3H18.0002C18.7181 19.2999 19.2999 18.7181 19.3 18.0002V11.0002C19.3 10.2823 18.7181 9.70054 18.0002 9.70044H11.0002Z"
-        clipRule="evenodd"
-      />
-      <path
-        fill="currentColor"
-        d="M13.6252 3.30005C14.7711 3.30015 15.7004 4.22932 15.7004 5.37524V7.00024C15.7003 7.38669 15.3867 7.70033 15.0002 7.70044C14.6137 7.70044 14.3002 7.38675 14.3 7.00024V5.37524C14.3 5.00252 13.9979 4.70055 13.6252 4.70044H6.00024C5.28227 4.70044 4.70044 5.28227 4.70044 6.00024V13.0002C4.70054 13.6734 5.21183 14.2268 5.86743 14.2932L6.00024 14.3H7.00024C7.38671 14.3002 7.69946 14.6137 7.69946 15.0002C7.69936 15.3867 7.38664 15.7003 7.00024 15.7004H6.00024L5.72388 15.6858C4.36252 15.5475 3.30015 14.3981 3.30005 13.0002V6.00024C3.30005 4.50908 4.50908 3.30005 6.00024 3.30005H13.6252Z"
-      />
-    </svg>
-  );
-});
+        aria-hidden={hasA11y ? undefined : true}
+        role={hasA11y ? 'img' : undefined}
+        {...props}
+      >
+        {title && <title>{title}</title>}
+        <path fill="currentColor" fillRule="evenodd" d="M18.0002 8.30005C19.4913 8.30015 20.7004 9.50914 20.7004 11.0002V18.0002C20.7003 19.4913 19.4913 20.7003 18.0002 20.7004H11.0002C9.50914 20.7004 8.30015 19.4913 8.30005 18.0002V11.0002C8.30005 9.50908 9.50908 8.30005 11.0002 8.30005H18.0002ZM11.0002 9.70044C10.2823 9.70044 9.70044 10.2823 9.70044 11.0002V18.0002C9.70055 18.7181 10.2823 19.3 11.0002 19.3H18.0002C18.7181 19.2999 19.2999 18.7181 19.3 18.0002V11.0002C19.3 10.2823 18.7181 9.70054 18.0002 9.70044H11.0002Z" clipRule="evenodd"/><path fill="currentColor" d="M13.6252 3.30005C14.7711 3.30015 15.7004 4.22932 15.7004 5.37524V7.00024C15.7003 7.38669 15.3867 7.70033 15.0002 7.70044C14.6137 7.70044 14.3002 7.38675 14.3 7.00024V5.37524C14.3 5.00252 13.9979 4.70055 13.6252 4.70044H6.00024C5.28227 4.70044 4.70044 5.28227 4.70044 6.00024V13.0002C4.70054 13.6734 5.21183 14.2268 5.86743 14.2932L6.00024 14.3H7.00024C7.38671 14.3002 7.69946 14.6137 7.69946 15.0002C7.69936 15.3867 7.38664 15.7003 7.00024 15.7004H6.00024L5.72388 15.6858C4.36252 15.5475 3.30015 14.3981 3.30005 13.0002V6.00024C3.30005 4.50908 4.50908 3.30005 6.00024 3.30005H13.6252Z"/>
+      </svg>
+    );
+  }
+);
 
 IconCopy.displayName = 'IconCopy';
 
