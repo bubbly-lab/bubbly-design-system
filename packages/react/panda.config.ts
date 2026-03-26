@@ -5,6 +5,7 @@ import {
   tokens,
 } from '../design-tokens/build/panda/tokens';
 import { buttonRecipe } from './src/recipes/button';
+import { tabsRecipe } from './src/recipes/tabs';
 
 export default defineConfig({
   preflight: false,
@@ -23,6 +24,7 @@ export default defineConfig({
     textStyles,
     recipes: {
       button: buttonRecipe,
+      tabs: tabsRecipe,
     },
   },
 });
