@@ -31,7 +31,7 @@ npm login
 
 ## 3. 첫 publish (수동)
 
-첫 배포는 GitHub Actions를 통한 자동화가 불가능하므로(Changesets action은 이미 배포된 패키지만 인식), 로컬에서 수동으로 진행해야 합니다.
+첫 배포는 로컬에서 수동으로 진행해야 합니다. npm org가 존재하고 패키지가 npm에 등록된 이후에야 GitHub Actions 자동화가 정상 동작합니다.
 
 1. **최신 빌드 확인**:
    ```bash
