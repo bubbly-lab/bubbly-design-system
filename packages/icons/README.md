@@ -151,11 +151,25 @@ const ref = useRef<SVGSVGElement>(null);
 
 ### Filled only (3개)
 
-| 이름 | 컴포넌트 |
-|------|----------|
-| star | `IconStar` |
-| starHalf | `IconStarHalf` |
-| starEmpty | `IconStarEmpty` |
+별점 UI 구성용 아이콘입니다. `IconStar`는 꽉 찬 별, `IconStarHalf`는 좌측 절반만 불투명하고 우측은 50% 투명, `IconStarEmpty`는 전체가 50% 투명합니다.
+
+| 이름 | 컴포넌트 | 시각적 특성 |
+|------|----------|-------------|
+| star | `IconStar` | 불투명 (100%) |
+| starHalf | `IconStarHalf` | 좌측 100%, 우측 50% |
+| starEmpty | `IconStarEmpty` | 전체 50% |
+
+---
+
+## Storybook
+
+모든 아이콘을 시각적으로 확인할 수 있습니다.
+
+```bash
+pnpm storybook:icons
+```
+
+<!-- TODO: 배포 후 링크 추가 -->
 
 ---
 
@@ -194,6 +208,8 @@ svg/{name}/{variant}.svg          ← 최적화된 SVG (in-place)
 src/icons/Icon{Name}.tsx          ← 생성된 컴포넌트 (git 추적)
     ↓ scripts/generate-exports.ts
 src/index.ts                      ← barrel export (git 추적)
+    ↓ scripts/generate-stories.ts
+src/stories/Icon{Name}.stories.tsx ← Storybook 스토리 (git 추적)
 ```
 
 **전체 파이프라인 실행:**
@@ -206,15 +222,17 @@ pnpm --filter @bubbly-design-system/icons generate
 **개별 스크립트 실행 (packages/icons/ 에서):**
 
 ```bash
-npx tsx scripts/fetch-figma.ts        # SVG 다운로드
+npx tsx scripts/fetch-figma.ts         # SVG 다운로드
 npx tsx scripts/optimize-svgs.ts      # SVGO 최적화
 npx tsx scripts/generate-components.ts # React 컴포넌트 생성
 npx tsx scripts/generate-exports.ts   # barrel index.ts 생성
+npx tsx scripts/generate-stories.ts   # Storybook 스토리 생성
 ```
 
 ### 아이콘 추가
 
-1. `scripts/icon-manifest.json`에 항목 추가:
+1. 디자인 소스에서 추가할 아이콘의 node ID를 확인합니다.
+2. `scripts/icon-manifest.json`에 항목 추가:
    ```json
    "newIcon": {
      "outline": "NODE_ID",
@@ -222,8 +240,8 @@ npx tsx scripts/generate-exports.ts   # barrel index.ts 생성
    }
    ```
    variant가 하나뿐이면 해당 key만 작성합니다.
-2. 파이프라인 실행: `pnpm --filter @bubbly-design-system/icons generate`
-3. 생성된 파일 커밋
+3. 파이프라인 실행: `pnpm --filter @bubbly-design-system/icons generate`
+4. 생성된 파일 커밋
 
 ### 환경 설정
 
@@ -248,6 +266,9 @@ pnpm --filter @bubbly-design-system/icons check-types
 
 # 테스트 (빌드 스크립트 단위 테스트)
 pnpm --filter @bubbly-design-system/icons test
+
+# Storybook 로컬 실행
+pnpm storybook:icons
 ```
 
 ### 코드 구조
@@ -261,13 +282,15 @@ packages/icons/
 │   │                           # width/height 제거, currentColor 변환
 │   ├── generate-components.ts  # SVG → React 컴포넌트 코드 생성
 │   ├── generate-exports.ts     # src/index.ts barrel export 생성
-│   ├── generate.ts             # 위 4개를 순서대로 실행하는 오케스트레이터
+│   ├── generate-stories.ts    # Storybook 스토리 자동 생성
+│   ├── generate.ts             # 위 5개를 순서대로 실행하는 오케스트레이터
 │   ├── icon-manifest.json      # 아이콘 이름 → nodeId 매핑
 │   └── __tests__/              # 빌드 스크립트 단위 테스트 (Vitest)
 ├── src/
 │   ├── types.ts                # IconProps 인터페이스
 │   ├── index.ts                # barrel export (자동 생성)
-│   └── icons/                  # 아이콘 컴포넌트 (자동 생성, git 추적)
+│   ├── icons/                  # 아이콘 컴포넌트 (자동 생성, git 추적)
+│   └── stories/                # Storybook 스토리 (자동 생성, git 추적)
 ├── svg/                        # 최적화된 원본 SVG (자동 생성, git 추적)
 ├── dist/                       # 빌드 출력 (gitignore)
 ├── tsdown.config.ts            # ESM + CJS + dts 빌드 설정
