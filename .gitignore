@@ -14,8 +14,5 @@ build/
 .env
 
 # oh-my-opencode / sisyphus runtime state
-# plans/ and notepads/ are committed (team-shared knowledge)
-# boulder.json = active session state (local only)
-# evidence/ = one-time QA artifacts (local only)
-.sisyphus/boulder.json
-.sisyphus/evidence/
+.sisyphus/*
+!.sisyphus/rules/
