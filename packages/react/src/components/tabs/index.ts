@@ -1,6 +1,6 @@
 export type {
-  TabItemContentProps,
-  TabItemProps,
+  ItemContentProps,
+  ItemProps,
   TabsContentProps,
   TabsListProps,
   TabsRootProps,

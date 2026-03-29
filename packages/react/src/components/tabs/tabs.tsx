@@ -13,16 +13,16 @@ import { cx } from 'styled-system/css';
 import { type TabsVariantProps, tabs } from 'styled-system/recipes';
 
 import {
-  TAB_ITEM_DISPLAY_NAME,
-  TabItem,
-  TabItemContent,
-  type TabItemContentProps,
-  type TabItemProps,
+  ITEM_DISPLAY_NAME,
+  Item,
+  ItemContent,
+  type ItemContentProps,
+  type ItemProps,
 } from './tab-item';
 import { TabsStylesContext, useTabsStyles } from './tabs-context';
 
-export { TabItem, TabItemContent };
-export type { TabItemContentProps, TabItemProps };
+export { Item, ItemContent };
+export type { ItemContentProps, ItemProps };
 
 export type TabsListProps = ComponentPropsWithoutRef<typeof ArkTabs.List>;
 
@@ -66,14 +66,12 @@ export interface TabsRootProps
   defaultValue?: TabsTriggerProps['value'];
 }
 
-function isTabItemElement(
-  child: ReactNode,
-): child is ReactElement<TabItemProps> {
+function isItemElement(child: ReactNode): child is ReactElement<ItemProps> {
   if (!isValidElement(child)) {
     return false;
   }
 
-  if (child.type === TabItem) {
+  if (child.type === Item) {
     return true;
   }
 
@@ -81,7 +79,7 @@ function isTabItemElement(
     return false;
   }
 
-  return getElementDisplayName(child.type) === TAB_ITEM_DISPLAY_NAME;
+  return getElementDisplayName(child.type) === ITEM_DISPLAY_NAME;
 }
 
 function getElementDisplayName(type: ReactElement['type']) {
@@ -106,9 +104,9 @@ export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
     const { children, className, ...restProps } = rootProps;
     const styles = tabs(variantProps);
     const childArray = Children.toArray(children);
-    const tabItems = childArray.filter(isTabItemElement);
-    const shouldComposeFromTabItems =
-      childArray.length > 0 && tabItems.length === childArray.length;
+    const items = childArray.filter(isItemElement);
+    const shouldComposeFromItems =
+      childArray.length > 0 && items.length === childArray.length;
 
     return (
       <TabsStylesContext.Provider value={{ styles }}>
@@ -117,23 +115,23 @@ export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
           className={cx(styles.root, className)}
           {...restProps}
         >
-          {shouldComposeFromTabItems ? (
+          {shouldComposeFromItems ? (
             <>
               <List>
-                {tabItems.map(({ props: itemProps }) => (
-                  <TabItem
+                {items.map(({ props: itemProps }) => (
+                  <Item
                     key={`trigger-${String(itemProps.value)}`}
                     {...itemProps}
                   />
                 ))}
               </List>
-              {tabItems.map(({ props: itemProps }) => (
-                <TabItemContent
+              {items.map(({ props: itemProps }) => (
+                <ItemContent
                   key={`content-${String(itemProps.value)}`}
                   value={itemProps.value}
                 >
                   {itemProps.children}
-                </TabItemContent>
+                </ItemContent>
               ))}
             </>
           ) : (

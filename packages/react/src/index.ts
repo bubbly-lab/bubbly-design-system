@@ -1,7 +1,7 @@
 export { Button, type ButtonProps } from './components/button';
 export type {
-  TabItemContentProps,
-  TabItemProps,
+  ItemContentProps,
+  ItemProps,
   TabsContentProps,
   TabsListProps,
   TabsRootProps,

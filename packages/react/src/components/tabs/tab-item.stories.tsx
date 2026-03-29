@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Tabs } from '.';
-import type { TabItemProps } from './tabs';
+import type { ItemProps } from './tabs';
 
-interface TabItemStoryArgs extends Omit<TabItemProps, 'children'> {
+interface ItemStoryArgs extends Omit<ItemProps, 'children'> {
   selected: boolean;
 }
 
 const meta = {
-  title: 'Components/Tabs/TabItem',
+  title: 'Components/Tabs/Item',
   argTypes: {
     selected: {
       control: 'boolean',
@@ -19,7 +19,7 @@ const meta = {
     label: 'Overview',
     selected: true,
   },
-  render: ({ label, selected }: TabItemStoryArgs) => {
+  render: ({ label, selected }: ItemStoryArgs) => {
     return (
       <div style={{ fontFamily: 'var(--fonts-sans)', width: 'fit-content' }}>
         <style>{`
@@ -41,20 +41,18 @@ const meta = {
           padding={false}
         >
           <Tabs.List>
-            <Tabs.TabItem label={label} value="overview" />
+            <Tabs.Item label={label} value="overview" />
           </Tabs.List>
-          <Tabs.TabItemContent value="overview">
-            Preview panel
-          </Tabs.TabItemContent>
+          <Tabs.ItemContent value="overview">Preview panel</Tabs.ItemContent>
         </Tabs.Root>
       </div>
     );
   },
-} satisfies Meta<TabItemStoryArgs>;
+} satisfies Meta<ItemStoryArgs>;
 
 export default meta;
 
-type Story = StoryObj<TabItemStoryArgs>;
+type Story = StoryObj<ItemStoryArgs>;
 
 export const Selected: Story = {};
 

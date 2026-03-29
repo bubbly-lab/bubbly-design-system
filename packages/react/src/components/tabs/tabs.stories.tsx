@@ -23,27 +23,21 @@ const meta: Meta<typeof Tabs.Root> = {
     <div style={{ width: '607px', fontFamily: 'var(--fonts-sans)' }}>
       <Tabs.Root {...args}>
         <Tabs.List>
-          <Tabs.TabItem value="overview" label="Overview" />
-          <Tabs.TabItem value="details" label="Details" />
-          <Tabs.TabItem value="activity" label="Activity" />
-          <Tabs.TabItem value="members" label="Members" />
-          <Tabs.TabItem value="settings" label="Settings" />
-          <Tabs.TabItem value="archive" label="Archive" />
-          <Tabs.TabItem value="more" label="More" />
+          <Tabs.Item value="overview" label="Overview" />
+          <Tabs.Item value="details" label="Details" />
+          <Tabs.Item value="activity" label="Activity" />
+          <Tabs.Item value="members" label="Members" />
+          <Tabs.Item value="settings" label="Settings" />
+          <Tabs.Item value="archive" label="Archive" />
+          <Tabs.Item value="more" label="More" />
         </Tabs.List>
-        <Tabs.TabItemContent value="overview">
-          Overview panel
-        </Tabs.TabItemContent>
-        <Tabs.TabItemContent value="details">Details panel</Tabs.TabItemContent>
-        <Tabs.TabItemContent value="activity">
-          Activity panel
-        </Tabs.TabItemContent>
-        <Tabs.TabItemContent value="members">Members panel</Tabs.TabItemContent>
-        <Tabs.TabItemContent value="settings">
-          Settings panel
-        </Tabs.TabItemContent>
-        <Tabs.TabItemContent value="archive">Archive panel</Tabs.TabItemContent>
-        <Tabs.TabItemContent value="more">More panel</Tabs.TabItemContent>
+        <Tabs.ItemContent value="overview">Overview panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="details">Details panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="activity">Activity panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="members">Members panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="settings">Settings panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="archive">Archive panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="more">More panel</Tabs.ItemContent>
       </Tabs.Root>
     </div>
   ),
@@ -63,23 +57,17 @@ export const Fixed: Story = {
     <div style={{ width: '607px', fontFamily: 'var(--fonts-sans)' }}>
       <Tabs.Root {...args}>
         <Tabs.List>
-          <Tabs.TabItem value="overview" label="Overview" />
-          <Tabs.TabItem value="details" label="Details" />
-          <Tabs.TabItem value="activity" label="Activity" />
-          <Tabs.TabItem value="members" label="Members" />
-          <Tabs.TabItem value="settings" label="Settings" />
+          <Tabs.Item value="overview" label="Overview" />
+          <Tabs.Item value="details" label="Details" />
+          <Tabs.Item value="activity" label="Activity" />
+          <Tabs.Item value="members" label="Members" />
+          <Tabs.Item value="settings" label="Settings" />
         </Tabs.List>
-        <Tabs.TabItemContent value="overview">
-          Overview panel
-        </Tabs.TabItemContent>
-        <Tabs.TabItemContent value="details">Details panel</Tabs.TabItemContent>
-        <Tabs.TabItemContent value="activity">
-          Activity panel
-        </Tabs.TabItemContent>
-        <Tabs.TabItemContent value="members">Members panel</Tabs.TabItemContent>
-        <Tabs.TabItemContent value="settings">
-          Settings panel
-        </Tabs.TabItemContent>
+        <Tabs.ItemContent value="overview">Overview panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="details">Details panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="activity">Activity panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="members">Members panel</Tabs.ItemContent>
+        <Tabs.ItemContent value="settings">Settings panel</Tabs.ItemContent>
       </Tabs.Root>
     </div>
   ),

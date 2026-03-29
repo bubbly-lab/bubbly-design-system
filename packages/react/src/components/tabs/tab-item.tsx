@@ -1,45 +1,45 @@
-"use client";
+'use client';
 
-import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
+import { Tabs as ArkTabs } from '@ark-ui/react/tabs';
 import {
   type ComponentPropsWithoutRef,
   forwardRef,
   type ReactNode,
-} from "react";
+} from 'react';
 
-import { useTabsStyles } from "./tabs-context";
+import { useTabsStyles } from './tabs-context';
 
 type ArkTabsTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
 
-export const TAB_ITEM_DISPLAY_NAME = "TabItem";
+export const ITEM_DISPLAY_NAME = 'Item';
 
-export interface TabItemProps {
-  value: ArkTabsTriggerProps["value"];
+export interface ItemProps {
+  value: ArkTabsTriggerProps['value'];
   label: ReactNode;
   children?: ReactNode;
 }
 
-export interface TabItemContentProps {
-  value: ArkTabsTriggerProps["value"];
-  /** auto-compose 모드에서 Root가 추출하여 TabItemContent의 children으로 전달 */
+export interface ItemContentProps {
+  value: ArkTabsTriggerProps['value'];
   children?: ReactNode;
 }
 
-export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
-  function TabItem({ label, value }, ref) {
-    const styles = useTabsStyles();
+export const Item = forwardRef<HTMLButtonElement, ItemProps>(function Item(
+  { label, value },
+  ref,
+) {
+  const styles = useTabsStyles();
 
-    return (
-      <ArkTabs.Trigger ref={ref} className={styles.trigger} value={value}>
-        {label}
-      </ArkTabs.Trigger>
-    );
-  }
-);
+  return (
+    <ArkTabs.Trigger ref={ref} className={styles.trigger} value={value}>
+      {label}
+    </ArkTabs.Trigger>
+  );
+});
 
-TabItem.displayName = TAB_ITEM_DISPLAY_NAME;
+Item.displayName = ITEM_DISPLAY_NAME;
 
-export function TabItemContent({ children, value }: TabItemContentProps) {
+export function ItemContent({ children, value }: ItemContentProps) {
   const styles = useTabsStyles();
 
   return (
