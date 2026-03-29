@@ -22,25 +22,21 @@ const meta = {
   render: ({ label, selected }: ItemStoryArgs) => {
     return (
       <div style={{ fontFamily: 'var(--fonts-sans)', width: 'fit-content' }}>
-        <style>{`
-          .tabs__root {
-            width: fit-content;
-          }
-
-          .tabs__list {
-            width: fit-content;
-            background: transparent;
-            border-bottom: none;
-            padding-inline: 0;
-            overflow: visible;
-          }
-        `}</style>
         <Tabs.Root
           defaultValue={selected ? 'overview' : undefined}
           layout="scrollable"
           padding={false}
+          style={{ width: 'fit-content' }}
         >
-          <Tabs.List>
+          <Tabs.List
+            style={{
+              width: 'fit-content',
+              background: 'transparent',
+              borderBottom: 'none',
+              paddingInline: 0,
+              overflow: 'visible',
+            }}
+          >
             <Tabs.Item label={label} value="overview" />
           </Tabs.List>
           <Tabs.ItemContent value="overview">Preview panel</Tabs.ItemContent>

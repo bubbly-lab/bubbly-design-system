@@ -62,6 +62,7 @@ export const tabsRecipe = defineSlotRecipe({
     },
     content: {
       outline: 'none',
+      color: 'content.neutral.default',
     },
   },
   variants: {
