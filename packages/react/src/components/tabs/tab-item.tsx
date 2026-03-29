@@ -1,26 +1,27 @@
-'use client';
+"use client";
 
-import { Tabs as ArkTabs } from '@ark-ui/react/tabs';
+import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
 import {
   type ComponentPropsWithoutRef,
   forwardRef,
   type ReactNode,
-} from 'react';
+} from "react";
 
-import { useTabsStyles } from './tabs-context';
+import { useTabsStyles } from "./tabs-context";
 
 type ArkTabsTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
 
-export const TAB_ITEM_DISPLAY_NAME = 'TabItem';
+export const TAB_ITEM_DISPLAY_NAME = "TabItem";
 
 export interface TabItemProps {
-  value: ArkTabsTriggerProps['value'];
+  value: ArkTabsTriggerProps["value"];
   label: ReactNode;
   children?: ReactNode;
 }
 
 export interface TabItemContentProps {
-  value: ArkTabsTriggerProps['value'];
+  value: ArkTabsTriggerProps["value"];
+  /** auto-compose 모드에서 Root가 추출하여 TabItemContent의 children으로 전달 */
   children?: ReactNode;
 }
 
@@ -33,7 +34,7 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
         {label}
       </ArkTabs.Trigger>
     );
-  },
+  }
 );
 
 TabItem.displayName = TAB_ITEM_DISPLAY_NAME;
