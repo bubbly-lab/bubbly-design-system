@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tabs } from '.';
-import type { TabsRootProps } from './tab';
+import type { TabsRootProps } from './tabs';
 
 const meta: Meta<typeof Tabs.Root> = {
   title: 'Components/Tabs',

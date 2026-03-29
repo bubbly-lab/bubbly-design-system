@@ -5,5 +5,5 @@ export type {
   TabsListProps,
   TabsRootProps,
   TabsTriggerProps,
-} from './tab';
-export * as Tabs from './tab';
+} from './tabs';
+export * as Tabs from './tabs';
