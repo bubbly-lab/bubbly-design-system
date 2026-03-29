@@ -13,6 +13,7 @@ import { cx } from 'styled-system/css';
 import { type TabsVariantProps, tabs } from 'styled-system/recipes';
 
 import {
+  TAB_ITEM_DISPLAY_NAME,
   TabItem,
   TabItemContent,
   type TabItemContentProps,
@@ -30,13 +31,16 @@ export type TabsTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
 export type TabsContentProps = ComponentPropsWithoutRef<typeof ArkTabs.Content>;
 
 export const List = forwardRef<HTMLDivElement, TabsListProps>(function List(
-  { className, ...props },
+  { children, className, ...props },
   ref,
 ) {
   const styles = useTabsStyles();
 
   return (
-    <ArkTabs.List ref={ref} className={cx(styles.list, className)} {...props} />
+    <ArkTabs.List ref={ref} className={cx(styles.list, className)} {...props}>
+      {children}
+      <ArkTabs.Indicator className={styles.indicator} />
+    </ArkTabs.List>
   );
 });
 
@@ -65,7 +69,33 @@ export interface TabsRootProps
 function isTabItemElement(
   child: ReactNode,
 ): child is ReactElement<TabItemProps> {
-  return isValidElement(child) && child.type === TabItem;
+  if (!isValidElement(child)) {
+    return false;
+  }
+
+  if (child.type === TabItem) {
+    return true;
+  }
+
+  if (typeof child.type === 'string') {
+    return false;
+  }
+
+  return getElementDisplayName(child.type) === TAB_ITEM_DISPLAY_NAME;
+}
+
+function getElementDisplayName(type: ReactElement['type']) {
+  if (typeof type !== 'function' && typeof type !== 'object') {
+    return undefined;
+  }
+
+  if (!('displayName' in type)) {
+    return undefined;
+  }
+
+  const { displayName } = type;
+
+  return typeof displayName === 'string' ? displayName : undefined;
 }
 
 export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
@@ -100,8 +130,10 @@ export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
               {tabItems.map(({ props: itemProps }) => (
                 <TabItemContent
                   key={`content-${String(itemProps.value)}`}
-                  {...itemProps}
-                />
+                  value={itemProps.value}
+                >
+                  {itemProps.children}
+                </TabItemContent>
               ))}
             </>
           ) : (

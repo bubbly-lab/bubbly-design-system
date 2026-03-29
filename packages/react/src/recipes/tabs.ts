@@ -11,6 +11,7 @@ export const tabsRecipe = defineSlotRecipe({
       width: '100%',
     },
     list: {
+      position: 'relative',
       display: 'flex',
       alignItems: 'center',
       width: '100%',
@@ -39,6 +40,8 @@ export const tabsRecipe = defineSlotRecipe({
       fontWeight: 'semibold',
       textAlign: 'center',
       whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
       cursor: 'pointer',
       flexShrink: 0,
       _focusVisible: {
@@ -48,23 +51,18 @@ export const tabsRecipe = defineSlotRecipe({
       '&[data-selected]': {
         color: 'content.neutral.strong',
       },
-      '&[data-selected]::after': {
-        content: '""',
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: '2px',
-        backgroundColor: 'surface.neutral.inverse',
-      },
-      '&[data-disabled]': {
-        cursor: 'not-allowed',
-      },
+    },
+    indicator: {
+      position: 'absolute',
+      bottom: '-1px',
+      left: 0,
+      height: '2px',
+      backgroundColor: 'surface.neutral.inverse',
+      pointerEvents: 'none',
     },
     content: {
       outline: 'none',
     },
-    indicator: {},
   },
   variants: {
     layout: {

@@ -1,31 +1,27 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Tabs } from '.';
-import type { TabItemProps } from './tab';
+import { Tabs } from ".";
+import type { TabItemProps } from "./tab";
 
-interface TabItemStoryArgs extends Omit<TabItemProps, 'children'> {
+interface TabItemStoryArgs extends Omit<TabItemProps, "children"> {
   selected: boolean;
 }
 
 const meta = {
-  title: 'Components/Tabs/TabItem',
+  title: "Components/Tabs/TabItem",
   argTypes: {
-    disabled: {
-      control: 'boolean',
-    },
     selected: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
   args: {
-    value: 'overview',
-    label: 'Overview',
-    disabled: false,
+    value: "overview",
+    label: "Overview",
     selected: true,
   },
-  render: ({ disabled, label, selected }: TabItemStoryArgs) => {
+  render: ({ label, selected }: TabItemStoryArgs) => {
     return (
-      <div style={{ fontFamily: 'var(--fonts-sans)', width: 'fit-content' }}>
+      <div style={{ fontFamily: "var(--fonts-sans)", width: "fit-content" }}>
         <style>{`
           .tabs__root {
             width: fit-content;
@@ -40,12 +36,12 @@ const meta = {
           }
         `}</style>
         <Tabs.Root
-          defaultValue={selected ? 'overview' : undefined}
+          defaultValue={selected ? "overview" : undefined}
           layout="scrollable"
           padding={false}
         >
           <Tabs.List>
-            <Tabs.TabItem disabled={disabled} label={label} value="overview" />
+            <Tabs.TabItem label={label} value="overview" />
           </Tabs.List>
           <Tabs.TabItemContent value="overview">
             Preview panel
