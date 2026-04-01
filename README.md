@@ -30,3 +30,8 @@ pnpm storybook    # http://localhost:6006
 
 - [Architecture](./ARCHITECTURE.md) — 기술 스택, 아키텍처 결정사항
 - [Roadmap](./ROADMAP.md) — 작업 로드맵
+
+## 파일 네이밍 규칙
+
+- 파일명은 **kebab-case** 를 사용합니다. 컴포넌트 파일도 동일하게 `tab.tsx`, `tab-item.tsx`처럼 작성합니다.
+- Figma 기준으로 연관된 컴포넌트가 여러 개 있으면, 하나의 상위 폴더 아래에 두고 각각을 별도 컴포넌트 파일로 분리합니다.
