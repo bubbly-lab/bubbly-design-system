@@ -1,6 +1,6 @@
 {
   "name": "@bubbly-design-system/icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Bubbly Design System icon components",
   "type": "module",
   "keywords": [
@@ -9,10 +9,10 @@
     "design-system",
     "icons"
   ],
-  "homepage": "https://github.com/rumyscape/bubbly-design-system",
+  "homepage": "https://github.com/bubbly-lab/bubbly-design-system",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rumyscape/bubbly-design-system.git",
+    "url": "git+https://github.com/bubbly-lab/bubbly-design-system.git",
     "directory": "packages/icons"
   },
   "author": "@bubbly-lab/dev",
@@ -33,6 +33,13 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "generate": "tsx scripts/generate.ts",
