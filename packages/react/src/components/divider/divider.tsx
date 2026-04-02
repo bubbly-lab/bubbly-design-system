@@ -1,46 +1,16 @@
 'use client';
 
-import {
-  type ComponentPropsWithoutRef,
-  type CSSProperties,
-  forwardRef,
-} from 'react';
+import { forwardRef } from 'react';
+import { styled } from 'styled-system/jsx';
+import { divider } from 'styled-system/recipes';
 
-export interface DividerProps extends ComponentPropsWithoutRef<'hr'> {
-  type?: 'stroke' | 'surface';
-}
+const StyledDivider = styled('hr', divider);
 
-const BASE_STYLE: CSSProperties = {
-  display: 'block',
-  width: '100%',
-  margin: 0,
-  border: 'none',
-  flexShrink: 0,
-};
-
-const STROKE_STYLE: CSSProperties = {
-  height: '1px',
-  backgroundColor: 'var(--colors-border-neutral-default, #373744)',
-};
-
-const SURFACE_STYLE: CSSProperties = {
-  height: '12px',
-  backgroundColor: 'var(--colors-background-default, #16161b)',
-};
+export type DividerProps = Parameters<typeof StyledDivider>[0];
 
 export const Divider = forwardRef<HTMLHRElement, DividerProps>(function Divider(
-  { type = 'stroke', style, ...props },
+  { type = 'stroke', ...props },
   ref,
 ) {
-  return (
-    <hr
-      ref={ref}
-      style={{
-        ...BASE_STYLE,
-        ...(type === 'surface' ? SURFACE_STYLE : STROKE_STYLE),
-        ...style,
-      }}
-      {...props}
-    />
-  );
+  return <StyledDivider ref={ref} type={type} {...props} />;
 });
