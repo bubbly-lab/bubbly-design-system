@@ -5,6 +5,7 @@ import {
   tokens,
 } from '../design-tokens/build/panda/tokens';
 import { buttonRecipe } from './src/recipes/button';
+import { dividerRecipe } from './src/recipes/divider';
 import { tabsRecipe } from './src/recipes/tabs';
 
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
     textStyles,
     recipes: {
       button: buttonRecipe,
+      divider: dividerRecipe,
       tabs: tabsRecipe,
     },
   },
