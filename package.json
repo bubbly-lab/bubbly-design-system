@@ -10,7 +10,7 @@
     "storybook:react": "pnpm --filter @bubbly-design-system/react storybook",
     "storybook:icons": "pnpm --filter @bubbly-design-system/icons storybook",
     "changeset": "changeset",
-    "ci:publish": "pnpm --filter @bubbly-design-system/icons publish --access public --no-git-checks"
+    "ci:publish": "cd packages/icons && npm publish --provenance --access public"
   },
   "engines": {
     "node": ">=24"
