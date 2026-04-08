@@ -18,6 +18,7 @@ export const textButtonRecipe = defineRecipe({
     whiteSpace: 'nowrap',
     flexShrink: 0,
     paddingBlock: '2',
+    paddingInline: 0,
     transition: 'color 150ms ease-out',
     '&::before': {
       content: '""',
