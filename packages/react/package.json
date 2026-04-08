@@ -48,6 +48,7 @@
     "@ark-ui/react": "^5.34.1"
   },
   "devDependencies": {
+    "@bubbly-design-system/icons": "^0.1.0",
     "@pandacss/dev": "^0.52.0",
     "@storybook/react": "^10.3.0",
     "@storybook/react-vite": "^10.3.0",

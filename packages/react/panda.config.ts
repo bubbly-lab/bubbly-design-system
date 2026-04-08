@@ -6,6 +6,7 @@ import {
 } from '../design-tokens/build/panda/tokens';
 import { buttonRecipe } from './src/recipes/button';
 import { dividerRecipe } from './src/recipes/divider';
+import { iconButtonRecipe } from './src/recipes/icon-button';
 import { tabsRecipe } from './src/recipes/tabs';
 
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
     recipes: {
       button: buttonRecipe,
       divider: dividerRecipe,
+      iconButton: iconButtonRecipe,
       tabs: tabsRecipe,
     },
   },
