@@ -81,6 +81,9 @@ importers:
         specifier: ^5.34.1
         version: 5.34.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@bubbly-design-system/icons':
+        specifier: ^0.1.0
+        version: 0.1.0(react@19.2.4)
       '@pandacss/dev':
         specifier: ^0.52.0
         version: 0.52.0(typescript@5.9.3)
@@ -286,6 +289,11 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@bubbly-design-system/icons@0.1.0':
+    resolution: {integrity: sha512-R8k8Jr3qH+CeBlKAbYTEKmTcXzoootSijfOoylLtGqD7R151Xi0e6NJXWylApsKEllTpW+yKeIlltPaNxnTuug==}
+    peerDependencies:
+      react: '>=18.0.0'
 
   '@bubbly-lab/biome-config@1.0.0':
     resolution: {integrity: sha512-Yl2o48VQKA8ibbincSU++kODbBGUQpkbUtdecHkL0aRty6TPN28IK6MBmYuwxMipDqD17XaPS3w53BvDsTDqyw==}
@@ -3718,6 +3726,10 @@ snapshots:
 
   '@biomejs/cli-win32-x64@2.2.5':
     optional: true
+
+  '@bubbly-design-system/icons@0.1.0(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
 
   '@bubbly-lab/biome-config@1.0.0(@biomejs/biome@2.2.5)':
     dependencies:
