@@ -5,6 +5,7 @@ import {
   tokens,
 } from '../design-tokens/build/panda/tokens';
 import { buttonRecipe } from './src/recipes/button';
+import { cardHeaderRecipe } from './src/recipes/card-header';
 import { dividerRecipe } from './src/recipes/divider';
 import { iconButtonRecipe } from './src/recipes/icon-button';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
@@ -28,6 +29,7 @@ export default defineConfig({
     textStyles,
     recipes: {
       button: buttonRecipe,
+      cardHeader: cardHeaderRecipe,
       divider: dividerRecipe,
       iconButton: iconButtonRecipe,
       loadingIndicator: loadingIndicatorRecipe,
