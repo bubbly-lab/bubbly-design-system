@@ -84,7 +84,6 @@ export const cardHeaderRecipe = defineSlotRecipe({
   },
   variants: {
     captionPosition: {
-      top: {},
       bottom: {
         caption: {
           order: 2,
@@ -100,16 +99,11 @@ export const cardHeaderRecipe = defineSlotRecipe({
       },
     },
     hasBottom: {
-      true: {},
       false: {
         bottom: {
           display: 'none',
         },
       },
     },
-  },
-  defaultVariants: {
-    captionPosition: 'top',
-    hasBottom: true,
   },
 });
