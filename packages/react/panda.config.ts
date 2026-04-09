@@ -7,6 +7,7 @@ import {
 import { buttonRecipe } from './src/recipes/button';
 import { dividerRecipe } from './src/recipes/divider';
 import { iconButtonRecipe } from './src/recipes/icon-button';
+import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
 import { tabsRecipe } from './src/recipes/tabs';
 import { textButtonRecipe } from './src/recipes/text-button';
 
@@ -29,6 +30,7 @@ export default defineConfig({
       button: buttonRecipe,
       divider: dividerRecipe,
       iconButton: iconButtonRecipe,
+      loadingIndicator: loadingIndicatorRecipe,
       tabs: tabsRecipe,
       textButton: textButtonRecipe,
     },
