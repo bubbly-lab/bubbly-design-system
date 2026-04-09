@@ -5,6 +5,7 @@ export {
   LoadingIndicator,
   type LoadingIndicatorProps,
 } from './components/loading-indicator';
+export { Result, type ResultProps } from './components/result';
 export type {
   ItemContentProps,
   ItemProps,
