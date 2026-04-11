@@ -8,8 +8,9 @@ import { buttonRecipe } from './src/recipes/button';
 import { dividerRecipe } from './src/recipes/divider';
 import { iconButtonRecipe } from './src/recipes/icon-button';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
-import { tabsRecipe } from './src/recipes/tabs';
 import { resultRecipe } from './src/recipes/result';
+import { skeletonRecipe } from './src/recipes/skeleton';
+import { tabsRecipe } from './src/recipes/tabs';
 import { textButtonRecipe } from './src/recipes/text-button';
 
 export default defineConfig({
@@ -27,12 +28,20 @@ export default defineConfig({
     tokens,
     semanticTokens,
     textStyles,
+    keyframes: {
+      'skeleton-pulse': {
+        '50%': {
+          opacity: 0.5,
+        },
+      },
+    },
     recipes: {
       button: buttonRecipe,
       divider: dividerRecipe,
       iconButton: iconButtonRecipe,
       loadingIndicator: loadingIndicatorRecipe,
       result: resultRecipe,
+      skeleton: skeletonRecipe,
       tabs: tabsRecipe,
       textButton: textButtonRecipe,
     },
