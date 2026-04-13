@@ -40,7 +40,7 @@ export const thumbnailRecipe = defineRecipe({
         '& [data-part=img]': {
           transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
         },
-        _hover: {
+        _groupHover: {
           '& [data-part=img]': {
             transform: 'scale(1.0533)',
           },
