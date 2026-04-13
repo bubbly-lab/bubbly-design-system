@@ -18,9 +18,9 @@ export const skeletonRecipe = defineRecipe({
   variants: {
     radius: {
       none: { borderRadius: '0' },
-      sm: { borderRadius: 'r100' },
-      md: { borderRadius: 'r200' },
-      lg: { borderRadius: 'r400' },
+      '4px': { borderRadius: 'r100' },
+      '8px': { borderRadius: 'r200' },
+      '16px': { borderRadius: 'r400' },
       full: { borderRadius: 'full' },
     },
   },
