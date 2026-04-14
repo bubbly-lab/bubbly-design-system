@@ -7,6 +7,10 @@ export {
   type LoadingIndicatorProps,
 } from './components/loading-indicator';
 export { Result, type ResultProps } from './components/result';
+export {
+  SectionHeader,
+  type SectionHeaderProps,
+} from './components/section-header';
 export { Skeleton, type SkeletonProps } from './components/skeleton';
 export type {
   ItemContentProps,

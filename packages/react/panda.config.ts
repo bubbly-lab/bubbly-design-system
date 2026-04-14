@@ -10,6 +10,7 @@ import { dividerRecipe } from './src/recipes/divider';
 import { iconButtonRecipe } from './src/recipes/icon-button';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
 import { resultRecipe } from './src/recipes/result';
+import { sectionHeaderRecipe } from './src/recipes/section-header';
 import { skeletonRecipe } from './src/recipes/skeleton';
 import { tabsRecipe } from './src/recipes/tabs';
 import { textButtonRecipe } from './src/recipes/text-button';
@@ -44,6 +45,7 @@ export default defineConfig({
       iconButton: iconButtonRecipe,
       loadingIndicator: loadingIndicatorRecipe,
       result: resultRecipe,
+      sectionHeader: sectionHeaderRecipe,
       skeleton: skeletonRecipe,
       tabs: tabsRecipe,
       textButton: textButtonRecipe,
