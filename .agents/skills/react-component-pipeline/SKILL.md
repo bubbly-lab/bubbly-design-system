@@ -142,7 +142,12 @@ source .env && curl -s \
    - 컴포넌트 레벨 fills → 배경색. **반드시 `fill.opacity`도 추출**. opacity=0이면 투명, opacity=0.2이면 반투명 등
    - 하위 노드 fills (depth 2+) → 아이콘/텍스트 색상. 상태별로 바뀔 수 있으므로 재귀적으로 추출
    - strokes도 동일하게 `stroke.opacity`까지 확인
-6. **상태별 차이**: default → hover → focus → disabled에서 배경색, 아이콘 색상, stroke 모두 비교
+6. **배경색(fills) variant별 분포 확인 (⚠️ 중요)**:
+   - 컴포넌트 레벨 fills가 **모든 variant에 동일하게 있는지** 확인한다
+   - **모든 variant에 동일한 fill** → recipe `base`에 `backgroundColor` 추가
+   - **일부 variant에서만 fill 존재** → 해당 상태에서만 적용 (recipe variant 또는 컴포넌트 인라인 스타일). recipe `base`에 넣으면 fill이 없어야 할 상태에서도 배경색이 보여 다른 컴포넌트 합성 시 문제가 생긴다 (예: Skeleton 위에 동색 배경 → 애니메이션 안 보임)
+   - **fill이 있는 variant와 없는 variant를 명확히 기록**한 뒤 구현한다
+7. **상태별 차이**: default → hover → focus → disabled에서 배경색, 아이콘 색상, stroke 모두 비교
 
 ### 1-C: Figma docs 이미지에서 디자이너 의도 보충
 
