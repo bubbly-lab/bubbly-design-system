@@ -14,6 +14,7 @@ import { skeletonRecipe } from './src/recipes/skeleton';
 import { tabsRecipe } from './src/recipes/tabs';
 import { textButtonRecipe } from './src/recipes/text-button';
 import { thumbnailRecipe } from './src/recipes/thumbnail';
+import { verticalCardRecipe } from './src/recipes/vertical-card';
 
 export default defineConfig({
   preflight: false,
@@ -48,6 +49,7 @@ export default defineConfig({
       tabs: tabsRecipe,
       textButton: textButtonRecipe,
       thumbnail: thumbnailRecipe,
+      verticalCard: verticalCardRecipe,
     },
   },
 });
