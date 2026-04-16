@@ -142,7 +142,12 @@ source .env && curl -s \
    - 컴포넌트 레벨 fills → 배경색. **반드시 `fill.opacity`도 추출**. opacity=0이면 투명, opacity=0.2이면 반투명 등
    - 하위 노드 fills (depth 2+) → 아이콘/텍스트 색상. 상태별로 바뀔 수 있으므로 재귀적으로 추출
    - strokes도 동일하게 `stroke.opacity`까지 확인
-6. **상태별 차이**: default → hover → focus → disabled에서 배경색, 아이콘 색상, stroke 모두 비교
+6. **배경색(fills) variant별 분포 확인 (⚠️ 중요)**:
+   - 컴포넌트 레벨 fills가 **모든 variant에 동일하게 있는지** 확인한다
+   - **모든 variant에 동일한 fill** → recipe `base`에 `backgroundColor` 추가
+   - **일부 variant에서만 fill 존재** → 해당 상태에서만 적용 (recipe variant 또는 컴포넌트 인라인 스타일). recipe `base`에 넣으면 fill이 없어야 할 상태에서도 배경색이 보여 다른 컴포넌트 합성 시 문제가 생긴다 (예: Skeleton 위에 동색 배경 → 애니메이션 안 보임)
+   - **fill이 있는 variant와 없는 variant를 명확히 기록**한 뒤 구현한다
+7. **상태별 차이**: default → hover → focus → disabled에서 배경색, 아이콘 색상, stroke 모두 비교
 
 ### 1-C: Figma docs 이미지에서 디자이너 의도 보충
 
@@ -193,8 +198,9 @@ Figma에서 섹션이 나뉘어 있어도 코드에서는 하나의 컴포넌트
 
 | 체크 | 설명 |
 |---|---|
+| **Figma 값 그대로** | **variant 값은 Figma `variantOptions` 배열의 값을 그대로 사용한다.** 예: Figma에서 `radius`가 `['8px', '16px', 'full']`이면 코드에서도 `'8px' \| '16px' \| 'full'`로 선언. `sm/md/lg` 등으로 임의 리네이밍하지 않는다. 어떤 이유로든 변경이 필요하면 **반드시 사용자에게 묻는다.** |
 | HTML 충돌 | `type`은 `<button>`의 네이티브 속성. 기존 Button이 이미 `type`을 쓰므로 새 축은 다른 이름 사용 (예: `appearance`) |
-| 기존 Button 일관성 | 같은 의미의 축은 같은 이름 사용 (color, size 등) |
+| 기존 컴포넌트 일관성 | 같은 의미의 축은 같은 이름 사용 (color, size 등) |
 | Figma 용어 반영 | Figma에서 `ghost`라 하면 `ghost` 사용 (Button의 `weak`와 다른 개념) |
 
 ### 2-C: 유효 조합 확인
@@ -532,3 +538,5 @@ pnpm storybook:react
 | 컴포넌트 레벨 fills만 추출 | 아이콘/텍스트 색상은 하위 노드(depth 2+)에 있다. 상태별 색상 변화 확인 시 children fills도 재귀적으로 추출 |
 | `borderRadius: 'full'` | `tokens.ts`의 `radii.full` = `999px`. 사용 가능 |
 | 스토리에서 인라인 SVG 사용 | `@bubbly-design-system/icons`에서 import한다. 인라인 SVG placeholder를 쓰지 않는다 |
+| `boxShadow: inset`으로 border 구현 | 절대 위치 자식(`<img>` 등)이 부모의 inset shadow 위에 페인팅되어 border가 보이지 않는다. border가 콘텐츠 위에 보여야 하면 `&::after` pseudo-element로 구현한다 (`position: absolute; inset: 0; borderRadius: inherit; pointerEvents: none; zIndex: 1`). Button의 neutral/weak state-layer 패턴 참고 |
+| recipe `base`에 `backgroundColor` 무조건 추가 | Figma에서 특정 variant에서만 fill이 있으면 base에 넣지 않는다. 예: placeholder에서만 배경색이 있고 loading에서는 없는 경우, base에 넣으면 loading 시 합성된 Skeleton이 동색 배경에 묻혀 애니메이션이 안 보인다 |
