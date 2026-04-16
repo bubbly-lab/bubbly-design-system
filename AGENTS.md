@@ -113,6 +113,20 @@ npx tsx scripts/generate-stories.ts     # Storybook stories
 - Prefer `void` for intentionally unused destructured props: `void color;`
 - Accessibility: default `aria-hidden={true}` for decorative elements, `role="img"` when `title`/`aria-label` present
 
+### Component Composition Patterns
+
+Figma에서 여러 서브컴포넌트를 조합하는 구조(예: Card = Thumbnail + CardHeader)를 코드로 구현할 때:
+
+- **기본 선택: Composition 패턴** — 컨테이너 컴포넌트가 `children`을 받아 consumer가 직접 서브컴포넌트를 조합
+  ```tsx
+  <VerticalCard>
+    <Thumbnail src="..." ratio="3:4" zoom />
+    <CardHeader title="..." caption="..." />
+  </VerticalCard>
+  ```
+- Props passthrough(컨테이너가 서브컴포넌트 props를 받아 내부에서 렌더링)는 composition으로 해결이 어렵거나, 컴포넌트 간 암묵적 연결이 반드시 필요할 때만 사용
+- 컨테이너가 hover 등으로 자식 동작에 영향을 줘야 하면, Panda CSS `group` 클래스 + `_groupHover` 조건 활용
+
 ### Error Handling
 
 - Scripts use `main().catch(error => { console.error(...); process.exit(1); })` pattern

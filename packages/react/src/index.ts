@@ -19,3 +19,7 @@ export type {
 export { Tabs } from './components/tabs';
 export { TextButton, type TextButtonProps } from './components/text-button';
 export { Thumbnail, type ThumbnailProps } from './components/thumbnail';
+export {
+  VerticalCard,
+  type VerticalCardProps,
+} from './components/vertical-card';
