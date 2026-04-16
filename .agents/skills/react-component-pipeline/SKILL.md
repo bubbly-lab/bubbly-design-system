@@ -538,3 +538,5 @@ pnpm storybook:react
 | 컴포넌트 레벨 fills만 추출 | 아이콘/텍스트 색상은 하위 노드(depth 2+)에 있다. 상태별 색상 변화 확인 시 children fills도 재귀적으로 추출 |
 | `borderRadius: 'full'` | `tokens.ts`의 `radii.full` = `999px`. 사용 가능 |
 | 스토리에서 인라인 SVG 사용 | `@bubbly-design-system/icons`에서 import한다. 인라인 SVG placeholder를 쓰지 않는다 |
+| `boxShadow: inset`으로 border 구현 | 절대 위치 자식(`<img>` 등)이 부모의 inset shadow 위에 페인팅되어 border가 보이지 않는다. border가 콘텐츠 위에 보여야 하면 `&::after` pseudo-element로 구현한다 (`position: absolute; inset: 0; borderRadius: inherit; pointerEvents: none; zIndex: 1`). Button의 neutral/weak state-layer 패턴 참고 |
+| recipe `base`에 `backgroundColor` 무조건 추가 | Figma에서 특정 variant에서만 fill이 있으면 base에 넣지 않는다. 예: placeholder에서만 배경색이 있고 loading에서는 없는 경우, base에 넣으면 loading 시 합성된 Skeleton이 동색 배경에 묻혀 애니메이션이 안 보인다 |
