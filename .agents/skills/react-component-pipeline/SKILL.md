@@ -193,8 +193,9 @@ Figma에서 섹션이 나뉘어 있어도 코드에서는 하나의 컴포넌트
 
 | 체크 | 설명 |
 |---|---|
+| **Figma 값 그대로** | **variant 값은 Figma `variantOptions` 배열의 값을 그대로 사용한다.** 예: Figma에서 `radius`가 `['8px', '16px', 'full']`이면 코드에서도 `'8px' \| '16px' \| 'full'`로 선언. `sm/md/lg` 등으로 임의 리네이밍하지 않는다. 어떤 이유로든 변경이 필요하면 **반드시 사용자에게 묻는다.** |
 | HTML 충돌 | `type`은 `<button>`의 네이티브 속성. 기존 Button이 이미 `type`을 쓰므로 새 축은 다른 이름 사용 (예: `appearance`) |
-| 기존 Button 일관성 | 같은 의미의 축은 같은 이름 사용 (color, size 등) |
+| 기존 컴포넌트 일관성 | 같은 의미의 축은 같은 이름 사용 (color, size 등) |
 | Figma 용어 반영 | Figma에서 `ghost`라 하면 `ghost` 사용 (Button의 `weak`와 다른 개념) |
 
 ### 2-C: 유효 조합 확인
