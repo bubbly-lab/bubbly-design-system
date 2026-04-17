@@ -1,6 +1,10 @@
 export { Button, type ButtonProps } from './components/button';
 export { CardHeader, type CardHeaderProps } from './components/card-header';
 export { Divider, type DividerProps } from './components/divider';
+export {
+  HorizontalCard,
+  type HorizontalCardProps,
+} from './components/horizontal-card';
 export { IconButton, type IconButtonProps } from './components/icon-button';
 export {
   LoadingIndicator,

@@ -7,6 +7,7 @@ import {
 import { buttonRecipe } from './src/recipes/button';
 import { cardHeaderRecipe } from './src/recipes/card-header';
 import { dividerRecipe } from './src/recipes/divider';
+import { horizontalCardRecipe } from './src/recipes/horizontal-card';
 import { iconButtonRecipe } from './src/recipes/icon-button';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
 import { resultRecipe } from './src/recipes/result';
@@ -42,6 +43,7 @@ export default defineConfig({
       button: buttonRecipe,
       cardHeader: cardHeaderRecipe,
       divider: dividerRecipe,
+      horizontalCard: horizontalCardRecipe,
       iconButton: iconButtonRecipe,
       loadingIndicator: loadingIndicatorRecipe,
       result: resultRecipe,
