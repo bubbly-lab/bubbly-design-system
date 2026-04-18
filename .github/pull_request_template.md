@@ -29,6 +29,25 @@ Breaking change: type!(scope): ... 또는 본문에 `BREAKING CHANGE:` footer
 
 - 
 
+## Decisions
+
+<!--
+대안이 있었고 의도적으로 선택한 항목과 그 이유를 적습니다.
+고려한 대안을 함께 밝히면 리뷰가 훨씬 수월해집니다.
+해당 없으면 이 섹션 전체를 삭제합니다.
+-->
+
+- 
+
+## Notes
+
+<!--
+의도적으로 하지 않은 것, 알려진 제약, 후속 작업 후보 등 맥락 정보를 적습니다.
+해당 없으면 이 섹션 전체를 삭제합니다.
+-->
+
+- 
+
 ## Screenshots
 
 <!--
@@ -41,20 +60,22 @@ Breaking change: type!(scope): ... 또는 본문에 `BREAKING CHANGE:` footer
 ## Testing
 
 <!--
-수행한 검증을 커맨드 또는 체크리스트로 적습니다.
+수행한 검증 커맨드와 결과를 적습니다.
 해당 없으면 이 섹션 전체를 삭제합니다.
 -->
 
-- [ ] `pnpm check-types`
-- [ ] `pnpm build`
-- [ ] Storybook 시각 확인
+- `pnpm check-types`
+- `pnpm build`
+- Storybook 시각 확인
 
 ## Related Issues
 
 <!--
-연결된 이슈나 PR을 적습니다. 자동 close를 원하면 `Closes #123`, 연계면 `Follows #123`.
+- 관련된 이슈는 `Closes #N`으로 적습니다. PR 머지 시 해당 이슈가 자동 close됩니다.
+- 관련된 PR은 `Follows #N`으로 적습니다. 참고용 연결이며 자동 동작은 없습니다.
 해당 없으면 이 섹션 전체를 삭제합니다.
 -->
 
 <!-- Closes # -->
+<!-- Follows # -->
 

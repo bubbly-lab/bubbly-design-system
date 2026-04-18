@@ -42,9 +42,11 @@ Breaking change는 `type!(scope):` 또는 본문에 `BREAKING CHANGE:` footer를
 
 1. **Summary** — 이 PR이 무엇을 하는지 간결하게. _(필수)_
 2. **Changes** — 구체적으로 무엇을 / 왜 바꿨는지. _(필수)_
-3. **Screenshots** — 시각 변경이 있을 때 Before/After. _(조건부)_
-4. **Testing** — 수행한 검증 커맨드 또는 체크리스트. _(권장)_
-5. **Related Issues** — 연결된 이슈나 PR. `Closes #N`, `Follows #N`. _(선택)_
+3. **Decisions** — 대안이 있었고 의도적으로 선택한 항목과 그 이유. _(조건부)_
+4. **Notes** — 의도적으로 하지 않은 것 · 알려진 제약 · 후속 작업 후보 등 맥락. _(조건부)_
+5. **Screenshots** — 시각 변경이 있을 때 Before/After. _(조건부)_
+6. **Testing** — 수행한 검증 커맨드와 결과. _(권장)_
+7. **Related Issues** — 관련 이슈는 `Closes #N`으로 적으면 PR 머지 시 자동 close됩니다. 관련 PR은 `Follows #N`으로 적어 참고용으로만 연결합니다 (자동 동작 없음). _(선택)_
 
 해당 없는 섹션은 통째로 지웁니다. 억지로 채우지 않아도 됩니다.
 
@@ -52,7 +54,7 @@ Breaking change는 `type!(scope):` 또는 본문에 `BREAKING CHANGE:` footer를
 
 - 본문은 한국어를 기본으로 하지만, 영어도 허용합니다.
 - PR은 작고 하나의 목적에 집중되도록 유지합니다.
-- 설계 결정이나 다른 방안 대비 선택한 이유는 Changes에 함께 적습니다.
+- 설계 결정이나 다른 방안 대비 선택한 이유는 Decisions 섹션에 적습니다.
 - AI가 생성한 요약을 그대로 붙여넣지 않습니다. 직접 다듬어서 씁니다.
 
 ### Figma 링크 정책
