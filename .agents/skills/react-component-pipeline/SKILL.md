@@ -23,6 +23,42 @@ description: packages/react에서 Figma 디자인을 Panda CSS + Ark UI 기반 R
 | 빌드 | `pnpm codegen` → `tsdown` → `pnpm cssgen` |
 | 스토리 | Storybook 10, CSF3, `variantMap` 기반 |
 
+## Working style
+
+이 파이프라인은 "묻는 것과 결정하는 것을 구분"하는 style을 기본으로 한다. 결정마다 아래 3-tier에 따라 처리한다.
+
+### 🔴 Tier 1 — ASK
+
+사용자에게 옵션(A/B/(추천)C)과 trade-off를 제시하고 선택을 받는다.
+
+해당 기준:
+- Figma 해석이 모호하거나 **이상 패턴** (instance swap 한계 흔적, `hasX` + `x` 중복, variant 재해석 필요 등)이 보일 때 — 디자이너 의도인지 tool artifact인지 분간이 필요함
+- Consumer가 직접 보는 **공개 API 표면** (export shape, public prop 이름·구조·기본값, composition 방식, 컴포넌트 이름)
+- Figma에 명시 안 된 **behavior 기본값** 중 defensible한 대안이 2개 이상이고 trade-off가 분명할 때 (overflow 정책, 자동 규칙 on/off 등)
+
+### 🟡 Tier 2 — DECIDE + 문서화
+
+결정은 에이전트가 내리되, PR 본문의 Decisions 섹션에 근거를 남겨 리뷰어가 뒤집을 여지를 둔다.
+
+해당 기준:
+- **접근성 · 시맨틱 HTML** — 컴포넌트 이름·의미에서 자연스럽게 기본이 정해질 때 (예: `InfoList` → `<ul>/<li>`, `NavBar` → `<nav>`, `Button` → `<button>`)
+- 한 방향이 명확히 더 안전하거나 관습적일 때 — 물어볼 만큼 애매하진 않지만 reviewer가 맥락을 알아야 하는 선택
+
+### 🟢 Tier 3 — DECIDE silently
+
+에이전트가 바로 결정하고 진행한다. 사용자에게 별도 확인하거나 PR에 특별히 강조하지 않는다.
+
+해당 기준:
+- **Consumer에게 드러나지 않는 내부 구현** (Context vs cascade, 헬퍼 분리 방식, slot 네이밍 등) — 가장 단순한 방법을 고르고 **Phase 4.5 자기 검토**에서 재점검
+- **레포에 이미 관례가 있는 결정** (브랜치 이름 `feat/{kebab-name}`, 파일 naming, 기본 commit 메시지 형식)
+- **Figma 스펙에 명시된 값** (색상 토큰, 간격, 타이포그래피)
+
+### 공통 원칙
+
+- 3-tier 어디에 속하는지 **애매하면 Tier 2**로 처리한다. "조용히 결정"은 확실할 때만.
+- 사용자 첫 프롬프트에서 "알아서 해줘" 류의 신호가 있으면 **Tier 1 항목을 Tier 2로 완화**한다 (여전히 PR에 선택 근거는 남긴다).
+- Tier 1 질문은 한 번에 모아서 (`mcp_Question` 등으로) 묶어 제시한다. 매 결정마다 따로 왕복하지 않는다.
+
 ## Phase 0: 사전 컨텍스트 수집 (건너뛰지 마라)
 
 구현 전에 반드시 아래 파일들을 읽어서 현재 패턴을 파악한다.
@@ -149,13 +185,31 @@ source .env && curl -s \
    - **fill이 있는 variant와 없는 variant를 명확히 기록**한 뒤 구현한다
 7. **상태별 차이**: default → hover → focus → disabled에서 배경색, 아이콘 색상, stroke 모두 비교
 
-### 1-C: Figma docs 이미지에서 디자이너 의도 보충
+### 1-C: 디자이너 의도·주석 능동 스캔
 
-사용자가 별도 docs 이미지를 제공하면 1-A 스크린샷과 교차 확인한다:
+Figma에는 JSON/스크린샷만 보면 놓치는 디자이너 노트가 body 프레임 내부에 박혀 있는 경우가 많다. **능동적으로 찾는다.**
 
+**스캔 대상:**
+
+- **body 프레임 내부의 `info` 컴포넌트 / `Badge` instance** — "In progress", "추후 확장", "한계" 등의 텍스트. 설계 의도나 제한 사항을 담음
+- **한글 주석 `TEXT` 노드** — "~~때문에 이렇게 되어있음", "개발단에선 ~~로" 같은 맥락 설명
+- **description 텍스트** — 각 섹션 하단에 디자이너가 직접 쓴 설명
+- **Title / sectionTitle** — 단순 레이블 같지만 "이건 현재 피그마의 한계 + 편의" 같은 단서가 들어있을 수 있음
+
+**흔히 발견되는 노트 유형:**
+
+| 노트 유형 | 해석 |
+|---|---|
+| "Figma 한계로 A이지만 실제로는 B" | 코드에서는 B로 구현 (Figma를 mechanical 번역하지 말 것) |
+| "추후 확장 예정" / "In progress" | 현재는 미구현/미정이지만 API 설계 시 확장 여지 고려 |
+| "A의 책임은 B가 가져간다" | 역할 재분배 의도. 순진한 Figma 구조를 그대로 옮기지 말 것 |
+| "모든 요소는 X prop을 따라간다" | cascade / inherit 전략으로 구현 |
+
+1-A에서 docs 프레임이 보였다면, **그 프레임 자체를 REST API로 depth=3~5로 다시 긁어서** 모든 text 노드를 수거한다. `info` instance가 있으면 그 내부 text까지 꺼낸다.
+
+사용자가 별도 docs 이미지를 제공한 경우에도 동일하게 교차 확인한다:
 - variant 축 이름과 값 (코드 prop 이름의 근거)
-- 어떤 조합이 "designed"인지 (예: "3가지 모양으로 구성")
-- "추후 확장 가능성" 등 메타 정보
+- 어떤 조합이 "designed"인지
 - icon slot이 있으면 어떤 아이콘을 받는지
 
 ### 1-D: Figma rgba → semantic token 매핑
@@ -186,15 +240,58 @@ source .env && curl -s \
 
 ## Phase 2: 디자인 결정
 
-구현 전에 아래 결정을 확정한다. 모호하면 사용자에게 묻는다.
+구현 전에 아래 결정을 확정한다. **Working style의 3-tier**에 따라 각 지점을 ASK / DECIDE+문서화 / DECIDE silently 중 하나로 처리한다.
 
-### 2-A: 컴포넌트 분리 vs 통합
+### 2-A: 설계 비판적 리뷰 (Critical Design Review)
+
+Phase 1에서 뽑은 스펙을 기계적으로 옮기지 말고, **결정 지점을 먼저 식별**한다. 각 지점마다 3-tier 중 어디인지 판단하고 대응한다.
+
+**훑어볼 카테고리 (모두 필수):**
+
+**a. Figma 한계 · 이상 패턴**
+- `hasX` boolean + `x` slot/prop **동시 존재** → `x?: ReactNode` 하나로 통합 (Tier 2)
+- variant로 쪼개져 있지만 variant일 필요 없는 것 → props로 뺄 수 있는지 (Tier 2)
+- Instance swap이 parent variant(예: `color`)를 안 타는 경우 (예: brand variant인데 swapped icon만 neutral) → **Tier 1으로 의도 확인**
+- 디자이너 노트 ("현재 피그마의 한계 + 편의") → 그대로 따라감 (이미 디자이너가 코드 방향을 지시)
+
+**b. 공개 API 표면 → Tier 1**
+- Export: flat (`A + B`) vs namespaced (`A.Root + A.Item`)
+- Props: per-item vs list-level vs hybrid
+- Composition (`children`) vs props passthrough
+- 기본값 정책 (auto-hide, manual, hybrid)
+
+**c. 접근성 · 시맨틱 HTML → Tier 2**
+- `<div>` vs `<ul>/<li>` vs `<nav>` — 컴포넌트 이름이 가리키는 semantic으로 결정
+- `aria-hidden`, `role`, `aria-label` 필요성
+- focus 관리, 키보드 지원
+
+**d. behavior 기본값 → Tier 1 (defensible 대안 2+ 개) 또는 Tier 2 (한 방향이 명확)**
+- overflow 정책 (nowrap / wrap / scroll)
+- 자동 규칙 활성 여부 (예: "첫 아이템 auto-hide")
+- 기본 variant 값 (Figma `defaultVariants` 그대로면 Tier 3)
+
+**e. 내부 구현 → Tier 3**
+- Context vs CSS cascade (색 inherit)
+- 헬퍼 함수 위치, slot 이름, 내부 상수
+
+**판단 플로우:**
+
+```
+각 결정 지점:
+├─ Tier 1? → 사용자에게 옵션 + 추천 제시, 응답 대기
+├─ Tier 2? → 결정 + Phase 5의 PR Decisions 섹션에 1~2줄 근거 메모 준비
+└─ Tier 3? → 조용히 가장 단순한 방법으로 결정
+```
+
+Tier 1 질문은 **한 번에 묶어서** (`mcp_Question` 등) 제시한다. 매 결정마다 따로 왕복하지 않는다.
+
+### 2-B: 컴포넌트 분리 vs 통합
 
 Figma에서 섹션이 나뉘어 있어도 코드에서는 하나의 컴포넌트 + variant가 이 레포의 패턴이다.
 
 **분리 기준**: 동작/접근성 규칙이 다를 때만 분리. 시각 차이만이면 variant로 통합.
 
-### 2-B: prop 이름 결정
+### 2-C: prop 이름 결정
 
 | 체크 | 설명 |
 |---|---|
@@ -203,7 +300,7 @@ Figma에서 섹션이 나뉘어 있어도 코드에서는 하나의 컴포넌트
 | 기존 컴포넌트 일관성 | 같은 의미의 축은 같은 이름 사용 (color, size 등) |
 | Figma 용어 반영 | Figma에서 `ghost`라 하면 `ghost` 사용 (Button의 `weak`와 다른 개념) |
 
-### 2-C: 유효 조합 확인
+### 2-D: 유효 조합 확인
 
 Figma에서 전체 조합 중 일부만 디자인되어 있으면:
 
@@ -482,6 +579,32 @@ pnpm storybook:react
 
 포트 6006에서 `Components/{PascalName}`으로 시각 확인.
 
+## Phase 4.5: 구현 후 자기 검토 (Post-Implementation Self-Review)
+
+빌드와 LSP가 통과해도 **한 번 더 자기 비평**. Tier 3 ("조용히 결정")에서 쌓인 의사결정이 과하거나 단순화 여지가 있는지 찾는다.
+
+**체크 포인트:**
+
+- **추가한 내부 추상화 — 정말 필요한가?**
+  - Context / state / 헬퍼가 실제로 참조/활용되는 값이 있는가? ("죽은 필드" 없는지)
+  - CSS로 해결 가능한데 JS로 짜지 않았는가? (color cascade vs Context 같은 것)
+  - 사용되지 않는 slot, variant, helper가 있는가?
+- **DOM 구조 — 과하게 nesting됐나?**
+  - 제거 가능한 wrapper가 있는가?
+  - `<span>` 안에 `<span>` 같은 중복 래핑
+- **시맨틱 — 더 적절한 element가 있나?**
+  - `<div>`인데 의미상 `<ul>`, `<button>`, `<nav>` 등이 맞지 않는가?
+- **하드코딩 값 — 토큰으로 대체 가능한가?**
+  - `color: '#...'`, `padding: '4px'` 같은 raw 값은 token 매핑으로
+- **네이밍 — 의도를 정확히 전달하나?**
+  - 단어 하나 바꾸면 훨씬 명확해지는 prop/함수는 없는가?
+- **테스트 가능성 — DOM 셀렉터로 assert 가능한가?**
+  - 핵심 slot이 고유 클래스/데이터 속성으로 잡히는가?
+
+발견한 것들은 사용자에게 **"이 부분 리팩터링할까요?"** 형태로 한 번에 묶어 제안한다. 여러 번 리팩터 왕복하지 않는다.
+
+발견 게 없으면 그냥 Phase 5로 진행.
+
 ## Phase 5: 완료 보고
 
 모든 검증이 끝나면 사용자에게 아래 형식으로 결과를 보고한다.
@@ -520,6 +643,28 @@ pnpm storybook:react
 ```
 
 포트 6006 → `Components/{PascalName}`에서 시각 확인.
+
+### PR 초안 (사용자 피드백 후 생성)
+
+완료 보고에 이어 PR 초안을 작성한다. **생성은 사용자 승인 후에만.**
+
+**커밋 분리 전략**:
+- 1 commit = 1 intent. 무관한 infra 변경(예: `check-types` 스크립트 추가)은 별도 커밋
+- revert test: 이 커밋만 revert해도 말이 되는가?
+- 보통은 1~2 커밋이면 충분
+
+**PR 제목**: Conventional Commits 형식 (`feat(react): ...`, `fix(react): ...`). 레포 `CONTRIBUTING.md` 참조.
+
+**PR 본문 구조** (레포 `CONTRIBUTING.md`와 일치):
+- **Summary** (필수)
+- **Changes** (필수)
+- **Decisions** (조건부) — Tier 1/Tier 2에서 결정된 내용, 근거와 함께
+- **Notes** (조건부) — 의도적으로 하지 않은 것, 알려진 제약, 후속 작업 후보
+- **Screenshots** (조건부)
+- **Testing** (권장) — 실행한 커맨드와 결과, `✓` 표기. **GitHub task list `- [ ]`는 쓰지 않음** (PR 리스트에 "n/n" 진행률로 잡혀서 오해 유발)
+- **Related Issues** (선택) — 이슈는 `Closes #N`, PR은 `Follows #N`
+
+**초안을 사용자에게 보여주고 피드백을 받은 뒤** `git push` + `gh pr create` 실행. 승인 없이 먼저 PR을 만들지 않는다 (글로벌 AGENTS.md 규칙).
 
 ---
 
