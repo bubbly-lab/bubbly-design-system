@@ -6,6 +6,8 @@ export {
   type HorizontalCardProps,
 } from './components/horizontal-card';
 export { IconButton, type IconButtonProps } from './components/icon-button';
+export { InfoItem, type InfoItemProps } from './components/info-item';
+export { InfoList, type InfoListProps } from './components/info-list';
 export {
   LoadingIndicator,
   type LoadingIndicatorProps,
