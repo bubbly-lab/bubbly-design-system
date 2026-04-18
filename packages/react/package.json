@@ -41,6 +41,7 @@
     "build:js": "tsdown",
     "cssgen": "panda cssgen --outfile dist/styles.css --minify",
     "build": "pnpm codegen && pnpm build:js && pnpm cssgen",
+    "check-types": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
