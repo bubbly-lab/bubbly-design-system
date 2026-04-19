@@ -6,6 +6,7 @@ import {
 } from '../design-tokens/build/panda/tokens';
 import { buttonRecipe } from './src/recipes/button';
 import { cardHeaderRecipe } from './src/recipes/card-header';
+import { dimmedRecipe } from './src/recipes/dimmed';
 import { dividerRecipe } from './src/recipes/divider';
 import { horizontalCardRecipe } from './src/recipes/horizontal-card';
 import { iconButtonRecipe } from './src/recipes/icon-button';
@@ -43,6 +44,7 @@ export default defineConfig({
     recipes: {
       button: buttonRecipe,
       cardHeader: cardHeaderRecipe,
+      dimmed: dimmedRecipe,
       divider: dividerRecipe,
       horizontalCard: horizontalCardRecipe,
       iconButton: iconButtonRecipe,
