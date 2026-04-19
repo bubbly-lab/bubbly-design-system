@@ -1,5 +1,6 @@
 export { Button, type ButtonProps } from './components/button';
 export { CardHeader, type CardHeaderProps } from './components/card-header';
+export { Dimmed, type DimmedProps } from './components/dimmed';
 export { Divider, type DividerProps } from './components/divider';
 export {
   HorizontalCard,
