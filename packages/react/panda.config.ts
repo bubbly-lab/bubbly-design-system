@@ -13,6 +13,7 @@ import { iconButtonRecipe } from './src/recipes/icon-button';
 import { infoListRecipe } from './src/recipes/info-list';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
 import { resultRecipe } from './src/recipes/result';
+import { sectionHeaderRecipe } from './src/recipes/section-header';
 import { skeletonRecipe } from './src/recipes/skeleton';
 import { tabsRecipe } from './src/recipes/tabs';
 import { textButtonRecipe } from './src/recipes/text-button';
@@ -51,6 +52,7 @@ export default defineConfig({
       infoList: infoListRecipe,
       loadingIndicator: loadingIndicatorRecipe,
       result: resultRecipe,
+      sectionHeader: sectionHeaderRecipe,
       skeleton: skeletonRecipe,
       tabs: tabsRecipe,
       textButton: textButtonRecipe,
