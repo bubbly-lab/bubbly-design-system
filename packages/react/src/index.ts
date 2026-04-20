@@ -1,5 +1,6 @@
 export {
   Autocomplete,
+  AutocompleteHighlight,
   type AutocompleteHighlightProps,
   AutocompleteItem,
   type AutocompleteItemProps,

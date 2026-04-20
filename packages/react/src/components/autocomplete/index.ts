@@ -1,5 +1,8 @@
 export { Autocomplete, type AutocompleteProps } from './autocomplete';
-export type { AutocompleteHighlightProps } from './autocomplete-highlight';
+export {
+  AutocompleteHighlight,
+  type AutocompleteHighlightProps,
+} from './autocomplete-highlight';
 export {
   AutocompleteItem,
   type AutocompleteItemProps,

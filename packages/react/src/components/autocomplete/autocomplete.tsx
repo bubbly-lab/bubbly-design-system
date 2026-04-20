@@ -12,7 +12,6 @@ import { autocomplete } from 'styled-system/recipes';
 import { LoadingIndicator } from '../loading-indicator';
 import { Result } from '../result';
 import { SectionHeader } from '../section-header';
-import { AutocompleteHighlight } from './autocomplete-highlight';
 
 export interface AutocompleteProps
   extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
@@ -25,7 +24,7 @@ export interface AutocompleteProps
   children?: ReactNode;
 }
 
-const AutocompleteImpl = forwardRef<HTMLDivElement, AutocompleteProps>(
+export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
   function Autocomplete(
     {
       type = 'modal',
@@ -69,9 +68,3 @@ const AutocompleteImpl = forwardRef<HTMLDivElement, AutocompleteProps>(
     );
   },
 );
-
-export const Autocomplete: typeof AutocompleteImpl & {
-  Highlight: typeof AutocompleteHighlight;
-} = Object.assign(AutocompleteImpl, {
-  Highlight: AutocompleteHighlight,
-});

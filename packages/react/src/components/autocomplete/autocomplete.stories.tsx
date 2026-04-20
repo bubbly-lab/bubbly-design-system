@@ -10,6 +10,7 @@ import { IconButton } from '../icon-button';
 import { SectionHeader } from '../section-header';
 import { Thumbnail } from '../thumbnail';
 import { Autocomplete, type AutocompleteProps } from './autocomplete';
+import { AutocompleteHighlight } from './autocomplete-highlight';
 import { AutocompleteItem } from './autocomplete-item';
 import { highlightMatch } from './highlight-match';
 
@@ -121,7 +122,7 @@ export const WithManualHighlight: Story = {
         <AutocompleteItem
           title={
             <>
-              Tit<Autocomplete.Highlight>le</Autocomplete.Highlight>
+              Tit<AutocompleteHighlight>le</AutocompleteHighlight>
             </>
           }
           leading={<IconSearch />}
@@ -130,8 +131,8 @@ export const WithManualHighlight: Story = {
         <AutocompleteItem
           title={
             <>
-              My <Autocomplete.Highlight>cafe</Autocomplete.Highlight> is a nice{' '}
-              <Autocomplete.Highlight>cafe</Autocomplete.Highlight>
+My <AutocompleteHighlight>cafe</AutocompleteHighlight> is a nice{' '}
+                <AutocompleteHighlight>cafe</AutocompleteHighlight>
             </>
           }
           leading={<IconSearch />}
