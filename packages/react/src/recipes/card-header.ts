@@ -99,11 +99,16 @@ export const cardHeaderRecipe = defineSlotRecipe({
       },
     },
     hasBottom: {
+      true: {},
       false: {
         bottom: {
           display: 'none',
         },
       },
     },
+  },
+  defaultVariants: {
+    captionPosition: 'bottom',
+    hasBottom: true,
   },
 });
