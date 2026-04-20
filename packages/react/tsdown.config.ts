@@ -8,7 +8,7 @@ export default defineConfig({
   outDir: 'dist',
   clean: true,
   dts: true,
-  platform: 'neutral',
+  platform: 'browser',
   // Inline Panda-generated `styled-system/*` so consumers don't need it at runtime.
   alias: {
     'styled-system/css': path.resolve(
