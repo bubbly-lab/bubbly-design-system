@@ -67,7 +67,11 @@ export const Thumbnail = forwardRef<HTMLDivElement, ThumbnailProps>(
             {src ? (
               <img data-part="img" src={src} alt={alt} style={imgTagStyle} />
             ) : (
-              <div data-part="placeholder" style={placeholderStyle}>
+              <div
+                data-part="placeholder"
+                style={placeholderStyle}
+                aria-hidden="true"
+              >
                 <IconImgNone />
               </div>
             )}
