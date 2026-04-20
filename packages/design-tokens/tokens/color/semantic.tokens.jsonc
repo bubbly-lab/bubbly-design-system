@@ -117,7 +117,7 @@
     "neutral": {
       "strong": { "$value": "{color.neutral.700}" },
       "default": {
-        "$value": "rgb({color.neutral.700} / {opacity.30})"
+        "$value": "rgb({color.neutral.600} / {opacity.30})"
       },
       "subtle": {
         "$value": "{color.neutral.900}"
