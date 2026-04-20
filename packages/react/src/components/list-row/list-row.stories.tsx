@@ -63,7 +63,7 @@ export const WithIconButton: Story = {
     leading: <IconTime />,
     trailing: (
       <IconButton
-        type="standard"
+        buttonType="standard"
         color="neutral"
         icon={<IconClose />}
         aria-label="Remove"

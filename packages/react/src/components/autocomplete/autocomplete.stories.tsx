@@ -63,7 +63,7 @@ const meta: Meta<typeof Autocomplete> = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -218,7 +218,7 @@ export const WithSections: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove recent search"
@@ -230,7 +230,7 @@ export const WithSections: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove recent search"
@@ -263,7 +263,7 @@ export const ItemVariantsMatchingFigma: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -276,7 +276,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -297,7 +297,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -319,7 +319,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"

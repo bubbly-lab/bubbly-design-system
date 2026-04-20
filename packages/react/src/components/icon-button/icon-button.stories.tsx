@@ -10,9 +10,9 @@ import { IconButton } from './icon-button';
 const { variantMap } = iconButton;
 
 const DESIGNED_COMBINATIONS = [
-  { color: 'brand', type: 'solid', shape: 'square' },
-  { color: 'neutral', type: 'ghost', shape: 'square' },
-  { color: 'neutral', type: 'outline', shape: 'round' },
+  { color: 'brand', buttonType: 'solid', shape: 'square' },
+  { color: 'neutral', buttonType: 'ghost', shape: 'square' },
+  { color: 'neutral', buttonType: 'outline', shape: 'round' },
 ] as const;
 
 const meta: Meta<typeof IconButton> = {
@@ -20,7 +20,7 @@ const meta: Meta<typeof IconButton> = {
   component: IconButton,
   argTypes: {
     color: { control: 'select', options: variantMap.color },
-    type: { control: 'select', options: variantMap.type },
+    buttonType: { control: 'select', options: variantMap.buttonType },
     shape: { control: 'select', options: variantMap.shape },
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },
@@ -43,8 +43,8 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      {DESIGNED_COMBINATIONS.map(({ color, type, shape }) => (
-        <div key={`${color}-${type}-${shape}`}>
+      {DESIGNED_COMBINATIONS.map(({ color, buttonType, shape }) => (
+        <div key={`${color}-${buttonType}-${shape}`}>
           <div
             style={{
               marginBottom: '8px',
@@ -53,18 +53,18 @@ export const AllVariants: Story = {
               fontFamily: 'var(--fonts-sans)',
             }}
           >
-            {color} / {type} / {shape}
+            {color} / {buttonType} / {shape}
           </div>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             {variantMap.size.map(size => (
               <IconButton
                 key={size}
                 color={color}
-                type={type}
+                buttonType={buttonType}
                 shape={shape}
                 size={size}
                 icon={<IconArrowRight />}
-                aria-label={`${type} ${size}`}
+                aria-label={`${buttonType} ${size}`}
               />
             ))}
           </div>
@@ -91,7 +91,7 @@ export const Standard: Story = {
         {(['medium', 'small'] as const).map(size => (
           <IconButton
             key={size}
-            type="standard"
+            buttonType="standard"
             size={size}
             icon={<IconArrowRight />}
             aria-label={`standard ${size}`}
@@ -105,8 +105,8 @@ export const Standard: Story = {
 export const AllStates: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      {DESIGNED_COMBINATIONS.map(({ color, type, shape }) => (
-        <div key={`${color}-${type}-${shape}`}>
+      {DESIGNED_COMBINATIONS.map(({ color, buttonType, shape }) => (
+        <div key={`${color}-${buttonType}-${shape}`}>
           <div
             style={{
               marginBottom: '8px',
@@ -115,19 +115,19 @@ export const AllStates: Story = {
               fontFamily: 'var(--fonts-sans)',
             }}
           >
-            {color} / {type} / {shape}
+            {color} / {buttonType} / {shape}
           </div>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <IconButton
               color={color}
-              type={type}
+              buttonType={buttonType}
               shape={shape}
               icon={<IconArrowRight />}
               aria-label="Default"
             />
             <IconButton
               color={color}
-              type={type}
+              buttonType={buttonType}
               shape={shape}
               icon={<IconArrowRight />}
               aria-label="Disabled"
@@ -149,12 +149,12 @@ export const AllStates: Story = {
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <IconButton
-            type="standard"
+            buttonType="standard"
             icon={<IconArrowRight />}
             aria-label="Default"
           />
           <IconButton
-            type="standard"
+            buttonType="standard"
             icon={<IconArrowRight />}
             aria-label="Disabled"
             disabled
@@ -173,13 +173,13 @@ export const WithDifferentIcons: Story = {
         icon={<IconPlus />}
         aria-label="Add"
         color="neutral"
-        type="ghost"
+        buttonType="ghost"
       />
       <IconButton
         icon={<IconLink />}
         aria-label="Copy link"
         color="neutral"
-        type="outline"
+        buttonType="outline"
         shape="round"
       />
     </div>
