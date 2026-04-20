@@ -2,7 +2,7 @@ import { defineSlotRecipe } from '@pandacss/dev';
 
 export const infoListRecipe = defineSlotRecipe({
   className: 'info-list',
-  slots: ['root', 'row', 'dot', 'item', 'icon', 'label'],
+  slots: ['root', 'row', 'dot'],
   base: {
     root: {
       display: 'flex',
@@ -28,28 +28,6 @@ export const infoListRecipe = defineSlotRecipe({
       textStyle: 'label2-regular',
       color: 'inherit',
       userSelect: 'none',
-    },
-    item: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '4',
-      paddingBlock: '2',
-      flexShrink: 0,
-      minWidth: '0',
-      color: 'inherit',
-    },
-    icon: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-      fontSize: '16px',
-      color: 'inherit',
-    },
-    label: {
-      textStyle: 'label2-regular',
-      color: 'inherit',
-      minWidth: '0',
     },
   },
   variants: {

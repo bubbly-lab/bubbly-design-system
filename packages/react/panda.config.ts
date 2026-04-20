@@ -11,6 +11,7 @@ import { dimmedRecipe } from './src/recipes/dimmed';
 import { dividerRecipe } from './src/recipes/divider';
 import { horizontalCardRecipe } from './src/recipes/horizontal-card';
 import { iconButtonRecipe } from './src/recipes/icon-button';
+import { infoItemRecipe } from './src/recipes/info-item';
 import { infoListRecipe } from './src/recipes/info-list';
 import { listRowRecipe } from './src/recipes/list-row';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
@@ -53,6 +54,7 @@ export default defineConfig({
       dividerLine: dividerRecipe,
       horizontalCard: horizontalCardRecipe,
       iconButton: iconButtonRecipe,
+      infoItem: infoItemRecipe,
       infoList: infoListRecipe,
       listRow: listRowRecipe,
       loadingIndicator: loadingIndicatorRecipe,
