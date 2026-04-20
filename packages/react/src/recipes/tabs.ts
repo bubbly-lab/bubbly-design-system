@@ -53,6 +53,9 @@ export const tabsRecipe = defineSlotRecipe({
     },
     indicator: {
       position: 'absolute',
+      // Figma places the 2px indicator inside TabItem; our DOM puts it on the
+      // list with absolute positioning so the -1px offset overlaps list's 1px
+      // bottom border to render a visually continuous underline.
       bottom: '-1px',
       left: 0,
       height: '2px',

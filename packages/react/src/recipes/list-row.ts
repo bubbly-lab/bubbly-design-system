@@ -74,7 +74,9 @@ export const listRowRecipe = defineSlotRecipe({
       wordBreak: 'break-word',
       minWidth: '0',
       width: '100%',
-      // Fallback for environments where -webkit-line-clamp is not honored (label1 line-height 24px × 2)
+      // Figma title bbox is single-line; we allow 2 lines to accommodate long
+      // product titles. maxHeight is a fallback for environments where
+      // -webkit-line-clamp is not honored (label1 line-height 24px × 2).
       maxHeight: 'calc(2 * 24px)',
       color: 'content.neutral.strong',
       textStyle: 'label1-regular',
@@ -87,7 +89,8 @@ export const listRowRecipe = defineSlotRecipe({
       wordBreak: 'break-word',
       minWidth: '0',
       width: '100%',
-      // Fallback for environments where -webkit-line-clamp is not honored (caption1 line-height 18px × 2)
+      // Same 2-line allowance as title (Figma is single-line); fallback uses
+      // caption1 line-height 18px × 2 for non-clamp environments.
       maxHeight: 'calc(2 * 18px)',
       paddingBlock: '2',
       paddingInline: '0',
