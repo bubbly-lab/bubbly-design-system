@@ -26,7 +26,6 @@ export const tabsRecipe = defineSlotRecipe({
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '48px',
       minWidth: '0',
       paddingInline: '20',
       paddingBlock: '12',

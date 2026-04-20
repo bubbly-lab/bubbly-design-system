@@ -50,7 +50,7 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
       >
         {headerTitle !== undefined ? (
           <div className={styles.header}>
-            <SectionHeader title={headerTitle} />
+            <SectionHeader title={headerTitle} size="medium" />
           </div>
         ) : null}
         <div className={styles.body}>

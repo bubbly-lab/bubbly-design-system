@@ -16,7 +16,7 @@ export const cardHeaderRecipe = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      width: '200px',
+      width: '100%',
       minWidth: '0',
     },
     caption: {
@@ -48,7 +48,6 @@ export const cardHeaderRecipe = defineSlotRecipe({
     bottom: {
       width: '100%',
       minWidth: '0',
-      marginTop: '4',
       order: 3,
     },
     metadata: {
