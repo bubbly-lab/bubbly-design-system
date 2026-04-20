@@ -14,6 +14,7 @@ import { infoListRecipe } from './src/recipes/info-list';
 import { listRowRecipe } from './src/recipes/list-row';
 import { loadingIndicatorRecipe } from './src/recipes/loading-indicator';
 import { resultRecipe } from './src/recipes/result';
+import { searchFieldRecipe } from './src/recipes/search-field';
 import { sectionHeaderRecipe } from './src/recipes/section-header';
 import { skeletonRecipe } from './src/recipes/skeleton';
 import { tabsRecipe } from './src/recipes/tabs';
@@ -54,6 +55,7 @@ export default defineConfig({
       listRow: listRowRecipe,
       loadingIndicator: loadingIndicatorRecipe,
       result: resultRecipe,
+      searchField: searchFieldRecipe,
       sectionHeader: sectionHeaderRecipe,
       skeleton: skeletonRecipe,
       tabs: tabsRecipe,

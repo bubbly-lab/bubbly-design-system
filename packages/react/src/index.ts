@@ -16,6 +16,10 @@ export {
 } from './components/loading-indicator';
 export { Result, type ResultProps } from './components/result';
 export {
+  SearchField,
+  type SearchFieldProps,
+} from './components/search-field';
+export {
   SectionHeader,
   type SectionHeaderProps,
 } from './components/section-header';

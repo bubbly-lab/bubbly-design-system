@@ -80,10 +80,10 @@ importers:
       '@ark-ui/react':
         specifier: ^5.34.1
         version: 5.34.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-    devDependencies:
       '@bubbly-design-system/icons':
         specifier: ^0.1.0
         version: 0.1.0(react@19.2.4)
+    devDependencies:
       '@pandacss/dev':
         specifier: ^0.52.0
         version: 0.52.0(typescript@5.9.3)
