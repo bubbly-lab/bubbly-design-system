@@ -15,21 +15,25 @@ export const searchFieldRecipe = defineSlotRecipe({
       borderRadius: 'r300',
       backgroundColor: 'surface.neutral.subtle',
       cursor: 'text',
-      transition: 'box-shadow 150ms ease-out',
-      // Hover: 1px inset border (no layout shift vs. real border).
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        inset: 0,
+        borderRadius: 'inherit',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
+        pointerEvents: 'none',
+        transition: 'border-color 150ms ease-out',
+      },
       _hover: {
-        boxShadow: 'inset 0 0 0 1px var(--colors-border-neutral-subtle-hover)',
+        '&::after': {
+          borderColor: 'border.neutral.subtle-hover',
+        },
       },
       _focusWithin: {
         boxShadow:
           '0 0 0 2px var(--colors-neutral-600), 0 0 0 4px var(--colors-neutral-50)',
-      },
-      // Hover + focus simultaneously: stack both rings. Compound pseudo-class
-      // has specificity (0,2,0) so it wins over either single pseudo-class,
-      // regardless of Panda's emitted condition order.
-      '&:hover:focus-within': {
-        boxShadow:
-          'inset 0 0 0 1px var(--colors-border-neutral-subtle-hover), 0 0 0 2px var(--colors-neutral-600), 0 0 0 4px var(--colors-neutral-50)',
       },
     },
     icon: {
