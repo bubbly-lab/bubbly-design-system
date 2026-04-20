@@ -60,7 +60,7 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
             <Result
               title={emptyTitle}
               description={emptyDescription}
-              bottom={emptyAction ?? undefined}
+              action={emptyAction}
             />
           ) : null}
         </div>
