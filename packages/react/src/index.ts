@@ -9,6 +9,7 @@ export {
 export { IconButton, type IconButtonProps } from './components/icon-button';
 export { InfoItem, type InfoItemProps } from './components/info-item';
 export { InfoList, type InfoListProps } from './components/info-list';
+export { ListRow, type ListRowProps } from './components/list-row';
 export {
   LoadingIndicator,
   type LoadingIndicatorProps,
