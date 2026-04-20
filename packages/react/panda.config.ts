@@ -4,6 +4,7 @@ import {
   textStyles,
   tokens,
 } from '../design-tokens/build/panda/tokens';
+import { autocompleteRecipe } from './src/recipes/autocomplete';
 import { buttonRecipe } from './src/recipes/button';
 import { cardHeaderRecipe } from './src/recipes/card-header';
 import { dimmedRecipe } from './src/recipes/dimmed';
@@ -45,6 +46,7 @@ export default defineConfig({
       },
     },
     recipes: {
+      autocomplete: autocompleteRecipe,
       button: buttonRecipe,
       cardHeader: cardHeaderRecipe,
       dimmed: dimmedRecipe,

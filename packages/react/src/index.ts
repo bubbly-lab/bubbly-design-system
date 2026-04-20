@@ -1,3 +1,11 @@
+export {
+  Autocomplete,
+  type AutocompleteHighlightProps,
+  AutocompleteItem,
+  type AutocompleteItemProps,
+  type AutocompleteProps,
+  highlightMatch,
+} from './components/autocomplete';
 export { Button, type ButtonProps } from './components/button';
 export { CardHeader, type CardHeaderProps } from './components/card-header';
 export { Dimmed, type DimmedProps } from './components/dimmed';
