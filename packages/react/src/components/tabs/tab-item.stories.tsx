@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Tabs } from '.';
-import type { ItemProps } from './tabs';
+import { TabItem, TabItemContent, TabList, Tabs } from '.';
+import type { TabItemProps } from './tabs';
 
-interface ItemStoryArgs extends Omit<ItemProps, 'children'> {
+interface TabItemStoryArgs extends Omit<TabItemProps, 'children'> {
   selected: boolean;
 }
 
@@ -19,16 +19,16 @@ const meta = {
     label: 'Overview',
     selected: true,
   },
-  render: ({ label, selected }: ItemStoryArgs) => {
+  render: ({ label, selected }: TabItemStoryArgs) => {
     return (
       <div style={{ fontFamily: 'var(--fonts-sans)', width: 'fit-content' }}>
-        <Tabs.Root
+        <Tabs
           defaultValue={selected ? 'overview' : undefined}
           layout="scrollable"
           padded={false}
           style={{ width: 'fit-content' }}
         >
-          <Tabs.List
+          <TabList
             style={{
               width: 'fit-content',
               background: 'transparent',
@@ -37,18 +37,18 @@ const meta = {
               overflow: 'visible',
             }}
           >
-            <Tabs.Item label={label} value="overview" />
-          </Tabs.List>
-          <Tabs.ItemContent value="overview">Preview panel</Tabs.ItemContent>
-        </Tabs.Root>
+            <TabItem label={label} value="overview" />
+          </TabList>
+          <TabItemContent value="overview">Preview panel</TabItemContent>
+        </Tabs>
       </div>
     );
   },
-} satisfies Meta<ItemStoryArgs>;
+} satisfies Meta<TabItemStoryArgs>;
 
 export default meta;
 
-type Story = StoryObj<ItemStoryArgs>;
+type Story = StoryObj<TabItemStoryArgs>;
 
 export const Selected: Story = {};
 

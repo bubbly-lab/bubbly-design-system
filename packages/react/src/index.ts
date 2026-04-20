@@ -32,15 +32,19 @@ export {
   type SectionHeaderProps,
 } from './components/section-header';
 export { Skeleton, type SkeletonProps } from './components/skeleton';
-export type {
-  ItemContentProps,
-  ItemProps,
-  TabsContentProps,
-  TabsListProps,
-  TabsRootProps,
-  TabsTriggerProps,
+export {
+  TabContent,
+  type TabContentProps,
+  TabItem,
+  type TabItemContentProps,
+  TabItemContent,
+  type TabItemProps,
+  TabList,
+  type TabListProps,
+  type TabTriggerProps,
+  Tabs,
+  type TabsProps,
 } from './components/tabs';
-export { Tabs } from './components/tabs';
 export { TextButton, type TextButtonProps } from './components/text-button';
 export { Thumbnail, type ThumbnailProps } from './components/thumbnail';
 export {

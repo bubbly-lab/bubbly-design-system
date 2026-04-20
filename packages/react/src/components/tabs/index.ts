@@ -1,9 +1,13 @@
-export type {
-  ItemContentProps,
-  ItemProps,
-  TabsContentProps,
-  TabsListProps,
-  TabsRootProps,
-  TabsTriggerProps,
+export {
+  TabContent,
+  type TabContentProps,
+  TabItem,
+  type TabItemContentProps,
+  TabItemContent,
+  type TabItemProps,
+  TabList,
+  type TabListProps,
+  type TabTriggerProps,
+  Tabs,
+  type TabsProps,
 } from './tabs';
-export * as Tabs from './tabs';
