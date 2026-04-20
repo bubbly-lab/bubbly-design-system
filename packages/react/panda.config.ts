@@ -50,7 +50,7 @@ export default defineConfig({
       button: buttonRecipe,
       cardHeader: cardHeaderRecipe,
       dimmed: dimmedRecipe,
-      divider: dividerRecipe,
+      dividerLine: dividerRecipe,
       horizontalCard: horizontalCardRecipe,
       iconButton: iconButtonRecipe,
       infoList: infoListRecipe,
