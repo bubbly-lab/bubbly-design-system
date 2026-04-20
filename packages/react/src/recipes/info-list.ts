@@ -87,7 +87,7 @@ export const infoListRecipe = defineSlotRecipe({
         },
       },
     },
-    wrap: {
+    wrapped: {
       true: {
         root: {
           flexWrap: 'wrap',
@@ -100,6 +100,6 @@ export const infoListRecipe = defineSlotRecipe({
   defaultVariants: {
     direction: 'horizontal',
     color: 'neutral',
-    wrap: false,
+    wrapped: false,
   },
 });

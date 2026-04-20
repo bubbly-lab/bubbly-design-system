@@ -71,7 +71,7 @@ export const ListRow = forwardRef<HTMLDivElement, ListRowProps>(
           ) : null}
           {Array.isArray(detail) ? (
             <div className={styles.infoListWrap}>
-              <InfoList wrap>
+              <InfoList wrapped>
                 {detail.map(label => (
                   <InfoItem key={label} label={label} />
                 ))}

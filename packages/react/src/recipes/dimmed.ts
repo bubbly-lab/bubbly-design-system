@@ -10,7 +10,7 @@ export const dimmedRecipe = defineRecipe({
     backgroundColor: 'background.overlay.default',
   },
   variants: {
-    blur: {
+    blurred: {
       true: {
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
@@ -19,6 +19,6 @@ export const dimmedRecipe = defineRecipe({
     },
   },
   defaultVariants: {
-    blur: true,
+    blurred: true,
   },
 });

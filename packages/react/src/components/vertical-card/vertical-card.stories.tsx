@@ -13,10 +13,10 @@ const meta: Meta = {
   title: 'Components/VerticalCard',
   component: VerticalCard,
   argTypes: {
-    zoom: { control: 'boolean' },
+    zoomed: { control: 'boolean' },
     ratio: { control: 'select', options: thumbnailVariants.ratio },
     radius: { control: 'select', options: thumbnailVariants.radius },
-    border: { control: 'boolean' },
+    bordered: { control: 'boolean' },
     loading: { control: 'boolean' },
     src: { control: 'text' },
     cardTitle: { control: 'text' },
@@ -29,10 +29,10 @@ const meta: Meta = {
   },
   args: {
     style: { width: '200px' },
-    zoom: true,
+    zoomed: true,
     ratio: '3:4',
     radius: '8px',
-    border: false,
+    bordered: false,
     loading: false,
     src: DEMO_IMG,
     cardTitle: 'Title',
@@ -46,10 +46,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({
-    zoom,
+    zoomed,
     ratio,
     radius,
-    border,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -64,8 +64,8 @@ export const Default: Story = {
         alt="Demo"
         ratio={ratio}
         radius={radius}
-        zoom={zoom}
-        border={border}
+        zoomed={zoomed}
+        bordered={bordered}
         loading={loading}
       />
       <CardHeader
@@ -115,10 +115,10 @@ export const Loading: Story = {
 export const FillsParent: Story = {
   args: { style: undefined },
   render: ({
-    zoom,
+    zoomed,
     ratio,
     radius,
-    border,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -136,8 +136,8 @@ export const FillsParent: Story = {
               alt={width}
               ratio={ratio}
               radius={radius}
-              zoom={zoom}
-              border={border}
+              zoomed={zoomed}
+              bordered={bordered}
               loading={loading}
             />
             <CardHeader

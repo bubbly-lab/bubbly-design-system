@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 import { Dimmed } from './dimmed';
 
-const blurOptions: Array<boolean> = [true, false];
+const blurredOptions: Array<boolean> = [true, false];
 
 const demoContainerStyle = {
   position: 'relative',
@@ -18,10 +18,10 @@ const meta: Meta<typeof Dimmed> = {
   title: 'Components/Dimmed',
   component: Dimmed,
   argTypes: {
-    blur: { control: 'boolean' },
+    blurred: { control: 'boolean' },
   },
   args: {
-    blur: true,
+    blurred: true,
   },
 };
 
@@ -39,9 +39,9 @@ export const Default: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-      {blurOptions.map(blur => (
+      {blurredOptions.map(blurred => (
         <div
-          key={String(blur)}
+          key={String(blurred)}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -50,7 +50,7 @@ export const AllVariants: Story = {
           }}
         >
           <div style={demoContainerStyle}>
-            <Dimmed blur={blur} />
+            <Dimmed blurred={blurred} />
           </div>
           <span
             style={{
@@ -59,7 +59,7 @@ export const AllVariants: Story = {
               color: '#999',
             }}
           >
-            blur={String(blur)}
+            blurred={String(blurred)}
           </span>
         </div>
       ))}

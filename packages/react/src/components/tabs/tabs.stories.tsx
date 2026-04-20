@@ -10,14 +10,14 @@ const meta: Meta<typeof Tabs.Root> = {
       control: 'select',
       options: ['scrollable', 'fixed'],
     },
-    padding: {
+    padded: {
       control: 'boolean',
     },
   },
   args: {
     defaultValue: 'overview',
     layout: 'scrollable',
-    padding: true,
+    padded: true,
   },
   render: (args: TabsRootProps) => (
     <div style={{ width: '607px', fontFamily: 'var(--fonts-sans)' }}>

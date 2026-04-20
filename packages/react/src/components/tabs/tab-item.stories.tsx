@@ -25,7 +25,7 @@ const meta = {
         <Tabs.Root
           defaultValue={selected ? 'overview' : undefined}
           layout="scrollable"
-          padding={false}
+          padded={false}
           style={{ width: 'fit-content' }}
         >
           <Tabs.List

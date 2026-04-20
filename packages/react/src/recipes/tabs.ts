@@ -85,7 +85,7 @@ export const tabsRecipe = defineSlotRecipe({
         },
       },
     },
-    padding: {
+    padded: {
       true: {
         list: {
           paddingInline: '20',
@@ -100,6 +100,6 @@ export const tabsRecipe = defineSlotRecipe({
   },
   defaultVariants: {
     layout: 'scrollable',
-    padding: true,
+    padded: true,
   },
 });

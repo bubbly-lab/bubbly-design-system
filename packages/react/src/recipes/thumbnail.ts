@@ -19,7 +19,7 @@ export const thumbnailRecipe = defineRecipe({
       '16px': { borderRadius: 'r400' },
       full: { borderRadius: 'full' },
     },
-    border: {
+    bordered: {
       true: {
         '&::after': {
           content: '""',
@@ -35,7 +35,7 @@ export const thumbnailRecipe = defineRecipe({
       },
       false: {},
     },
-    zoom: {
+    zoomed: {
       true: {
         '& [data-part=img]': {
           transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -52,7 +52,7 @@ export const thumbnailRecipe = defineRecipe({
   defaultVariants: {
     ratio: '1:1',
     radius: '8px',
-    border: false,
-    zoom: false,
+    bordered: false,
+    zoomed: false,
   },
 });
