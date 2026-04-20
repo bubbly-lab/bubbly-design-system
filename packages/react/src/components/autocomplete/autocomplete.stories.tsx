@@ -1,8 +1,4 @@
-import {
-  IconClose,
-  IconSearch,
-  IconTime,
-} from '@bubbly-design-system/icons';
+import { IconClose, IconSearch, IconTime } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../button';
@@ -131,8 +127,8 @@ export const WithManualHighlight: Story = {
         <AutocompleteItem
           title={
             <>
-My <AutocompleteHighlight>cafe</AutocompleteHighlight> is a nice{' '}
-                <AutocompleteHighlight>cafe</AutocompleteHighlight>
+              My <AutocompleteHighlight>cafe</AutocompleteHighlight> is a nice{' '}
+              <AutocompleteHighlight>cafe</AutocompleteHighlight>
             </>
           }
           leading={<IconSearch />}
@@ -179,8 +175,8 @@ export const HighlightMatchPlayground: StoryObj<HighlightMatchPlaygroundArgs> =
       type: 'modal',
       state: 'default',
       headerTitle: 'Playground',
-      text: "제로월드",
-      query: "제로",
+      text: '제로월드',
+      query: '제로',
     },
     argTypes: {
       text: {

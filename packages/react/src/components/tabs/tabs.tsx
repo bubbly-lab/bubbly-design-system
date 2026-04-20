@@ -65,7 +65,9 @@ export interface TabsProps
   defaultValue?: TabTriggerProps['value'];
 }
 
-function isTabItemElement(child: ReactNode): child is ReactElement<TabItemProps> {
+function isTabItemElement(
+  child: ReactNode,
+): child is ReactElement<TabItemProps> {
   if (!isValidElement(child)) {
     return false;
   }

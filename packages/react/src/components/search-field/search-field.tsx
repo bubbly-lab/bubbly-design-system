@@ -115,8 +115,8 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
         {hasValue && (
           <span className={styles.clearButton}>
             <IconButton
-          buttonType="standard"
-          icon={<IconCloseCircle />}
+              buttonType="standard"
+              icon={<IconCloseCircle />}
               aria-label={clearLabel}
               onClick={handleClear}
             />

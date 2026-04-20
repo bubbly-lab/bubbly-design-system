@@ -156,7 +156,15 @@ export const FillsParent: Story = {
 };
 
 export const LongText: Story = {
-  render: ({ size, zoomed, bordered, loading, src, captionPosition, ...args }) => (
+  render: ({
+    size,
+    zoomed,
+    bordered,
+    loading,
+    src,
+    captionPosition,
+    ...args
+  }) => (
     <HorizontalCard size={size} {...args}>
       <Thumbnail
         src={loading ? undefined : src}

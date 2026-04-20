@@ -37,14 +37,14 @@ export {
   TabContent,
   type TabContentProps,
   TabItem,
-  type TabItemContentProps,
   TabItemContent,
+  type TabItemContentProps,
   type TabItemProps,
   TabList,
   type TabListProps,
-  type TabTriggerProps,
   Tabs,
   type TabsProps,
+  type TabTriggerProps,
 } from './components/tabs';
 export { TextButton, type TextButtonProps } from './components/text-button';
 export { Thumbnail, type ThumbnailProps } from './components/thumbnail';
