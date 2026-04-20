@@ -87,9 +87,19 @@ export const infoListRecipe = defineSlotRecipe({
         },
       },
     },
+    wrap: {
+      true: {
+        root: {
+          flexWrap: 'wrap',
+          whiteSpace: 'normal',
+        },
+      },
+      false: {},
+    },
   },
   defaultVariants: {
     direction: 'horizontal',
     color: 'neutral',
+    wrap: false,
   },
 });

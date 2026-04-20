@@ -1,0 +1,136 @@
+import { defineSlotRecipe } from '@pandacss/dev';
+
+export const listRowRecipe = defineSlotRecipe({
+  className: 'list-row',
+  slots: [
+    'root',
+    'leading',
+    'content',
+    'title',
+    'caption',
+    'infoListWrap',
+    'trailing',
+  ],
+  base: {
+    root: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '100%',
+      minWidth: '0',
+      paddingBlock: '8',
+      paddingInline: '0',
+      gap: '0',
+      overflow: 'visible',
+      fontFamily: 'sans',
+      // Hover state-layer that bleeds +8px on each side (Figma: row 360 → bg 376) with 12px radius (r300)
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        inset: '0 -8px',
+        backgroundColor: 'state-layer.neutral-hover',
+        borderRadius: 'r300',
+        pointerEvents: 'none',
+        opacity: 0,
+        transition: 'opacity 150ms ease-out',
+        zIndex: 0,
+      },
+      _hover: {
+        '&::after': {
+          opacity: 1,
+        },
+      },
+    },
+    leading: {
+      position: 'relative',
+      zIndex: 1,
+      display: 'inline-flex',
+      flexShrink: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      minWidth: '24px',
+      minHeight: '24px',
+      fontSize: '24px',
+      color: 'content.neutral.subtle',
+    },
+    content: {
+      position: 'relative',
+      zIndex: 1,
+      display: 'flex',
+      flex: '1',
+      flexDirection: 'column',
+      minWidth: '0',
+      overflow: 'hidden',
+      paddingBlock: '4',
+      paddingInline: '8',
+      gap: '0',
+    },
+    title: {
+      display: '-webkit-box',
+      WebkitBoxOrient: 'vertical',
+      WebkitLineClamp: '2',
+      overflow: 'hidden',
+      wordBreak: 'break-word',
+      minWidth: '0',
+      width: '100%',
+      // Fallback for environments where -webkit-line-clamp is not honored (label1 line-height 24px × 2)
+      maxHeight: 'calc(2 * 24px)',
+      color: 'content.neutral.strong',
+      textStyle: 'label1-regular',
+    },
+    caption: {
+      display: '-webkit-box',
+      WebkitBoxOrient: 'vertical',
+      WebkitLineClamp: '2',
+      overflow: 'hidden',
+      wordBreak: 'break-word',
+      minWidth: '0',
+      width: '100%',
+      // Fallback for environments where -webkit-line-clamp is not honored (caption1 line-height 18px × 2)
+      maxHeight: 'calc(2 * 18px)',
+      paddingBlock: '2',
+      paddingInline: '0',
+      color: 'content.neutral.subtle',
+      textStyle: 'caption1-regular',
+    },
+    infoListWrap: {
+      width: '100%',
+      minWidth: '0',
+      // Detail area max 2 lines (InfoList label2-regular line-height 20px × 2 = 40px)
+      maxHeight: 'calc(2 * 20px)',
+      overflow: 'hidden',
+    },
+    trailing: {
+      position: 'relative',
+      zIndex: 1,
+      display: 'inline-flex',
+      flexShrink: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      minWidth: '24px',
+      minHeight: '24px',
+      fontSize: '24px',
+      color: 'content.neutral.subtle',
+    },
+  },
+  variants: {
+    bold: {
+      true: {
+        title: {
+          textStyle: 'label1-semibold',
+        },
+      },
+      false: {},
+    },
+    detail: {
+      none: {},
+      caption: {},
+      infoList: {},
+    },
+  },
+  defaultVariants: {
+    bold: false,
+    detail: 'none',
+  },
+});

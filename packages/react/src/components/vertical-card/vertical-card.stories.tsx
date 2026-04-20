@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { cardHeader } from 'styled-system/recipes';
-import { thumbnail } from 'styled-system/recipes';
+import { cardHeader, thumbnail } from 'styled-system/recipes';
 import { CardHeader } from '../card-header';
 import { Thumbnail } from '../thumbnail';
 import { VerticalCard } from './vertical-card';
