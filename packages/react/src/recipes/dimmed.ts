@@ -7,18 +7,18 @@ export const dimmedRecipe = defineRecipe({
     inset: '0',
     display: 'block',
     pointerEvents: 'none',
-    backgroundColor: '#16161bcc',
+    backgroundColor: 'background.overlay.default',
   },
   variants: {
-    blur: {
+    blurred: {
       true: {
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
       },
       false: {},
     },
   },
   defaultVariants: {
-    blur: true,
+    blurred: true,
   },
 });

@@ -11,35 +11,34 @@ import { useTabsStyles } from './tabs-context';
 
 type ArkTabsTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
 
-export const ITEM_DISPLAY_NAME = 'Item';
+export const TAB_ITEM_DISPLAY_NAME = 'TabItem';
 
-export interface ItemProps {
+export interface TabItemProps {
   value: ArkTabsTriggerProps['value'];
   label: ReactNode;
   children?: ReactNode;
 }
 
-export interface ItemContentProps {
+export interface TabItemContentProps {
   value: ArkTabsTriggerProps['value'];
   children?: ReactNode;
 }
 
-export const Item = forwardRef<HTMLButtonElement, ItemProps>(function Item(
-  { label, value },
-  ref,
-) {
-  const styles = useTabsStyles();
+export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(
+  function TabItem({ label, value }, ref) {
+    const styles = useTabsStyles();
 
-  return (
-    <ArkTabs.Trigger ref={ref} className={styles.trigger} value={value}>
-      {label}
-    </ArkTabs.Trigger>
-  );
-});
+    return (
+      <ArkTabs.Trigger ref={ref} className={styles.trigger} value={value}>
+        {label}
+      </ArkTabs.Trigger>
+    );
+  },
+);
 
-Item.displayName = ITEM_DISPLAY_NAME;
+TabItem.displayName = TAB_ITEM_DISPLAY_NAME;
 
-export function ItemContent({ children, value }: ItemContentProps) {
+export function TabItemContent({ children, value }: TabItemContentProps) {
   const styles = useTabsStyles();
 
   return (

@@ -214,9 +214,9 @@ type Story = StoryObj<typeof Result>;
 
 export const Default: Story = {};
 
-export const WithBottom: Story = {
+export const WithAction: Story = {
   args: {
-    bottom: (
+    action: (
       <Button color="brand" type="weak" size="medium">
         후기 작성하기
       </Button>
@@ -227,7 +227,7 @@ export const WithBottom: Story = {
 export const WithVisualItem: Story = {
   args: {
     visualItem: <PlaceholderGraphic />,
-    bottom: (
+    action: (
       <Button color="brand" type="weak" size="medium">
         테마 보러가기
       </Button>
@@ -255,7 +255,7 @@ export const ServerMaintenance: Story = {
     title: '더 나은 서비스를 위한 서버 점검을 하고 있어요',
     description:
       '이용에 불편을 끼쳐 죄송합니다. 서버 점검으로 인해 일시적으로 접속할 수 없습니다. 빠르게 정상화할 수 있도록 최선을 다하겠습니다.',
-    bottom: (
+    action: (
       <Button color="brand" type="weak" size="medium">
         메인으로
       </Button>
@@ -267,7 +267,7 @@ export const NoSlots: Story = {
   args: {
     title: undefined,
     description: undefined,
-    bottom: (
+    action: (
       <Button color="brand" type="weak" size="medium">
         돌아가기
       </Button>

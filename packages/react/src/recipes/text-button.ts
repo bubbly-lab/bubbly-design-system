@@ -20,6 +20,9 @@ export const textButtonRecipe = defineRecipe({
     paddingBlock: '2',
     paddingInline: 0,
     transition: 'color 150ms ease-out',
+    // Hover state-layer extending 4px on each side. Figma's TextButton hover
+    // variant has the same bbox as default (color change only); the bleed
+    // gives a more forgiving hit area and softer hover feedback.
     '&::before': {
       content: '""',
       position: 'absolute',

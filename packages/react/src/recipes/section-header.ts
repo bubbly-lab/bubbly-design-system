@@ -68,9 +68,6 @@ export const sectionHeaderRecipe = defineSlotRecipe({
   variants: {
     size: {
       large: {
-        root: {
-          minHeight: '58px',
-        },
         content: {
           gap: '4',
         },
@@ -90,9 +87,6 @@ export const sectionHeaderRecipe = defineSlotRecipe({
         },
       },
       medium: {
-        root: {
-          minHeight: '48px',
-        },
         content: {
           gap: '2',
         },
@@ -112,9 +106,6 @@ export const sectionHeaderRecipe = defineSlotRecipe({
         },
       },
       small: {
-        root: {
-          minHeight: '46px',
-        },
         content: {
           gap: '2',
         },

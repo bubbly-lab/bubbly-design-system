@@ -13,7 +13,7 @@ export type ResultProps = Omit<StyledResultProps, 'children'> & {
   visualItem?: ReactNode;
   title?: string;
   description?: string;
-  bottom?: ReactNode;
+  action?: ReactNode;
 };
 
 const textAreaStyle: CSSProperties = {
@@ -44,7 +44,7 @@ const descriptionStyle: CSSProperties = {
 };
 
 export const Result = forwardRef<HTMLDivElement, ResultProps>(function Result(
-  { visualItem, title, description, bottom, ...props },
+  { visualItem, title, description, action, ...props },
   ref,
 ) {
   const hasTextArea = title !== undefined || description !== undefined;
@@ -60,7 +60,7 @@ export const Result = forwardRef<HTMLDivElement, ResultProps>(function Result(
           )}
         </div>
       )}
-      {bottom}
+      {action}
     </StyledResult>
   );
 });

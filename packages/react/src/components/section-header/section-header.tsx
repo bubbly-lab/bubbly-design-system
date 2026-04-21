@@ -112,7 +112,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
               onClick={onTrailingClick}
               shape="square"
               size="xsmall"
-              type="ghost"
+              buttonType="ghost"
             />
           </div>
         ) : null}

@@ -6,7 +6,7 @@ export const loadingIndicatorRecipe = defineRecipe({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'content.brand.default',
+    color: 'content.neutral.default',
     flexShrink: 0,
     width: '24',
     height: '24',

@@ -8,7 +8,7 @@
 |---|---|
 | [`design-tokens`](./packages/design-tokens) | DTCG JSON 디자인 토큰 정의 + 빌드 |
 | [`icons`](./packages/icons) | Figma 아이콘 → React 컴포넌트 (tree-shakeable) |
-| [`react`](./packages/react) | Panda CSS + Ark UI 기반 React 컴포넌트 (준비 중) |
+| [`react`](./packages/react) | Panda CSS + Ark UI 기반 React 컴포넌트 |
 
 ## 시작하기
 

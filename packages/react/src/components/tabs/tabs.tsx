@@ -13,39 +13,38 @@ import { cx } from 'styled-system/css';
 import { type TabsVariantProps, tabs } from 'styled-system/recipes';
 
 import {
-  ITEM_DISPLAY_NAME,
-  Item,
-  ItemContent,
-  type ItemContentProps,
-  type ItemProps,
+  TAB_ITEM_DISPLAY_NAME,
+  TabItem,
+  TabItemContent,
+  type TabItemContentProps,
+  type TabItemProps,
 } from './tab-item';
 import { TabsStylesContext, useTabsStyles } from './tabs-context';
 
-export { Item, ItemContent };
-export type { ItemContentProps, ItemProps };
+export { TabItem, TabItemContent };
+export type { TabItemContentProps, TabItemProps };
 
-export type TabsListProps = ComponentPropsWithoutRef<typeof ArkTabs.List>;
+export type TabListProps = ComponentPropsWithoutRef<typeof ArkTabs.List>;
 
-export type TabsTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
+export type TabTriggerProps = ComponentPropsWithoutRef<typeof ArkTabs.Trigger>;
 
-export type TabsContentProps = ComponentPropsWithoutRef<typeof ArkTabs.Content>;
+export type TabContentProps = ComponentPropsWithoutRef<typeof ArkTabs.Content>;
 
-export const List = forwardRef<HTMLDivElement, TabsListProps>(function List(
-  { children, className, ...props },
-  ref,
-) {
-  const styles = useTabsStyles();
+export const TabList = forwardRef<HTMLDivElement, TabListProps>(
+  function TabList({ children, className, ...props }, ref) {
+    const styles = useTabsStyles();
 
-  return (
-    <ArkTabs.List ref={ref} className={cx(styles.list, className)} {...props}>
-      {children}
-      <ArkTabs.Indicator className={styles.indicator} />
-    </ArkTabs.List>
-  );
-});
+    return (
+      <ArkTabs.List ref={ref} className={cx(styles.list, className)} {...props}>
+        {children}
+        <ArkTabs.Indicator className={styles.indicator} />
+      </ArkTabs.List>
+    );
+  },
+);
 
-export const Content = forwardRef<HTMLDivElement, TabsContentProps>(
-  function Content({ className, ...props }, ref) {
+export const TabContent = forwardRef<HTMLDivElement, TabContentProps>(
+  function TabContent({ className, ...props }, ref) {
     const styles = useTabsStyles();
 
     return (
@@ -58,20 +57,22 @@ export const Content = forwardRef<HTMLDivElement, TabsContentProps>(
   },
 );
 
-export interface TabsRootProps
+export interface TabsProps
   extends ComponentPropsWithoutRef<typeof ArkTabs.Root>,
     TabsVariantProps {
   children?: ReactNode;
-  value?: TabsTriggerProps['value'];
-  defaultValue?: TabsTriggerProps['value'];
+  value?: TabTriggerProps['value'];
+  defaultValue?: TabTriggerProps['value'];
 }
 
-function isItemElement(child: ReactNode): child is ReactElement<ItemProps> {
+function isTabItemElement(
+  child: ReactNode,
+): child is ReactElement<TabItemProps> {
   if (!isValidElement(child)) {
     return false;
   }
 
-  if (child.type === Item) {
+  if (child.type === TabItem) {
     return true;
   }
 
@@ -79,7 +80,7 @@ function isItemElement(child: ReactNode): child is ReactElement<ItemProps> {
     return false;
   }
 
-  return getElementDisplayName(child.type) === ITEM_DISPLAY_NAME;
+  return getElementDisplayName(child.type) === TAB_ITEM_DISPLAY_NAME;
 }
 
 function getElementDisplayName(type: ReactElement['type']) {
@@ -96,15 +97,15 @@ function getElementDisplayName(type: ReactElement['type']) {
   return typeof displayName === 'string' ? displayName : undefined;
 }
 
-export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
-  function Root(props, ref) {
+export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+  function Tabs(props, ref) {
     const [variantProps, splitRootProps] = tabs.splitVariantProps(props);
     const rootProps: ComponentPropsWithoutRef<typeof ArkTabs.Root> =
       splitRootProps;
     const { children, className, ...restProps } = rootProps;
     const styles = tabs(variantProps);
     const childArray = Children.toArray(children);
-    const items = childArray.filter(isItemElement);
+    const items = childArray.filter(isTabItemElement);
     const shouldComposeFromItems =
       childArray.length > 0 && items.length === childArray.length;
 
@@ -117,21 +118,21 @@ export const Root = forwardRef<HTMLDivElement, TabsRootProps>(
         >
           {shouldComposeFromItems ? (
             <>
-              <List>
+              <TabList>
                 {items.map(({ props: itemProps }) => (
-                  <Item
+                  <TabItem
                     key={`trigger-${String(itemProps.value)}`}
                     {...itemProps}
                   />
                 ))}
-              </List>
+              </TabList>
               {items.map(({ props: itemProps }) => (
-                <ItemContent
+                <TabItemContent
                   key={`content-${String(itemProps.value)}`}
                   value={itemProps.value}
                 >
                   {itemProps.children}
-                </ItemContent>
+                </TabItemContent>
               ))}
             </>
           ) : (

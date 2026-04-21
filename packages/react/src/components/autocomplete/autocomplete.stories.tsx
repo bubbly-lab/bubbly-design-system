@@ -1,8 +1,4 @@
-import {
-  IconClose,
-  IconSearch,
-  IconTime,
-} from '@bubbly-design-system/icons';
+import { IconClose, IconSearch, IconTime } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../button';
@@ -10,6 +6,7 @@ import { IconButton } from '../icon-button';
 import { SectionHeader } from '../section-header';
 import { Thumbnail } from '../thumbnail';
 import { Autocomplete, type AutocompleteProps } from './autocomplete';
+import { AutocompleteHighlight } from './autocomplete-highlight';
 import { AutocompleteItem } from './autocomplete-item';
 import { highlightMatch } from './highlight-match';
 
@@ -62,7 +59,7 @@ const meta: Meta<typeof Autocomplete> = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -121,7 +118,7 @@ export const WithManualHighlight: Story = {
         <AutocompleteItem
           title={
             <>
-              Tit<Autocomplete.Highlight>le</Autocomplete.Highlight>
+              Tit<AutocompleteHighlight>le</AutocompleteHighlight>
             </>
           }
           leading={<IconSearch />}
@@ -130,8 +127,8 @@ export const WithManualHighlight: Story = {
         <AutocompleteItem
           title={
             <>
-              My <Autocomplete.Highlight>cafe</Autocomplete.Highlight> is a nice{' '}
-              <Autocomplete.Highlight>cafe</Autocomplete.Highlight>
+              My <AutocompleteHighlight>cafe</AutocompleteHighlight> is a nice{' '}
+              <AutocompleteHighlight>cafe</AutocompleteHighlight>
             </>
           }
           leading={<IconSearch />}
@@ -178,8 +175,8 @@ export const HighlightMatchPlayground: StoryObj<HighlightMatchPlaygroundArgs> =
       type: 'modal',
       state: 'default',
       headerTitle: 'Playground',
-      text: "제로월드",
-      query: "제로",
+      text: '제로월드',
+      query: '제로',
     },
     argTypes: {
       text: {
@@ -217,7 +214,7 @@ export const WithSections: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove recent search"
@@ -229,7 +226,7 @@ export const WithSections: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove recent search"
@@ -262,7 +259,7 @@ export const ItemVariantsMatchingFigma: Story = {
           leading={<IconTime />}
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -275,7 +272,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -296,7 +293,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"
@@ -318,7 +315,7 @@ export const ItemVariantsMatchingFigma: Story = {
           bold
           trailing={
             <IconButton
-              type="standard"
+              buttonType="standard"
               color="neutral"
               icon={<IconClose />}
               aria-label="Remove"

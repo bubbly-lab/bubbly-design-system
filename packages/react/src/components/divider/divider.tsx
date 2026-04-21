@@ -2,9 +2,9 @@
 
 import { forwardRef } from 'react';
 import { styled } from 'styled-system/jsx';
-import { divider } from 'styled-system/recipes';
+import { dividerLine } from 'styled-system/recipes';
 
-const StyledDivider = styled('hr', divider);
+const StyledDivider = styled('hr', dividerLine);
 
 export type DividerProps = Parameters<typeof StyledDivider>[0];
 

@@ -33,7 +33,7 @@ export const iconButtonRecipe = defineRecipe({
       brand: {},
       neutral: {},
     },
-    type: {
+    buttonType: {
       solid: {},
       ghost: {},
       outline: {},
@@ -106,7 +106,7 @@ export const iconButtonRecipe = defineRecipe({
     // ── Color: brand + solid ───────────────────────────────────────
     {
       color: 'brand',
-      type: 'solid',
+      buttonType: 'solid',
       css: {
         backgroundColor: 'surface.brand.default',
         color: 'static.white',
@@ -122,7 +122,7 @@ export const iconButtonRecipe = defineRecipe({
     // ── Color: neutral + ghost ─────────────────────────────────────
     {
       color: 'neutral',
-      type: 'ghost',
+      buttonType: 'ghost',
       css: {
         backgroundColor: 'transparent',
         color: 'content.neutral.default',
@@ -143,7 +143,7 @@ export const iconButtonRecipe = defineRecipe({
     // ── Color: neutral + outline ───────────────────────────────────
     {
       color: 'neutral',
-      type: 'outline',
+      buttonType: 'outline',
       css: {
         backgroundColor: 'transparent',
         color: 'content.neutral.default',
@@ -173,7 +173,7 @@ export const iconButtonRecipe = defineRecipe({
     // ── Standard type (bare icon, no bg/padding) ───────────────────
     // Must be LAST — overrides layout compounds above
     {
-      type: 'standard',
+      buttonType: 'standard',
       css: {
         padding: '0',
         backgroundColor: 'transparent',
@@ -202,7 +202,7 @@ export const iconButtonRecipe = defineRecipe({
   ],
   defaultVariants: {
     color: 'brand',
-    type: 'solid',
+    buttonType: 'solid',
     shape: 'square',
     size: 'medium',
   },

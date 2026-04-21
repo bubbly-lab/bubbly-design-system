@@ -1,5 +1,6 @@
 export {
   Autocomplete,
+  AutocompleteHighlight,
   type AutocompleteHighlightProps,
   AutocompleteItem,
   type AutocompleteItemProps,
@@ -32,15 +33,19 @@ export {
   type SectionHeaderProps,
 } from './components/section-header';
 export { Skeleton, type SkeletonProps } from './components/skeleton';
-export type {
-  ItemContentProps,
-  ItemProps,
-  TabsContentProps,
-  TabsListProps,
-  TabsRootProps,
-  TabsTriggerProps,
+export {
+  TabContent,
+  type TabContentProps,
+  TabItem,
+  TabItemContent,
+  type TabItemContentProps,
+  type TabItemProps,
+  TabList,
+  type TabListProps,
+  Tabs,
+  type TabsProps,
+  type TabTriggerProps,
 } from './components/tabs';
-export { Tabs } from './components/tabs';
 export { TextButton, type TextButtonProps } from './components/text-button';
 export { Thumbnail, type ThumbnailProps } from './components/thumbnail';
 export {

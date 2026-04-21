@@ -15,7 +15,7 @@ export function useTabsStyles() {
   const context = useContext(TabsStylesContext);
 
   if (!context) {
-    throw new Error('Tabs components must be used within Tabs.Root.');
+    throw new Error('Tabs sub-components must be used within <Tabs>.');
   }
 
   return context.styles;

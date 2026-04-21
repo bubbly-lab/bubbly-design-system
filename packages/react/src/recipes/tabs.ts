@@ -26,7 +26,6 @@ export const tabsRecipe = defineSlotRecipe({
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '48px',
       minWidth: '0',
       paddingInline: '20',
       paddingBlock: '12',
@@ -54,6 +53,9 @@ export const tabsRecipe = defineSlotRecipe({
     },
     indicator: {
       position: 'absolute',
+      // Figma places the 2px indicator inside TabItem; our DOM puts it on the
+      // list with absolute positioning so the -1px offset overlaps list's 1px
+      // bottom border to render a visually continuous underline.
       bottom: '-1px',
       left: 0,
       height: '2px',
@@ -85,7 +87,7 @@ export const tabsRecipe = defineSlotRecipe({
         },
       },
     },
-    padding: {
+    padded: {
       true: {
         list: {
           paddingInline: '20',
@@ -100,6 +102,6 @@ export const tabsRecipe = defineSlotRecipe({
   },
   defaultVariants: {
     layout: 'scrollable',
-    padding: true,
+    padded: true,
   },
 });

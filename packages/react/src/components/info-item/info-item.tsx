@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from 'react';
 import { cx } from 'styled-system/css';
-import { infoList } from 'styled-system/recipes';
+import { infoItem } from 'styled-system/recipes';
 
 export const INFO_ITEM_DISPLAY_NAME = 'InfoItem';
 
@@ -18,10 +18,10 @@ export interface InfoItemProps
 
 export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
   function InfoItem({ className, label, prefixIcon, ...props }, ref) {
-    const styles = infoList();
+    const styles = infoItem();
 
     return (
-      <div ref={ref} className={cx(styles.item, className)} {...props}>
+      <div ref={ref} className={cx(styles.root, className)} {...props}>
         {prefixIcon ? (
           <span className={styles.icon} aria-hidden="true">
             {prefixIcon}

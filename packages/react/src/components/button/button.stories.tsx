@@ -198,7 +198,7 @@ export const AllStates: Story = {
   ),
 };
 
-export const WidthFill: Story = {
+export const WidthFull: Story = {
   render: () => (
     <div
       style={{

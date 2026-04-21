@@ -16,7 +16,7 @@ type IconProps =
 
 export type TextButtonProps = Omit<StyledButtonProps, 'children'> &
   IconProps & {
-    children?: ReactNode;
+    children: ReactNode;
   };
 
 const iconWrapperStyle: CSSProperties = {

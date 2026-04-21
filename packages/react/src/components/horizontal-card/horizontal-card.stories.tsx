@@ -14,8 +14,8 @@ const meta: Meta = {
   component: HorizontalCard,
   argTypes: {
     size: { control: 'select', options: variantMap.size },
-    zoom: { control: 'boolean' },
-    border: { control: 'boolean' },
+    zoomed: { control: 'boolean' },
+    bordered: { control: 'boolean' },
     loading: { control: 'boolean' },
     src: { control: 'text' },
     cardTitle: { control: 'text' },
@@ -29,8 +29,8 @@ const meta: Meta = {
   args: {
     style: { width: '308px' },
     size: 'small',
-    zoom: true,
-    border: false,
+    zoomed: true,
+    bordered: false,
     loading: false,
     src: DEMO_IMG,
     cardTitle: 'Title',
@@ -45,8 +45,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: ({
     size,
-    zoom,
-    border,
+    zoomed,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -61,8 +61,8 @@ export const Default: Story = {
         alt="Demo"
         ratio="1:1"
         radius="full"
-        zoom={zoom}
-        border={border}
+        zoomed={zoomed}
+        bordered={bordered}
         loading={loading}
       />
       <CardHeader
@@ -78,8 +78,8 @@ export const Default: Story = {
 
 export const AllSizes: Story = {
   render: ({
-    zoom,
-    border,
+    zoomed,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -96,8 +96,8 @@ export const AllSizes: Story = {
               alt={`${size} demo`}
               ratio="1:1"
               radius="full"
-              zoom={zoom}
-              border={border}
+              zoomed={zoomed}
+              bordered={bordered}
               loading={loading}
             />
             <CardHeader
@@ -118,8 +118,8 @@ export const FillsParent: Story = {
   args: { style: undefined },
   render: ({
     size,
-    zoom,
-    border,
+    zoomed,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -137,8 +137,8 @@ export const FillsParent: Story = {
               alt={width}
               ratio="1:1"
               radius="full"
-              zoom={zoom}
-              border={border}
+              zoomed={zoomed}
+              bordered={bordered}
               loading={loading}
             />
             <CardHeader
@@ -156,15 +156,23 @@ export const FillsParent: Story = {
 };
 
 export const LongText: Story = {
-  render: ({ size, zoom, border, loading, src, captionPosition, ...args }) => (
+  render: ({
+    size,
+    zoomed,
+    bordered,
+    loading,
+    src,
+    captionPosition,
+    ...args
+  }) => (
     <HorizontalCard size={size} {...args}>
       <Thumbnail
         src={loading ? undefined : src}
         alt="Long text demo"
         ratio="1:1"
         radius="full"
-        zoom={zoom}
-        border={border}
+        zoomed={zoomed}
+        bordered={bordered}
         loading={loading}
       />
       <CardHeader
@@ -181,8 +189,8 @@ export const LongText: Story = {
 export const NarrowContainer: Story = {
   args: { style: undefined },
   render: ({
-    zoom,
-    border,
+    zoomed,
+    bordered,
     loading,
     src,
     cardTitle,
@@ -199,8 +207,8 @@ export const NarrowContainer: Story = {
               alt="Narrow"
               ratio="1:1"
               radius="full"
-              zoom={zoom}
-              border={border}
+              zoomed={zoomed}
+              bordered={bordered}
               loading={loading}
             />
             <CardHeader

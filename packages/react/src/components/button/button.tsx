@@ -17,7 +17,7 @@ type IconProps =
 export type ButtonProps = Omit<StyledButtonProps, 'children'> &
   IconProps & {
     loading?: boolean;
-    children?: ReactNode;
+    children: ReactNode;
   };
 
 const iconWrapperStyle: CSSProperties = {
@@ -56,6 +56,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         data-disabled={disabled || undefined}
         data-loading={loading || undefined}
+        aria-busy={loading || undefined}
         style={{
           ...style,
           ...(loading && !disabled ? { cursor: 'default' } : {}),

@@ -1,12 +1,16 @@
 {
   "name": "@bubbly-design-system/react",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Bubbly Design System React components built on Panda CSS and Ark UI.",
   "type": "module",
   "keywords": [
     "bubbly-design-system",
     "bubbly-lab",
-    "design-system"
+    "design-system",
+    "react",
+    "components",
+    "panda-css",
+    "ark-ui"
   ],
   "homepage": "https://github.com/rumyscape/bubbly-design-system",
   "repository": {
@@ -16,6 +20,14 @@
   },
   "author": "@bubbly-lab/dev",
   "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": {
@@ -47,7 +59,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.34.1",
-    "@bubbly-design-system/icons": "^0.1.0"
+    "@bubbly-design-system/icons": "workspace:^"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.52.0",
