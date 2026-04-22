@@ -84,6 +84,9 @@ importers:
         specifier: workspace:^
         version: link:../icons
     devDependencies:
+      '@bubbly-design-system/design-tokens':
+        specifier: workspace:^
+        version: link:../design-tokens
       '@pandacss/dev':
         specifier: ^0.52.0
         version: 0.52.0(typescript@5.9.3)
