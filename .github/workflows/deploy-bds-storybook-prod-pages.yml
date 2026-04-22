@@ -44,4 +44,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./packages/react/storybook-static --project-name=bds-storybook --branch=main
+          command: pages deploy ./packages/react/storybook-static --project-name=bds-storybook --branch=main --commit-dirty=true --commit-hash=${{ github.sha }} --commit-message=${{ github.sha }}

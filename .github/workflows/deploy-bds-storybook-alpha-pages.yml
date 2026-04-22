@@ -46,7 +46,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./packages/react/storybook-static --project-name=bds-storybook --branch=${{ github.ref_name }}
+          command: pages deploy ./packages/react/storybook-static --project-name=bds-storybook --branch=${{ github.ref_name }} --commit-dirty=true --commit-hash=${{ github.sha }} --commit-message=${{ github.sha }}
 
       - name: Find related PR
         id: pr
