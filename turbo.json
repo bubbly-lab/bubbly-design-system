@@ -16,6 +16,10 @@
     },
     "generate": {
       "cache": false
+    },
+    "build-storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
     }
   }
 }
