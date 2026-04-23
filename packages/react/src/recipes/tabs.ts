@@ -43,24 +43,31 @@ export const tabsRecipe = defineSlotRecipe({
       textOverflow: 'ellipsis',
       cursor: 'pointer',
       flexShrink: 0,
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: '2px',
+        backgroundColor: 'surface.neutral.inverse',
+        pointerEvents: 'none',
+        opacity: 0,
+        zIndex: 1,
+      },
       _focusVisible: {
         boxShadow:
           '0 0 0 2px var(--colors-neutral-600), 0 0 0 4px var(--colors-neutral-50)',
       },
       '&[data-selected]': {
         color: 'content.neutral.strong',
+        '&::after': {
+          opacity: 1,
+        },
       },
     },
     indicator: {
-      position: 'absolute',
-      // Figma places the 2px indicator inside TabItem; our DOM puts it on the
-      // list with absolute positioning so the -1px offset overlaps list's 1px
-      // bottom border to render a visually continuous underline.
-      bottom: '-1px',
-      left: 0,
-      height: '2px',
-      backgroundColor: 'surface.neutral.inverse',
-      pointerEvents: 'none',
+      display: 'none',
     },
     content: {
       outline: 'none',
