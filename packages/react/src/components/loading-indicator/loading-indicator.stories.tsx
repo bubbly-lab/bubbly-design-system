@@ -5,6 +5,15 @@ import { LoadingIndicator } from './loading-indicator';
 const meta: Meta<typeof LoadingIndicator> = {
   title: 'Components/LoadingIndicator',
   component: LoadingIndicator,
+  argTypes: {
+    color: {
+      control: 'select',
+      options: ['content.neutral.default', 'content.brand.default'],
+    },
+  },
+  args: {
+    color: 'content.brand.default',
+  },
 };
 
 export default meta;
@@ -14,7 +23,7 @@ type Story = StoryObj<typeof LoadingIndicator>;
 export const Default: Story = {};
 
 export const CustomSizes: Story = {
-  render: () => (
+  render: args => (
     <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
       {[16, 24, 40, 64].map(size => (
         <div
@@ -27,6 +36,7 @@ export const CustomSizes: Story = {
           }}
         >
           <LoadingIndicator
+            {...args}
             style={{ width: `${size}px`, height: `${size}px` }}
           />
           <span
