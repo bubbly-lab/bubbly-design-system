@@ -18,6 +18,7 @@ Each package may have its own `AGENTS.md` with rules scoped to that directory. *
 | Package | Path | Key Rule |
 |---------|------|----------|
 | `@bubbly-design-system/icons` | [`packages/icons/AGENTS.md`](packages/icons/AGENTS.md) | Most files are auto-generated — do not edit directly |
+| `@bubbly-design-system/react` | [`packages/react/AGENTS.md`](packages/react/AGENTS.md) | Stateful Storybook stories: split between `useArgs` (simple controlled props) and named component + `useState` (complex flows) |
 
 ## Commands
 
