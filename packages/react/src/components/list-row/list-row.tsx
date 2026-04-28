@@ -80,9 +80,7 @@ export const ListRow = forwardRef<HTMLDivElement, ListRowProps>(
           ) : null}
         </div>
         {trailing != null ? (
-          <span className={styles.trailing} aria-hidden="true">
-            {trailing}
-          </span>
+          <span className={styles.trailing}>{trailing}</span>
         ) : null}
       </ark.div>
     );
