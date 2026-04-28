@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import { Button } from '../button';
 import { IconButton } from '../icon-button';
-import { SectionHeader } from '../section-header';
 import { Thumbnail } from '../thumbnail';
 import { Autocomplete, type AutocompleteProps } from './autocomplete';
 import { AutocompleteHighlight } from './autocomplete-highlight';
@@ -221,51 +220,6 @@ export const HighlightMatchPlayground: StoryObj<HighlightMatchPlaygroundArgs> =
       </div>
     ),
   };
-
-export const WithSections: Story = {
-  render: args => (
-    <div style={{ fontFamily: 'var(--fonts-sans)' }}>
-      <Autocomplete {...args}>
-        <SectionHeader title="최근 검색" />
-        <AutocompleteItem
-          title="제주 카페"
-          leading={<IconTime />}
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove recent search"
-            />
-          }
-        />
-        <AutocompleteItem
-          title="바다 전망"
-          leading={<IconTime />}
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove recent search"
-            />
-          }
-        />
-        <SectionHeader title="추천" />
-        <AutocompleteItem
-          title={highlightMatch('제주 카페 추천', '제주')}
-          leading={<IconSearch />}
-          bold
-        />
-        <AutocompleteItem
-          title={highlightMatch('제주도 브런치', '제주')}
-          leading={<IconSearch />}
-          bold
-        />
-      </Autocomplete>
-    </div>
-  ),
-};
 
 export const ItemVariantsMatchingFigma: Story = {
   name: 'AutocompleteItem variants (Figma)',
