@@ -48,7 +48,7 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
         aria-busy={state === 'loading' || undefined}
         {...rest}
       >
-        {headerTitle !== undefined ? (
+        {headerTitle ? (
           <div className={styles.header}>
             <SectionHeader title={headerTitle} size="medium" />
           </div>
