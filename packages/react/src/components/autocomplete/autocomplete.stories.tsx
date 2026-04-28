@@ -1,5 +1,6 @@
 import { IconClose, IconSearch, IconTime } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { Button } from '../button';
 import { IconButton } from '../icon-button';
@@ -9,6 +10,50 @@ import { Autocomplete, type AutocompleteProps } from './autocomplete';
 import { AutocompleteHighlight } from './autocomplete-highlight';
 import { AutocompleteItem } from './autocomplete-item';
 import { highlightMatch } from './highlight-match';
+
+const INITIAL_RECENT_ITEMS = ['강남 브런치'];
+
+function DefaultRender(args: AutocompleteProps) {
+  const [recentItems, setRecentItems] =
+    useState<Array<string>>(INITIAL_RECENT_ITEMS);
+
+  const handleRemove = (item: string) => {
+    setRecentItems(prev => prev.filter(i => i !== item));
+  };
+
+  return (
+    <div style={{ fontFamily: 'var(--fonts-sans)' }}>
+      <Autocomplete {...args}>
+        <AutocompleteItem
+          title={highlightMatch('제주 카페 추천', '제주')}
+          leading={<IconSearch />}
+          bold
+        />
+        <AutocompleteItem
+          title={highlightMatch('제주도 바다 전망', '제주')}
+          leading={<IconSearch />}
+          bold
+        />
+        {recentItems.map(item => (
+          <AutocompleteItem
+            key={item}
+            title={item}
+            leading={<IconTime />}
+            trailing={
+              <IconButton
+                buttonType="standard"
+                color="neutral"
+                icon={<IconClose />}
+                aria-label={`Remove ${item}`}
+                onClick={() => handleRemove(item)}
+              />
+            }
+          />
+        ))}
+      </Autocomplete>
+    </div>
+  );
+}
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Components/Autocomplete',
@@ -41,34 +86,7 @@ const meta: Meta<typeof Autocomplete> = {
   globals: {
     backgrounds: { value: 'darker' },
   },
-  render: args => (
-    <div style={{ fontFamily: 'var(--fonts-sans)' }}>
-      <Autocomplete {...args}>
-        <AutocompleteItem
-          title={highlightMatch('제주 카페 추천', '제주')}
-          leading={<IconSearch />}
-          bold
-        />
-        <AutocompleteItem
-          title={highlightMatch('제주도 바다 전망', '제주')}
-          leading={<IconSearch />}
-          bold
-        />
-        <AutocompleteItem
-          title="강남 브런치"
-          leading={<IconTime />}
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove"
-            />
-          }
-        />
-      </Autocomplete>
-    </div>
-  ),
+  render: args => <DefaultRender {...args} />,
 };
 
 export default meta;
