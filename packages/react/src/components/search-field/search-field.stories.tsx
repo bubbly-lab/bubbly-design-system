@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { SearchField } from './search-field';
+import { useArgs } from 'storybook/preview-api';
+import { SearchField, type SearchFieldProps } from './search-field';
 
 const meta: Meta<typeof SearchField> = {
   title: 'Components/SearchField',
@@ -43,32 +43,35 @@ export const Filled: Story = {
 };
 
 export const Controlled: Story = {
-  render: args => {
-    const ControlledExample = () => {
-      const [value, setValue] = useState('제주');
-      return (
-        <div
-          style={{
-            width: '360px',
-            fontFamily: 'var(--fonts-sans)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px',
-          }}
-        >
-          <SearchField
-            {...args}
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            onClear={() => setValue('')}
-          />
-          <div style={{ color: '#999', fontSize: '12px' }}>
-            value: <code>{JSON.stringify(value)}</code>
-          </div>
+  args: {
+    value: '제주',
+  },
+  argTypes: {
+    value: { control: 'text' },
+  },
+  render: function Controlled(args) {
+    const [{ value }, updateArgs] = useArgs<SearchFieldProps>();
+    return (
+      <div
+        style={{
+          width: '360px',
+          fontFamily: 'var(--fonts-sans)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+        }}
+      >
+        <SearchField
+          {...args}
+          value={value}
+          onChange={e => updateArgs({ value: e.target.value })}
+          onClear={() => updateArgs({ value: '' })}
+        />
+        <div style={{ color: '#999', fontSize: '12px' }}>
+          value: <code>{JSON.stringify(value)}</code>
         </div>
-      );
-    };
-    return <ControlledExample />;
+      </div>
+    );
   },
 };
 

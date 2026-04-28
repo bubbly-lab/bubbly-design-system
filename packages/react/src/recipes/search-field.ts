@@ -31,7 +31,12 @@ export const searchFieldRecipe = defineSlotRecipe({
           borderColor: 'border.neutral.subtle-hover',
         },
       },
-      _focusWithin: {
+      // Keyboard-only ring (Figma spec: "active" state has no ring; only
+      // "focus"). The `data-keyboard-focus` attribute is set by SearchField
+      // when focus arrived via keyboard (Tab/arrow). CSS `:focus-visible`
+      // alone is unreliable here — browsers always match it for text inputs
+      // regardless of input modality.
+      '&[data-keyboard-focus]': {
         boxShadow:
           '0 0 0 2px var(--colors-neutral-600), 0 0 0 4px var(--colors-neutral-50)',
       },
