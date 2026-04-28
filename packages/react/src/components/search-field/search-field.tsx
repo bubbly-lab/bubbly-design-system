@@ -4,16 +4,50 @@ import { ark } from '@ark-ui/react/factory';
 import { IconCloseCircle, IconSearch } from '@bubbly-design-system/icons';
 import {
   type ChangeEvent,
+  type FocusEvent,
   forwardRef,
   type InputHTMLAttributes,
   type MouseEvent,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react';
 import { cx } from 'styled-system/css';
 import { searchField } from 'styled-system/recipes';
 import { IconButton } from '../icon-button';
+
+// Module-level input modality tracker. Browsers' `:focus-visible` heuristic
+// always matches for text inputs regardless of how focus arrived, so we
+// can't rely on CSS alone to distinguish mouse-focus from keyboard-focus
+// when the focused element is an <input type="text"|"search">. Following
+// the react-aria pattern: track the user's last input modality globally,
+// then read it at focus time. Listeners are attached once per page.
+type InputModality = 'pointer' | 'keyboard';
+let lastInputModality: InputModality = 'pointer';
+let modalityListenersAttached = false;
+
+function ensureModalityListeners(): void {
+  if (modalityListenersAttached || typeof window === 'undefined') return;
+  modalityListenersAttached = true;
+  const setPointer = (): void => {
+    lastInputModality = 'pointer';
+  };
+  const handleKey = (e: KeyboardEvent): void => {
+    if (
+      e.key === 'Tab' ||
+      e.key === 'ArrowUp' ||
+      e.key === 'ArrowDown' ||
+      e.key === 'ArrowLeft' ||
+      e.key === 'ArrowRight'
+    ) {
+      lastInputModality = 'keyboard';
+    }
+  };
+  window.addEventListener('mousedown', setPointer, true);
+  window.addEventListener('touchstart', setPointer, true);
+  window.addEventListener('keydown', handleKey, true);
+}
 
 export type SearchFieldProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -39,6 +73,8 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       value,
       defaultValue,
       onChange,
+      onFocus,
+      onBlur,
       onClear,
       className,
       style,
@@ -54,7 +90,12 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
     const [uncontrolledHasValue, setUncontrolledHasValue] = useState(
       Boolean(defaultValue),
     );
+    const [isKeyboardFocus, setIsKeyboardFocus] = useState(false);
     const hasValue = isControlled ? Boolean(value) : uncontrolledHasValue;
+
+    useEffect(() => {
+      ensureModalityListeners();
+    }, []);
 
     const setRefs = useCallback(
       (node: HTMLInputElement | null) => {
@@ -72,6 +113,22 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       if (!isControlled) setUncontrolledHasValue(Boolean(e.target.value));
       onChange?.(e);
     };
+
+    const handleFocus = useCallback(
+      (e: FocusEvent<HTMLInputElement>) => {
+        setIsKeyboardFocus(lastInputModality === 'keyboard');
+        onFocus?.(e);
+      },
+      [onFocus],
+    );
+
+    const handleBlur = useCallback(
+      (e: FocusEvent<HTMLInputElement>) => {
+        setIsKeyboardFocus(false);
+        onBlur?.(e);
+      },
+      [onBlur],
+    );
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       // Prevent implicit form submission when SearchField is inside a <form>.
@@ -99,6 +156,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
         className={cx(styles.root, className)}
         style={style}
         onClick={handleRootClick}
+        data-keyboard-focus={isKeyboardFocus ? '' : undefined}
       >
         <span className={styles.icon} aria-hidden>
           <IconSearch />
@@ -110,6 +168,8 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
           value={value}
           defaultValue={defaultValue}
           onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           className={styles.input}
         />
         {hasValue && (
