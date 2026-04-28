@@ -1,3 +1,4 @@
+import { IconChevronRight } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { sectionHeader } from 'styled-system/recipes';
 import { SectionHeader } from './section-header';
@@ -49,7 +50,7 @@ export const WithIconButton: Story = {
   args: {
     trailing: 'iconButton',
     trailingAriaLabel: 'Open section actions',
-    trailingIcon: <span aria-hidden="true">⋯</span>,
+    trailingIcon: <IconChevronRight />,
   },
   render: args => (
     <div style={{ width: '360px' }}>
@@ -62,7 +63,7 @@ export const WithTextButton: Story = {
   args: {
     trailing: 'textButton',
     trailingLabel: '더보기',
-    trailingSuffixIcon: <span aria-hidden="true">›</span>,
+    trailingSuffixIcon: <IconChevronRight />,
   },
   render: args => (
     <div style={{ width: '360px' }}>
@@ -117,7 +118,7 @@ export const LongContent: Story = {
           title="This is a very long section title that should truncate before the trailing action"
           trailing="iconButton"
           trailingAriaLabel="Open section actions"
-          trailingIcon={<span aria-hidden="true">+</span>}
+          trailingIcon={<IconChevronRight />}
         />
       </div>
       <div style={{ width: '360px' }}>
@@ -149,7 +150,7 @@ function renderVariantRow(
           title="Title"
           trailing="iconButton"
           trailingAriaLabel="Open section actions"
-          trailingIcon={<span aria-hidden="true">⋯</span>}
+          trailingIcon={<IconChevronRight />}
         />
       </div>
     );
@@ -166,7 +167,7 @@ function renderVariantRow(
           title="Title"
           trailing="textButton"
           trailingLabel="더보기"
-          trailingSuffixIcon={<span aria-hidden="true">›</span>}
+          trailingSuffixIcon={<IconChevronRight />}
         />
       </div>
     );
