@@ -76,7 +76,7 @@ export function Example() {
 
 ## 기여
 
-이 패키지는 [bubbly-lab/bubbly-design-system](https://github.com/rumyscape/bubbly-design-system) 모노레포의 일부입니다. 개발 규약은 루트 [`AGENTS.md`](https://github.com/rumyscape/bubbly-design-system/blob/main/AGENTS.md)를 참고하세요.
+이 패키지는 [bubbly-lab/bubbly-design-system](https://github.com/bubbly-lab/bubbly-design-system) 모노레포의 일부입니다. 개발 규약은 루트 [`AGENTS.md`](https://github.com/bubbly-lab/bubbly-design-system/blob/main/AGENTS.md)를 참고하세요.
 
 ## 라이선스
 
