@@ -11,7 +11,7 @@
     "storybook:icons": "pnpm --filter @bubbly-design-system/icons storybook",
     "build-storybook:react": "turbo run build-storybook --filter=@bubbly-design-system/react",
     "changeset": "changeset",
-    "ci:publish": "cd packages/icons && npm publish --provenance --access public"
+    "ci:publish": "changeset publish"
   },
   "engines": {
     "node": ">=24"
