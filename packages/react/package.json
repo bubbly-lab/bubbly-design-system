@@ -12,10 +12,10 @@
     "panda-css",
     "ark-ui"
   ],
-  "homepage": "https://github.com/rumyscape/bubbly-design-system",
+  "homepage": "https://github.com/bubbly-lab/bubbly-design-system",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rumyscape/bubbly-design-system.git",
+    "url": "git+https://github.com/bubbly-lab/bubbly-design-system.git",
     "directory": "packages/react"
   },
   "author": "@bubbly-lab/dev",
@@ -26,7 +26,8 @@
     "LICENSE"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "exports": {
     ".": {
