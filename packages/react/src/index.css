@@ -1,3 +1,10 @@
+/*
+ * Storybook 전용 entry — `panda cssgen`이 생성하는 publish용 `dist/styles.css`에는 포함되지 않습니다.
+ * 패키지 사용자가 받는 폰트 로드 정책은 README의 "폰트 설정" 섹션을 참고하세요.
+ */
+
+/* Pretendard (dynamic subset) — Storybook 캔버스에서만 로드됩니다. */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 
+/* Panda PostCSS 플러그인이 generated CSS를 layer에 inject하기 위해 필수로 필요한 선언입니다. */
 @layer reset, base, tokens, recipes, utilities;

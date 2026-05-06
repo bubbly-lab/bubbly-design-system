@@ -34,7 +34,40 @@ import '@bubbly-design-system/react/styles.css';
 
 > Panda CSS의 preflight(CSS 리셋)는 **비활성** 상태입니다. 필요하다면 별도의 리셋(예: `modern-normalize`)을 직접 적용하세요.
 
-### 2. 컴포넌트 사용
+### 2. 폰트 설정 (Pretendard)
+
+이 디자인시스템은 **Pretendard** 를 기본 폰트로 가정합니다. 패키지는 폰트를 번들하지 않으므로 (dynamic subsetting 보존 및 중복 로드 회피) 호스트 앱에서 다음 중 한 가지 방법으로 직접 로드해주세요.
+
+#### A. CSS에서 `@import`
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+```
+
+#### B. HTML `<head>` (예: Next.js App Router의 `app/layout.tsx`)
+
+```html
+<link
+  rel="stylesheet"
+  as="style"
+  crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+/>
+```
+
+#### C. Self-host (npm 패키지)
+
+```bash
+pnpm add pretendard
+```
+
+```css
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+```
+
+> 폰트를 로드하지 않으면 컴포넌트들은 시스템 폰트로 fallback 됩니다 (`sans-serif`).
+
+### 3. 컴포넌트 사용
 
 ```tsx
 import { Button, SearchField, Tabs, TabItem } from '@bubbly-design-system/react';
