@@ -10,5 +10,10 @@ export const loadingIndicatorRecipe = defineRecipe({
     flexShrink: 0,
     width: '24',
     height: '24',
+    '& > svg': {
+      width: '100%',
+      height: '100%',
+      animation: 'spin 0.8s linear infinite',
+    },
   },
 });

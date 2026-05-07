@@ -45,6 +45,11 @@ export default defineConfig({
           opacity: 0.5,
         },
       },
+      spin: {
+        to: {
+          transform: 'rotate(360deg)',
+        },
+      },
     },
     recipes: {
       autocomplete: autocompleteRecipe,
