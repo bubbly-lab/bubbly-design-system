@@ -41,7 +41,6 @@ const renderTabs = (tabs: string[], args: TabsProps) => (
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',
   component: Tabs,
-
   argTypes: {
     layout: {
       control: 'select',
@@ -51,7 +50,6 @@ const meta: Meta<typeof Tabs> = {
       control: 'boolean',
     },
   },
-
   args: {
     defaultValue: 'overview',
     layout: 'scrollable',
