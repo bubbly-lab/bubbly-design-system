@@ -12,6 +12,12 @@ const DEMO_IMG = 'https://picsum.photos/seed/bubbly-hcard/200/200';
 const meta: Meta = {
   title: 'Components/HorizontalCard',
   component: HorizontalCard,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
     zoomed: { control: 'boolean' },

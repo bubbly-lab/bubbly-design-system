@@ -20,6 +20,12 @@ function isValidCombination(ratio: string, radius: string) {
 const meta: Meta<typeof Thumbnail> = {
   title: 'Components/Thumbnail',
   component: Thumbnail,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     ratio: { control: 'select', options: variantMap.ratio },
     radius: { control: 'select', options: variantMap.radius },

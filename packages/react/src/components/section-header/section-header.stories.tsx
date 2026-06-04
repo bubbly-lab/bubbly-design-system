@@ -8,6 +8,12 @@ const { variantMap } = sectionHeader;
 const meta: Meta<typeof SectionHeader> = {
   title: 'Components/SectionHeader',
   component: SectionHeader,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
     trailing: { control: 'select', options: variantMap.trailing },

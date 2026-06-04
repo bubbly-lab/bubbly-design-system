@@ -9,6 +9,12 @@ const DEMO_IMG =
 const meta: Meta<typeof Dimmed> = {
   title: 'Components/Dimmed',
   component: Dimmed,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=4635-7626',
+    },
+  },
   argTypes: {
     blurred: { control: 'boolean' },
   },

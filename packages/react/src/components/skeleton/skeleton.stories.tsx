@@ -7,6 +7,12 @@ const { variantMap } = skeleton;
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Skeleton',
   component: Skeleton,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=433-910',
+    },
+  },
   argTypes: {
     radius: { control: 'select', options: variantMap.radius },
   },

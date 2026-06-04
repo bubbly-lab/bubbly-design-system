@@ -5,6 +5,12 @@ import { Divider } from './divider';
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider',
   component: Divider,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2742-854',
+    },
+  },
   argTypes: {
     type: {
       control: 'select',

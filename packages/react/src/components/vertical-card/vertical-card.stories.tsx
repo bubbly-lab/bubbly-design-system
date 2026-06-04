@@ -12,6 +12,12 @@ const DEMO_IMG = 'https://picsum.photos/seed/bubbly-vcard/300/400';
 const meta: Meta = {
   title: 'Components/VerticalCard',
   component: VerticalCard,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     zoomed: { control: 'boolean' },
     ratio: { control: 'select', options: thumbnailVariants.ratio },

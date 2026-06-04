@@ -8,6 +8,12 @@ const { variantMap } = cardHeader;
 const meta: Meta<typeof CardHeader> = {
   title: 'Components/CardHeader',
   component: CardHeader,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     captionPosition: {
       control: 'select',

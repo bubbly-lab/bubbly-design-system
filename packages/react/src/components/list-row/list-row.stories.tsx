@@ -16,6 +16,12 @@ const { variantMap } = listRow;
 const meta: Meta<typeof ListRow> = {
   title: 'Components/ListRow',
   component: ListRow,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=3156-6303',
+    },
+  },
   argTypes: {
     title: { control: 'text' },
     detail: { control: 'text' },

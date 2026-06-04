@@ -15,6 +15,12 @@ const { variantMap } = infoList;
 const meta: Meta<typeof InfoList> = {
   title: 'Components/InfoList',
   component: InfoList,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=3156-6303',
+    },
+  },
   argTypes: {
     direction: {
       control: 'select',

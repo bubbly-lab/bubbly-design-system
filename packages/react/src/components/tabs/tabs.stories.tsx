@@ -41,6 +41,12 @@ const renderTabs = (tabs: string[], args: TabsProps) => (
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',
   component: Tabs,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=35-1249',
+    },
+  },
   argTypes: {
     layout: {
       control: 'select',

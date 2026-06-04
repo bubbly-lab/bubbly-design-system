@@ -6,6 +6,12 @@ import { InfoItem } from './info-item';
 const meta: Meta<typeof InfoItem> = {
   title: 'Components/InfoItem',
   component: InfoItem,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=3156-6303',
+    },
+  },
   argTypes: {
     label: { control: 'text' },
   },

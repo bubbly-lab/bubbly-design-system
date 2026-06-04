@@ -18,6 +18,12 @@ const DESIGNED_COMBINATIONS = [
 const meta: Meta<typeof IconButton> = {
   title: 'Components/IconButton',
   component: IconButton,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=32-3',
+    },
+  },
   argTypes: {
     color: { control: 'select', options: variantMap.color },
     buttonType: { control: 'select', options: variantMap.buttonType },

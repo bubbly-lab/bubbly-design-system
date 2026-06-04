@@ -76,6 +76,10 @@ const meta: Meta<typeof Autocomplete> = {
     headerTitle: '추천',
   },
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=3004-1001',
+    },
     backgrounds: {
       options: {
         darker: { name: 'Darker', value: 'rgb(0 0 0)' },

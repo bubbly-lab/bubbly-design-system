@@ -8,6 +8,12 @@ const { variantMap } = textButton;
 const meta: Meta<typeof TextButton> = {
   title: 'Components/TextButton',
   component: TextButton,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=32-3',
+    },
+  },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },

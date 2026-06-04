@@ -5,6 +5,12 @@ import { LoadingIndicator } from './loading-indicator';
 const meta: Meta<typeof LoadingIndicator> = {
   title: 'Components/LoadingIndicator',
   component: LoadingIndicator,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=433-910',
+    },
+  },
   argTypes: {
     color: {
       control: 'select',

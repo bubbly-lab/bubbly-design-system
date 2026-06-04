@@ -17,6 +17,12 @@ function isValidCombination(color: string, type: string) {
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=32-3',
+    },
+  },
   argTypes: {
     color: { control: 'select', options: variantMap.color },
     type: { control: 'select', options: variantMap.type },
