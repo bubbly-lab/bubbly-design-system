@@ -22,7 +22,11 @@ const meta: Meta<typeof SearchField> = {
   argTypes: {
     placeholder: { control: 'text' },
     defaultValue: { control: 'text' },
-    clearLabel: { control: 'text' },
+    clearLabel: {
+      control: 'text',
+      description:
+        'aria-label for the clear button. Defaults to "Clear search".',
+    },
   },
   args: {
     placeholder: '테마명 혹은 카페명 검색',

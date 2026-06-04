@@ -30,8 +30,15 @@ const meta: Meta<typeof Thumbnail> = {
     ratio: { control: 'select', options: variantMap.ratio },
     radius: { control: 'select', options: variantMap.radius },
     bordered: { control: 'boolean' },
-    zoomed: { control: 'boolean' },
-    loading: { control: 'boolean' },
+    zoomed: {
+      control: 'boolean',
+      description:
+        'On parent hover, scales the image up (group-hover). Requires a parent with the `group` class, e.g. inside a Card.',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Renders a Skeleton placeholder instead of the image.',
+    },
   },
   args: {
     src: DEMO_IMG_1_1,

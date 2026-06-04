@@ -24,7 +24,11 @@ const meta: Meta<typeof ListRow> = {
   },
   argTypes: {
     title: { control: 'text' },
-    detail: { control: 'text' },
+    detail: {
+      control: 'text',
+      description:
+        'Detail below the title. A string renders as a caption; a string[] renders as an auto InfoList (one InfoItem per entry).',
+    },
     bold: { control: 'boolean' },
   },
   args: {

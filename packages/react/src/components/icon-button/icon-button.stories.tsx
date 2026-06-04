@@ -26,10 +26,19 @@ const meta: Meta<typeof IconButton> = {
   },
   argTypes: {
     color: { control: 'select', options: variantMap.color },
-    buttonType: { control: 'select', options: variantMap.buttonType },
+    buttonType: {
+      control: 'select',
+      options: variantMap.buttonType,
+      description:
+        '`standard` is a bare icon with no background/padding (for inline affordances like a clear button); the others add a surface.',
+    },
     shape: { control: 'select', options: variantMap.shape },
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },
+    'aria-label': {
+      control: 'text',
+      description: 'Required. Accessible name for the icon-only button.',
+    },
   },
   args: {
     icon: <IconArrowRight />,

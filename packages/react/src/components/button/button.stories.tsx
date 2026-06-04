@@ -28,7 +28,11 @@ const meta: Meta<typeof Button> = {
     type: { control: 'select', options: variantMap.type },
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },
-    loading: { control: 'boolean' },
+    loading: {
+      control: 'boolean',
+      description:
+        'Shows a spinner and forces `disabled` + `aria-busy`. Content stays in the DOM (visibility:hidden) so width does not jump.',
+    },
   },
   args: {
     children: 'Button',
