@@ -6,5 +6,6 @@ export {
 export {
   AutocompleteItem,
   type AutocompleteItemProps,
+  type AutocompleteItemType,
 } from './autocomplete-item';
 export { highlightMatch } from './highlight-match';

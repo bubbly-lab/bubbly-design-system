@@ -4,6 +4,7 @@ export {
   type AutocompleteHighlightProps,
   AutocompleteItem,
   type AutocompleteItemProps,
+  type AutocompleteItemType,
   type AutocompleteProps,
   highlightMatch,
 } from './components/autocomplete';
