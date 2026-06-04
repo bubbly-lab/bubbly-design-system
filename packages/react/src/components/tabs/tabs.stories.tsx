@@ -78,3 +78,67 @@ export const Fixed: Story = {
 
   render: args => renderTabs(fixedTabs, args),
 };
+
+export const Padded: Story = {
+  name: 'Padded = false',
+  args: {
+    padded: false,
+  },
+  render: args => renderTabs(fixedTabs, args),
+};
+
+// Auto-composition: when every child is a <TabItem>, <Tabs> generates the
+// TabList + content panels automatically. This is the simplest consumer API.
+export const AutoComposed: Story = {
+  render: args => (
+    <div style={{ width: '607px', fontFamily: 'var(--fonts-sans)' }}>
+      <Tabs {...args}>
+        <TabItem value="overview" label="Overview">
+          Overview panel
+        </TabItem>
+        <TabItem value="details" label="Details">
+          Details panel
+        </TabItem>
+        <TabItem value="activity" label="Activity">
+          Activity panel
+        </TabItem>
+      </Tabs>
+    </div>
+  ),
+};
+
+// Hover/focus preview for tab triggers via the pseudo-states addon, so
+// designers can review trigger states against Figma without hovering.
+export const InteractiveStates: Story = {
+  parameters: {
+    pseudo: {
+      hover: ['#tabs-hover'],
+      focusVisible: ['#tabs-focus'],
+    },
+  },
+  render: args => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px',
+        fontFamily: 'var(--fonts-sans)',
+      }}
+    >
+      <div>
+        <div style={{ marginBottom: '8px', color: '#999', fontSize: '12px' }}>
+          hover
+        </div>
+        {/* biome-ignore lint/correctness/useUniqueElementIds: pseudo-states addon selector target */}
+        <div id="tabs-hover">{renderTabs(fixedTabs, args)}</div>
+      </div>
+      <div>
+        <div style={{ marginBottom: '8px', color: '#999', fontSize: '12px' }}>
+          focus
+        </div>
+        {/* biome-ignore lint/correctness/useUniqueElementIds: pseudo-states addon selector target */}
+        <div id="tabs-focus">{renderTabs(fixedTabs, args)}</div>
+      </div>
+    </div>
+  ),
+};
