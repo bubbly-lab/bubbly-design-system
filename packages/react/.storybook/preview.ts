@@ -20,6 +20,7 @@ const preview: Preview = {
   initialGlobals: {
     backgrounds: { value: 'dark' },
   },
+  tags: ['autodocs'],
 };
 
 export default preview;
