@@ -44,3 +44,23 @@ export const Surface: Story = {
     </div>
   ),
 };
+
+// Realistic placement: a divider separating content blocks, which is how it is
+// actually used. The Stroke/Surface stories show the bare variants in isolation.
+export const InContext: Story = {
+  render: () => (
+    <div
+      style={{
+        width: '320px',
+        fontFamily: 'var(--fonts-sans)',
+        color: 'var(--colors-content-neutral-strong)',
+      }}
+    >
+      <div style={{ padding: '12px 0' }}>첫 번째 섹션</div>
+      <Divider type="stroke" />
+      <div style={{ padding: '12px 0' }}>두 번째 섹션</div>
+      <Divider type="surface" />
+      <div style={{ padding: '12px 0' }}>세 번째 섹션</div>
+    </div>
+  ),
+};

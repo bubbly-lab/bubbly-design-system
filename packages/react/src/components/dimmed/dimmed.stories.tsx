@@ -47,3 +47,40 @@ export const Default: Story = {
     </Thumbnail>
   ),
 };
+
+// Side-by-side proof of the `blurred` axis (Figma: blur true/false). The Default
+// story is Controls-driven; this one makes both states visible at once for QA.
+export const BlurComparison: Story = {
+  render: () => (
+    <div
+      style={{ display: 'flex', gap: '24px', fontFamily: 'var(--fonts-sans)' }}
+    >
+      {[true, false].map(blurred => (
+        <div key={String(blurred)}>
+          <div
+            style={{
+              marginBottom: '8px',
+              color: '#999',
+              fontSize: '12px',
+            }}
+          >
+            blurred = {String(blurred)}
+          </div>
+          <Thumbnail
+            src={DEMO_IMG}
+            alt={`blurred ${String(blurred)}`}
+            ratio="3:4"
+            radius="8px"
+            style={{ width: '200px' }}
+          >
+            <div
+              style={{ position: 'relative', width: '100%', height: '100%' }}
+            >
+              <Dimmed blurred={blurred} />
+            </div>
+          </Thumbnail>
+        </div>
+      ))}
+    </div>
+  ),
+};

@@ -172,3 +172,24 @@ export const AllVariants: Story = {
     </div>
   ),
 };
+
+// `wrapped` lets a horizontal list flow onto multiple lines instead of staying
+// on a single nowrap row. Used internally by ListRow's infoList detail.
+export const Wrapped: Story = {
+  args: {
+    direction: 'horizontal',
+    wrapped: true,
+  },
+  render: args => (
+    <div style={{ width: '200px', fontFamily: 'var(--fonts-sans)' }}>
+      <InfoList {...args}>
+        <InfoItem label="Action" />
+        <InfoItem label="Comedy" />
+        <InfoItem label="Drama" />
+        <InfoItem label="Thriller" />
+        <InfoItem label="Romance" />
+        <InfoItem label="Documentary" />
+      </InfoList>
+    </div>
+  ),
+};
