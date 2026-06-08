@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { button } from 'styled-system/recipes';
 import { Button } from './button';
 
@@ -42,14 +43,40 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { onClick: fn() },
+  // B1 happy: 클릭 시 onClick이 1회 호출된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
+  // B3 regression: disabled면 [disabled] 속성이 붙고 onClick이 호출되지 않는다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await expect(button).toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const Loading: Story = {
-  args: { loading: true },
+  args: { loading: true, onClick: fn(), 'aria-label': 'Button' },
+  // B2 edge: loading면 aria-busy='true' + disabled로 onClick이 억제된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await expect(button).toHaveAttribute('aria-busy', 'true');
+    await expect(button).toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const AllVariants: Story = {
@@ -196,7 +223,12 @@ export const AllStates: Story = {
                   <Button color={color} type={type} disabled>
                     Disabled
                   </Button>
-                  <Button color={color} type={type} loading>
+                  <Button
+                    color={color}
+                    type={type}
+                    loading
+                    aria-label="Loading"
+                  >
                     Loading
                   </Button>
                 </div>

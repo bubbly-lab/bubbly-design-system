@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from 'storybook/preview-api';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { SearchField, type SearchFieldProps } from './search-field';
 
 const meta: Meta<typeof SearchField> = {
@@ -75,17 +76,46 @@ export const Controlled: Story = {
           onChange={e => updateArgs({ value: e.target.value })}
           onClear={() => updateArgs({ value: '' })}
         />
-        <div style={{ color: '#999', fontSize: '12px' }}>
+        <div
+          style={{
+            color: 'var(--colors-content-neutral-strong)',
+            fontSize: '12px',
+          }}
+        >
           value: <code>{JSON.stringify(value)}</code>
         </div>
       </div>
     );
+  },
+  // SF1 happy: controlled value가 input에 반영되고 clear 버튼이 노출된다.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('searchbox');
+    await expect(input).toHaveValue('제주');
+    await expect(
+      canvas.getByRole('button', { name: 'Clear search' }),
+    ).toBeInTheDocument();
   },
 };
 
 export const Uncontrolled: Story = {
   args: {
     defaultValue: 'uncontrolled value',
+  },
+  // SF2 edge: uncontrolled 입력에 타이핑 시 value가 누적되고,
+  // SF3 regression: clear 버튼 클릭 시 비워지며 clear 버튼이 사라진다.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('searchbox');
+    await expect(input).toHaveValue('uncontrolled value');
+    await userEvent.click(canvas.getByRole('button', { name: 'Clear search' }));
+    await waitFor(() => {
+      expect(input).toHaveValue('');
+    });
+    await userEvent.type(input, '제주', { delay: 1 });
+    await waitFor(() => {
+      expect(input).toHaveValue('제주');
+    });
   },
 };
 

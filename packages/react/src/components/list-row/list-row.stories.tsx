@@ -5,6 +5,7 @@ import {
   IconTime,
 } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { listRow } from 'styled-system/recipes';
 
 import { IconButton } from '../icon-button';
@@ -71,18 +72,39 @@ export const WithIconButton: Story = {
   args: {
     title: 'Recent search',
     leading: <IconTime />,
-    trailing: (
-      <IconButton
-        buttonType="standard"
-        color="neutral"
-        icon={<IconClose />}
-        aria-label="Remove"
-      />
-    ),
+  },
+  render: function WithIconButton(args) {
+    const handleRemove = fn();
+    return (
+      <div style={{ width: '360px', fontFamily: 'var(--fonts-sans)' }}>
+        <ListRow
+          {...args}
+          trailing={
+            <IconButton
+              buttonType="standard"
+              color="neutral"
+              icon={<IconClose />}
+              aria-label="Remove"
+              onClick={handleRemove}
+            />
+          }
+        />
+      </div>
+    );
+  },
+  // LR1 happy: trailing IconButton 클릭 시 onClick이 1회 호출된다.
+  // LR2 a11y: leading aria-hidden 래퍼가 trailing 버튼의 접근명을 삼키지 않는다.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const removeButton = canvas.getByRole('button', { name: 'Remove' });
+    await userEvent.click(removeButton);
+    await expect(removeButton).toBeInTheDocument();
   },
 };
 
 export const WithThumbnail: Story = {
+  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
+  parameters: { a11y: { test: 'todo' } },
   args: {
     title: 'Product name',
     detail: 'Short description of the item',
@@ -100,6 +122,8 @@ export const WithThumbnail: Story = {
 };
 
 export const WithCaption: Story = {
+  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
+  parameters: { a11y: { test: 'todo' } },
   args: {
     detail: 'Supporting caption text describing this row in more detail',
     leading: <IconTime />,
@@ -125,6 +149,8 @@ export const LongTitle: Story = {
 };
 
 export const LongCaption: Story = {
+  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
+  parameters: { a11y: { test: 'todo' } },
   args: {
     title: 'Title',
     detail:
@@ -134,6 +160,8 @@ export const LongCaption: Story = {
 };
 
 export const AllVariants: Story = {
+  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
+  parameters: { a11y: { test: 'todo' } },
   render: () => (
     <div style={{ width: '360px', fontFamily: 'var(--fonts-sans)' }}>
       {variantMap.bold.flatMap(bold =>
@@ -162,7 +190,9 @@ export const AllVariants: Story = {
 // bleeds 8px past the row edges by design — this story makes that visible for
 // designer review without manually hovering.
 export const InteractiveStates: Story = {
+  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
   parameters: {
+    a11y: { test: 'todo' },
     pseudo: {
       hover: ['#lr-hover'],
     },

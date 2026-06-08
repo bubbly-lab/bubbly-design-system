@@ -1,5 +1,6 @@
 import { IconChevronRight, IconReload } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { textButton } from 'styled-system/recipes';
 import { TextButton } from './text-button';
 
@@ -34,10 +35,27 @@ const meta: Meta<typeof TextButton> = {
 export default meta;
 type Story = StoryObj<typeof TextButton>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { onClick: fn() },
+  // TB1 happy: 클릭 시 onClick이 1회 호출된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Label' });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
+  // TB3 regression: disabled면 [disabled]가 붙고 onClick이 호출되지 않는다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Label' });
+    await expect(button).toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const WithPrefixIcon: Story = {

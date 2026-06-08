@@ -4,6 +4,7 @@ import {
   IconPlus,
 } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { iconButton } from 'styled-system/recipes';
 import { IconButton } from './icon-button';
 
@@ -49,10 +50,28 @@ const meta: Meta<typeof IconButton> = {
 export default meta;
 type Story = StoryObj<typeof IconButton>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { onClick: fn() },
+  // IB1 happy: aria-label로 접근한 버튼 클릭 시 onClick이 1회 호출된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Action' });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
+  // IB3 regression: disabled면 [disabled]+data-disabled가 붙고 onClick이 억제된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Action' });
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('data-disabled');
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const AllVariants: Story = {
