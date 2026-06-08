@@ -20,17 +20,31 @@ const meta: Meta = {
   },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
-    zoomed: { control: 'boolean' },
-    bordered: { control: 'boolean' },
-    loading: { control: 'boolean' },
+    zoomed: {
+      control: 'boolean',
+      description:
+        '카드 hover 시 썸네일 이미지를 확대하는 zoom 인터랙션 활성화 (group hover 기반).',
+    },
+    bordered: {
+      control: 'boolean',
+      description: '썸네일에 1px 테두리를 그린다(밝은 이미지 경계 대비).',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'true면 썸네일을 스켈레톤 로딩 상태로 표시.',
+    },
     src: { control: 'text' },
     cardTitle: { control: 'text' },
     caption: { control: 'text' },
     captionPosition: {
       control: 'select',
       options: cardHeaderVariants.captionPosition,
+      description: 'caption을 제목 위/아래 어디에 둘지 결정.',
     },
-    hasBottom: { control: 'boolean' },
+    hasBottom: {
+      control: 'boolean',
+      description: 'false면 metadata 등 하단 영역을 렌더링하지 않는다.',
+    },
   },
   args: {
     style: { width: '308px' },

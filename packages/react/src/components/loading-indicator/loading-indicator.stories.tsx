@@ -15,6 +15,8 @@ const meta: Meta<typeof LoadingIndicator> = {
     color: {
       control: 'select',
       options: ['content.neutral.default', 'content.brand.default'],
+      description:
+        '스피너 색상 시맨틱 토큰. 크기는 별도 prop이 없으며 style/fontSize로 조절한다(em 기반).',
     },
   },
   args: {

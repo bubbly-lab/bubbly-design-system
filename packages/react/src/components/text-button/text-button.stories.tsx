@@ -17,6 +17,14 @@ const meta: Meta<typeof TextButton> = {
   argTypes: {
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },
+    prefixIcon: {
+      description:
+        '레이블 앞에 놓이는 아이콘. `suffixIcon`과는 동시에 쓸 수 없다(타입 수준에서 배타).',
+    },
+    suffixIcon: {
+      description:
+        '레이블 뒤에 놓이는 아이콘. `prefixIcon`과는 동시에 쓸 수 없다(타입 수준에서 배타).',
+    },
   },
   args: {
     children: 'Label',

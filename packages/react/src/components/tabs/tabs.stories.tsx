@@ -51,9 +51,13 @@ const meta: Meta<typeof Tabs> = {
     layout: {
       control: 'select',
       options: ['scrollable', 'fixed'],
+      description:
+        "탭 배치 방식. 'scrollable'은 넓이를 넘으면 가로 스크롤, 'fixed'는 탭들이 넓이를 균등 분할.",
     },
     padded: {
       control: 'boolean',
+      description:
+        'true면 탭 목록 좌우에 기본 가로 여백을 준다. false면 여백 없이 컨테이너 끝에 맞춘다.',
     },
   },
   args: {

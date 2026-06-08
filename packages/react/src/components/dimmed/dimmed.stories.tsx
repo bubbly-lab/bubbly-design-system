@@ -16,7 +16,11 @@ const meta: Meta<typeof Dimmed> = {
     },
   },
   argTypes: {
-    blurred: { control: 'boolean' },
+    blurred: {
+      control: 'boolean',
+      description:
+        'true면 오버레이에 backdrop-filter blur(16px)를 적용해 배경을 흐림처리한다. false면 반투명 딜머만 씀는다.',
+    },
   },
   args: {
     blurred: true,

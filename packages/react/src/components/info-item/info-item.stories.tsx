@@ -14,6 +14,10 @@ const meta: Meta<typeof InfoItem> = {
   },
   argTypes: {
     label: { control: 'text' },
+    prefixIcon: {
+      description:
+        '레이블 앞에 놓이는 아이콘. aria-hidden 래퍼로 감싸져 장식용으로만 노출된다.',
+    },
   },
   args: {
     label: '서울 강남구',

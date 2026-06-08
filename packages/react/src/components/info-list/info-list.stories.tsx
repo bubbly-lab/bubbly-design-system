@@ -25,13 +25,17 @@ const meta: Meta<typeof InfoList> = {
     direction: {
       control: 'select',
       options: variantMap.direction,
+      description:
+        "나열 방향. 'horizontal'은 가운데점(·)으로 구분된 한 줄, 'vertical'은 줄단위 목록.",
     },
     color: {
       control: 'select',
       options: variantMap.color,
+      description: '텍스트/구분점 색상 톤 (neutral 또는 brand).',
     },
     showDots: {
       control: 'boolean',
+      description: '항목 사이 구분점(·) 표시 여부. false면 공백으로만 구분.',
     },
   },
   args: {

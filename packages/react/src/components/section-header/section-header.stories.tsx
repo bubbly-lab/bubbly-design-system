@@ -16,9 +16,24 @@ const meta: Meta<typeof SectionHeader> = {
   },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
-    trailing: { control: 'select', options: variantMap.trailing },
-    showCaption: { control: 'boolean' },
-    showCount: { control: 'boolean' },
+    trailing: {
+      control: 'select',
+      options: variantMap.trailing,
+      description:
+        "말미 액션 종류. 'iconButton'은 trailingIcon+trailingAriaLabel, 'textButton'은 trailingLabel을 함께 요구한다(타입 수준 분기).",
+    },
+    count: {
+      description:
+        'showCount가 true일 때 제목 옆에 표시되는 개수. string 또는 number (예: "999+").',
+    },
+    showCaption: {
+      control: 'boolean',
+      description: 'caption 표시 여부. false면 caption이 있어도 숨긴다.',
+    },
+    showCount: {
+      control: 'boolean',
+      description: 'count 표시 여부. false면 count가 있어도 숨긴다.',
+    },
   },
   args: {
     title: 'Title',
