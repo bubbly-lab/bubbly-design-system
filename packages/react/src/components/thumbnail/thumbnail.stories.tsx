@@ -177,7 +177,7 @@ export const AllVariants: Story = {
                     style={{
                       fontSize: '11px',
                       fontFamily: 'var(--fonts-sans)',
-                      color: '#777',
+                      color: 'var(--colors-content-neutral-strong)',
                     }}
                   >
                     {radius}
@@ -214,7 +214,7 @@ export const AllStates: Story = {
             style={{
               fontSize: '11px',
               fontFamily: 'var(--fonts-sans)',
-              color: '#777',
+              color: 'var(--colors-content-neutral-strong)',
             }}
           >
             {label}
