@@ -1,0 +1,53 @@
+name: test-react
+
+on:
+  pull_request:
+    paths:
+      - "packages/react/**"
+      - "packages/icons/**"
+      - "packages/design-tokens/**"
+      - "pnpm-lock.yaml"
+      - "turbo.json"
+      - ".github/workflows/test-react.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/react/**"
+      - "packages/icons/**"
+      - "packages/design-tokens/**"
+      - "pnpm-lock.yaml"
+      - "turbo.json"
+      - ".github/workflows/test-react.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test-react
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build --filter=@bubbly-design-system/react
+
+      - name: Install Playwright Chromium
+        run: pnpm --filter @bubbly-design-system/react exec playwright install --with-deps chromium
+
+      - name: Run Storybook tests (interaction + a11y)
+        run: pnpm --filter @bubbly-design-system/react test
