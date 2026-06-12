@@ -20,12 +20,25 @@ function isValidCombination(ratio: string, radius: string) {
 const meta: Meta<typeof Thumbnail> = {
   title: 'Components/Thumbnail',
   component: Thumbnail,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     ratio: { control: 'select', options: variantMap.ratio },
     radius: { control: 'select', options: variantMap.radius },
     bordered: { control: 'boolean' },
-    zoomed: { control: 'boolean' },
-    loading: { control: 'boolean' },
+    zoomed: {
+      control: 'boolean',
+      description:
+        'On parent hover, scales the image up (group-hover). Requires a parent with the `group` class, e.g. inside a Card.',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Renders a Skeleton placeholder instead of the image.',
+    },
   },
   args: {
     src: DEMO_IMG_1_1,
@@ -164,7 +177,7 @@ export const AllVariants: Story = {
                     style={{
                       fontSize: '11px',
                       fontFamily: 'var(--fonts-sans)',
-                      color: '#777',
+                      color: 'var(--colors-content-neutral-strong)',
                     }}
                   >
                     {radius}
@@ -201,7 +214,7 @@ export const AllStates: Story = {
             style={{
               fontSize: '11px',
               fontFamily: 'var(--fonts-sans)',
-              color: '#777',
+              color: 'var(--colors-content-neutral-strong)',
             }}
           >
             {label}

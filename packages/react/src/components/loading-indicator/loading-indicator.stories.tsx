@@ -5,10 +5,18 @@ import { LoadingIndicator } from './loading-indicator';
 const meta: Meta<typeof LoadingIndicator> = {
   title: 'Components/LoadingIndicator',
   component: LoadingIndicator,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=433-910',
+    },
+  },
   argTypes: {
     color: {
       control: 'select',
       options: ['content.neutral.default', 'content.brand.default'],
+      description:
+        '스피너 색상 시맨틱 토큰. 크기는 별도 prop이 없으며 style/fontSize로 조절한다(em 기반).',
     },
   },
   args: {

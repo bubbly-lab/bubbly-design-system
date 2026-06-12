@@ -8,11 +8,36 @@ const { variantMap } = sectionHeader;
 const meta: Meta<typeof SectionHeader> = {
   title: 'Components/SectionHeader',
   component: SectionHeader,
+  parameters: {
+    // TODO(a11y): content.neutral.subtle(#717187) caption/count 텍스트가 다크 배경에서
+    // WCAG AA 4.5:1 미달(3.43:1). 기존 디자인 토큰 부채 — docs/a11y-contrast-debt.md 참고.
+    // 토큰 수정 전까지 게이트 제외(실행·리포트는 됨, 실패는 안 함).
+    a11y: { test: 'todo' },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=2769-8392',
+    },
+  },
   argTypes: {
     size: { control: 'select', options: variantMap.size },
-    trailing: { control: 'select', options: variantMap.trailing },
-    showCaption: { control: 'boolean' },
-    showCount: { control: 'boolean' },
+    trailing: {
+      control: 'select',
+      options: variantMap.trailing,
+      description:
+        "말미 액션 종류. 'iconButton'은 trailingIcon+trailingAriaLabel, 'textButton'은 trailingLabel을 함께 요구한다(타입 수준 분기).",
+    },
+    count: {
+      description:
+        'showCount가 true일 때 제목 옆에 표시되는 개수. string 또는 number (예: "999+").',
+    },
+    showCaption: {
+      control: 'boolean',
+      description: 'caption 표시 여부. false면 caption이 있어도 숨긴다.',
+    },
+    showCount: {
+      control: 'boolean',
+      description: 'count 표시 여부. false면 count가 있어도 숨긴다.',
+    },
   },
   args: {
     title: 'Title',

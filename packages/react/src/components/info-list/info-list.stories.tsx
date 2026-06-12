@@ -15,17 +15,27 @@ const { variantMap } = infoList;
 const meta: Meta<typeof InfoList> = {
   title: 'Components/InfoList',
   component: InfoList,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=3156-6303',
+    },
+  },
   argTypes: {
     direction: {
       control: 'select',
       options: variantMap.direction,
+      description:
+        "나열 방향. 'horizontal'은 가운데점(·)으로 구분된 한 줄, 'vertical'은 줄단위 목록.",
     },
     color: {
       control: 'select',
       options: variantMap.color,
+      description: '텍스트/구분점 색상 톤 (neutral 또는 brand).',
     },
     showDots: {
       control: 'boolean',
+      description: '항목 사이 구분점(·) 표시 여부. false면 공백으로만 구분.',
     },
   },
   args: {
@@ -163,6 +173,27 @@ export const AllVariants: Story = {
           </div>
         )),
       )}
+    </div>
+  ),
+};
+
+// `wrapped` lets a horizontal list flow onto multiple lines instead of staying
+// on a single nowrap row. Used internally by ListRow's infoList detail.
+export const Wrapped: Story = {
+  args: {
+    direction: 'horizontal',
+    wrapped: true,
+  },
+  render: args => (
+    <div style={{ width: '200px', fontFamily: 'var(--fonts-sans)' }}>
+      <InfoList {...args}>
+        <InfoItem label="Action" />
+        <InfoItem label="Comedy" />
+        <InfoItem label="Drama" />
+        <InfoItem label="Thriller" />
+        <InfoItem label="Romance" />
+        <InfoItem label="Documentary" />
+      </InfoList>
     </div>
   ),
 };

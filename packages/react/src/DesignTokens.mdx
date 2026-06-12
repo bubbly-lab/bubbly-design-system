@@ -1,0 +1,150 @@
+import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs/blocks';
+import {
+  semanticTokens,
+  textStyles,
+  tokens,
+} from '../../design-tokens/build/panda/tokens';
+
+export const resolveRef = value => {
+  if (typeof value !== 'string') return value;
+  const match = value.match(/^\{([^}]+)\}$/);
+  if (!match) return value;
+  const path = match[1].split('.');
+  let node = tokens;
+  for (const key of path) {
+    node = node?.[key];
+  }
+  return resolveRef(node?.value ?? value);
+};
+
+export const flattenColors = (obj, prefix = '') => {
+  const out = [];
+  for (const [key, node] of Object.entries(obj)) {
+    const name = prefix ? `${prefix}.${key}` : key;
+    if (node && typeof node.value === 'string') {
+      out.push([name, resolveRef(node.value)]);
+    } else if (node && typeof node === 'object') {
+      out.push(...flattenColors(node, name));
+    }
+  }
+  return out;
+};
+
+<Meta title="Design Tokens" />
+
+# Design Tokens
+
+모든 값은 `@bubbly-design-system/design-tokens`에서 생성된 토큰을 직접 읽어
+렌더링합니다. semantic 토큰의 alias(`{colors.violet.400}`)는 실제 값으로
+해석되어 표시됩니다.
+
+## Colors
+
+<ColorPalette>
+  {Object.entries(tokens.colors).map(([family, shades]) => (
+    <ColorItem
+      key={family}
+      title={family}
+      subtitle={`tokens.colors.${family}`}
+      colors={Object.fromEntries(
+        Object.entries(shades).map(([shade, token]) => [
+          shade,
+          token.value,
+        ]),
+      )}
+    />
+  ))}
+</ColorPalette>
+
+## Semantic Colors
+
+semantic 토큰은 raw color를 의미 단위(content/surface/border 등)로 매핑합니다.
+아래 색상은 alias를 해석한 최종 값입니다.
+
+<ColorPalette>
+  {Object.entries(semanticTokens.colors).map(([group, node]) => (
+    <ColorItem
+      key={group}
+      title={group}
+      subtitle={`semanticTokens.colors.${group}`}
+      colors={Object.fromEntries(flattenColors(node))}
+    />
+  ))}
+</ColorPalette>
+
+## Spacing
+
+<table>
+  <thead>
+    <tr>
+      <th align="left">Token</th>
+      <th align="left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.entries(tokens.spacing).map(([name, token]) => (
+      <tr key={name}>
+        <td>
+          <code>spacing.{name}</code>
+        </td>
+        <td>{resolveRef(token.value)}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Radius
+
+<table>
+  <thead>
+    <tr>
+      <th align="left">Token</th>
+      <th align="left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.entries(tokens.radii).map(([name, token]) => (
+      <tr key={name}>
+        <td>
+          <code>radii.{name}</code>
+        </td>
+        <td>{resolveRef(token.value)}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Typography
+
+<table>
+  <thead>
+    <tr>
+      <th align="left">Token</th>
+      <th align="left">Size</th>
+      <th align="left">Weight</th>
+      <th align="left">Line height</th>
+      <th align="left">Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.entries(textStyles).map(([name, token]) => (
+      <tr key={name}>
+        <td>
+          <code>{name}</code>
+        </td>
+        <td>{token.value.fontSize}</td>
+        <td>{token.value.fontWeight}</td>
+        <td>{token.value.lineHeight}</td>
+        <td
+          style={{
+            fontSize: token.value.fontSize,
+            fontWeight: token.value.fontWeight,
+            lineHeight: token.value.lineHeight,
+          }}
+        >
+          가나다 Ag
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { button } from 'styled-system/recipes';
 import { Button } from './button';
 
@@ -17,12 +18,22 @@ function isValidCombination(color: string, type: string) {
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=32-3',
+    },
+  },
   argTypes: {
     color: { control: 'select', options: variantMap.color },
     type: { control: 'select', options: variantMap.type },
     size: { control: 'select', options: variantMap.size },
     disabled: { control: 'boolean' },
-    loading: { control: 'boolean' },
+    loading: {
+      control: 'boolean',
+      description:
+        'Shows a spinner and forces `disabled` + `aria-busy`. Content stays in the DOM (visibility:hidden) so width does not jump.',
+    },
   },
   args: {
     children: 'Button',
@@ -32,14 +43,40 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { onClick: fn() },
+  // B1 happy: 클릭 시 onClick이 1회 호출된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+  },
+};
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { disabled: true, onClick: fn() },
+  // B3 regression: disabled면 [disabled] 속성이 붙고 onClick이 호출되지 않는다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await expect(button).toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const Loading: Story = {
-  args: { loading: true },
+  args: { loading: true, onClick: fn(), 'aria-label': 'Button' },
+  // B2 edge: loading면 aria-busy='true' + disabled로 onClick이 억제된다.
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    await expect(button).toHaveAttribute('aria-busy', 'true');
+    await expect(button).toBeDisabled();
+    await userEvent.click(button);
+    await expect(args.onClick).not.toHaveBeenCalled();
+  },
 };
 
 export const AllVariants: Story = {
@@ -186,7 +223,12 @@ export const AllStates: Story = {
                   <Button color={color} type={type} disabled>
                     Disabled
                   </Button>
-                  <Button color={color} type={type} loading>
+                  <Button
+                    color={color}
+                    type={type}
+                    loading
+                    aria-label="Loading"
+                  >
                     Loading
                   </Button>
                 </div>
@@ -196,6 +238,67 @@ export const AllStates: Story = {
       ))}
     </div>
   ),
+};
+
+// Interactive-state matrix. The pseudo-states addon rewrites stylesheets to
+// force :hover / :focus-visible / :active so designers can review every state
+// against Figma without manually hovering each button.
+export const InteractiveStates: Story = {
+  parameters: {
+    pseudo: {
+      hover: ['#state-hover'],
+      focusVisible: ['#state-focus'],
+      active: ['#state-active'],
+    },
+  },
+  render: () => {
+    const states = [
+      { id: undefined, label: 'default' },
+      { id: 'state-hover', label: 'hover' },
+      { id: 'state-focus', label: 'focus' },
+      { id: 'state-active', label: 'active' },
+    ] as const;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        {variantMap.color.map(color => (
+          <div key={color}>
+            <div
+              style={{
+                marginBottom: '8px',
+                color: '#999',
+                fontSize: '12px',
+                fontFamily: 'var(--fonts-sans)',
+              }}
+            >
+              {color}
+            </div>
+            <div
+              style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+            >
+              {variantMap.type
+                .filter(type => isValidCombination(color, type))
+                .map(type => (
+                  <div
+                    key={type}
+                    style={{
+                      display: 'flex',
+                      gap: '12px',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {states.map(({ id, label }) => (
+                      <Button key={label} id={id} color={color} type={type}>
+                        {label}
+                      </Button>
+                    ))}
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
 
 export const WidthFull: Story = {

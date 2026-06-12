@@ -199,6 +199,12 @@ const PlaceholderGraphic = () => (
 const meta: Meta<typeof Result> = {
   title: 'Components/Result',
   component: Result,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/pDl7yF9kybFbFtf5LJckjq/BDS--bubbly-design-system-?node-id=433-910',
+    },
+  },
   argTypes: {
     title: { control: 'text' },
     description: { control: 'text' },

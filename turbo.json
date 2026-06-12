@@ -20,6 +20,9 @@
     "build-storybook": {
       "dependsOn": ["^build"],
       "outputs": ["storybook-static/**"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     }
   }
 }
