@@ -16,7 +16,7 @@ const meta: Meta<typeof Divider> = {
       control: 'select',
       options: ['stroke', 'surface'],
       description:
-        "구분선 스타일. 'stroke'는 연한 선, 'surface'는 배경면 색상의 더 두귫고 은은한 구분면.",
+        "구분선 스타일. 'stroke'는 연한 선, 'surface'는 배경면 색상의 더 두껍고 은은한 구분면.",
     },
   },
   args: {
