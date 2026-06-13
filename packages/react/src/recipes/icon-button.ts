@@ -182,13 +182,13 @@ export const iconButtonRecipe = defineRecipe({
         transition: 'color 150ms ease-out',
         _hover: {
           '&:not(:disabled)': {
-            color: 'content.neutral.default',
+            color: 'content.neutral.subtle-hover',
           },
         },
         _focusVisible: {
           backgroundColor: 'surface.transparent-hover',
           borderRadius: 'r100',
-          color: 'content.neutral.default',
+          color: 'content.neutral.subtle-hover',
           boxShadow:
             '0 0 0 2px var(--colors-neutral-600), 0 0 0 4px var(--colors-neutral-50)',
         },
