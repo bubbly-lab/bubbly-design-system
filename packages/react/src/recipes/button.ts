@@ -160,6 +160,6 @@ export const buttonRecipe = defineRecipe({
   defaultVariants: {
     color: 'brand',
     type: 'solid',
-    size: 'medium',
+    size: 'large',
   },
 });
