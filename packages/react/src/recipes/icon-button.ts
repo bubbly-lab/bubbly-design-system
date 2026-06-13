@@ -204,6 +204,6 @@ export const iconButtonRecipe = defineRecipe({
     color: 'brand',
     buttonType: 'solid',
     shape: 'square',
-    size: 'medium',
+    size: 'large',
   },
 });
