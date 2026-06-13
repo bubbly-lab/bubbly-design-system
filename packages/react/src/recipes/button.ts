@@ -138,7 +138,7 @@ export const buttonRecipe = defineRecipe({
         },
         '&[data-disabled]': {
           ...disabledStyles,
-          borderColor: 'transparent',
+          borderColor: 'border.disabled',
         },
       },
     },
