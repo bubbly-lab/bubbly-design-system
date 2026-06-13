@@ -38,6 +38,13 @@ const hiddenContentStyle: CSSProperties = {
   visibility: 'hidden',
 };
 
+// Figma textArea has 4px inline padding (gap is 0). Insetting the label here —
+// rather than via the recipe's gap — keeps the edge-to-icon distance equal to
+// the frame padding when an icon is present.
+const labelStyle: CSSProperties = {
+  paddingInline: '4px',
+};
+
 const spinnerOverlayStyle: CSSProperties = {
   position: 'absolute',
   display: 'inline-flex',
@@ -66,7 +73,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading && <SpinnerOverlay />}
         <span style={loading ? hiddenContentStyle : contentWrapperStyle}>
           {prefixIcon && <span style={iconWrapperStyle}>{prefixIcon}</span>}
-          {children}
+          {children && <span style={labelStyle}>{children}</span>}
           {suffixIcon && <span style={iconWrapperStyle}>{suffixIcon}</span>}
         </span>
       </StyledButton>
