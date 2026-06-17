@@ -115,7 +115,7 @@ export const cardHeaderRecipe = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    captionPosition: 'bottom',
+    captionPosition: 'top',
     hasBottom: true,
   },
 });
