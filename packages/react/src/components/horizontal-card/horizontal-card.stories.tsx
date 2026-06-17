@@ -25,7 +25,7 @@ const meta: Meta = {
       description:
         '카드 hover 시 썸네일 이미지를 확대하는 zoom 인터랙션 활성화 (group hover 기반).',
     },
-    bordered: {
+    hasBorder: {
       control: 'boolean',
       description: '썸네일에 1px 테두리를 그린다(밝은 이미지 경계 대비).',
     },
@@ -50,7 +50,7 @@ const meta: Meta = {
     style: { width: '308px' },
     size: 'small',
     zoomed: true,
-    bordered: false,
+    hasBorder: false,
     loading: false,
     src: DEMO_IMG,
     cardTitle: 'Title',
@@ -66,7 +66,7 @@ export const Default: Story = {
   render: ({
     size,
     zoomed,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -82,7 +82,7 @@ export const Default: Story = {
         ratio="1:1"
         radius="full"
         zoomed={zoomed}
-        bordered={bordered}
+        hasBorder={hasBorder}
         loading={loading}
       />
       <CardHeader
@@ -99,7 +99,7 @@ export const Default: Story = {
 export const AllSizes: Story = {
   render: ({
     zoomed,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -117,7 +117,7 @@ export const AllSizes: Story = {
               ratio="1:1"
               radius="full"
               zoomed={zoomed}
-              bordered={bordered}
+              hasBorder={hasBorder}
               loading={loading}
             />
             <CardHeader
@@ -139,7 +139,7 @@ export const FillsParent: Story = {
   render: ({
     size,
     zoomed,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -158,7 +158,7 @@ export const FillsParent: Story = {
               ratio="1:1"
               radius="full"
               zoomed={zoomed}
-              bordered={bordered}
+              hasBorder={hasBorder}
               loading={loading}
             />
             <CardHeader
@@ -179,7 +179,7 @@ export const LongText: Story = {
   render: ({
     size,
     zoomed,
-    bordered,
+    hasBorder,
     loading,
     src,
     captionPosition,
@@ -192,7 +192,7 @@ export const LongText: Story = {
         ratio="1:1"
         radius="full"
         zoomed={zoomed}
-        bordered={bordered}
+        hasBorder={hasBorder}
         loading={loading}
       />
       <CardHeader
@@ -210,7 +210,7 @@ export const NarrowContainer: Story = {
   args: { style: undefined },
   render: ({
     zoomed,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -228,7 +228,7 @@ export const NarrowContainer: Story = {
               ratio="1:1"
               radius="full"
               zoomed={zoomed}
-              bordered={bordered}
+              hasBorder={hasBorder}
               loading={loading}
             />
             <CardHeader

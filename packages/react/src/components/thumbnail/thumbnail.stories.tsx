@@ -29,7 +29,7 @@ const meta: Meta<typeof Thumbnail> = {
   argTypes: {
     ratio: { control: 'select', options: variantMap.ratio },
     radius: { control: 'select', options: variantMap.radius },
-    bordered: { control: 'boolean' },
+    hasBorder: { control: 'boolean' },
     zoomed: {
       control: 'boolean',
       description:
@@ -61,7 +61,7 @@ export const Placeholder: Story = {
 };
 
 export const WithBorder: Story = {
-  args: { bordered: true },
+  args: { hasBorder: true },
 };
 
 export const WithZoom: Story = {
@@ -198,7 +198,7 @@ export const AllStates: Story = {
         { label: 'default', props: { src: DEMO_IMG_1_1 } },
         { label: 'placeholder', props: { src: undefined } },
         { label: 'loading', props: { loading: true } },
-        { label: 'bordered', props: { src: DEMO_IMG_1_1, bordered: true } },
+        { label: 'hasBorder', props: { src: DEMO_IMG_1_1, hasBorder: true } },
       ].map(({ label, props }) => (
         <div
           key={label}
