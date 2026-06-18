@@ -30,9 +30,9 @@
       "default": {
         "$value": "{color.neutral.300}"
       },
-      //   "default-hover": {
-      //     "$value": ""
-      //   },
+      "default-hover": {
+        "$value": "{color.neutral.100}"
+      },
       "subtle": {
         "$value": "{color.neutral.500}"
       },
@@ -182,9 +182,9 @@
     "disabled": {
       "$value": "{color.neutral.800}"
     },
-    // "transparent": {
-    //   "$value": "rgb({color.neutral.0} / {opacity.0})"
-    // },
+    "transparent": {
+      "$value": "rgb({color.neutral.0} / {opacity.00})"
+    },
     "transparent-hover": {
       "$value": "rgb({color.neutral.500} / {opacity.20})"
     }
@@ -238,10 +238,10 @@
       "default": { "$value": "{color.green.400}" }
     },
     "warning": {
-      "inverse": { "$value": "{color.yellow.400}" }
+      "default": { "$value": "{color.yellow.400}" }
     },
     "critical": {
-      "inverse": { "$value": "{color.red.400}" }
+      "default": { "$value": "{color.red.400}" }
     },
     "disabled": {
       "$value": "rgb({color.neutral.600} / {opacity.20})"
