@@ -138,7 +138,7 @@ export const buttonRecipe = defineRecipe({
         },
         '&[data-disabled]': {
           ...disabledStyles,
-          borderColor: 'transparent',
+          borderColor: 'border.disabled',
         },
       },
     },
@@ -160,6 +160,6 @@ export const buttonRecipe = defineRecipe({
   defaultVariants: {
     color: 'brand',
     type: 'solid',
-    size: 'medium',
+    size: 'large',
   },
 });

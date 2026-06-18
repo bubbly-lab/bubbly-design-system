@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema.json",
+  // Responsive container insets. Mirrors the Figma "Layout" variable
+  // collection, whose modes (sm / md / lg) map to breakpoints.
+  //
+  // $value holds the smallest-viewport (base) value; larger breakpoints are
+  // declared under $extensions["bds.responsive"] keyed by Panda breakpoint
+  // name. scripts/to-panda.js expands these into a breakpoint-conditional
+  // semantic token (e.g. { base, md, lg }). Tools that ignore the extension
+  // still read a valid single dimension from $value.
+  "container": {
+    "$type": "dimension",
+    // sm 20 / md 40 / lg 40
+    "padding-x": {
+      "$value": "{dimension.20}",
+      "$extensions": {
+        "bds.responsive": {
+          "md": "{dimension.40}"
+        }
+      }
+    },
+    // sm 20 / md 20 / lg 80
+    "padding-top": {
+      "$value": "{dimension.20}",
+      "$extensions": {
+        "bds.responsive": {
+          "lg": "{dimension.80}"
+        }
+      }
+    },
+    // sm 40 / md 80 / lg 160
+    "padding-bottom": {
+      "$value": "{dimension.40}",
+      "$extensions": {
+        "bds.responsive": {
+          "md": "{dimension.80}",
+          "lg": "{dimension.160}"
+        }
+      }
+    }
+  }
+}

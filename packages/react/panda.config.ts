@@ -36,6 +36,16 @@ export default defineConfig({
   },
 
   theme: {
+    // Viewport breakpoints per the Figma Foundation/Layout page (Sm 360–639,
+    // Md 640–971, Lg 972–1279, Xl 1280+). Declared explicitly so responsive
+    // tokens (e.g. container.padding-x) switch at the design-intended widths
+    // instead of Panda's defaults (md 768 / lg 1024).
+    breakpoints: {
+      sm: '360px',
+      md: '640px',
+      lg: '972px',
+      xl: '1280px',
+    },
     tokens,
     semanticTokens,
     textStyles,
