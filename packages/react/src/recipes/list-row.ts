@@ -29,7 +29,7 @@ export const listRowRecipe = defineSlotRecipe({
         content: '""',
         position: 'absolute',
         inset: '0 -8px',
-        backgroundColor: 'state-layer.neutral-hover',
+        backgroundColor: 'surface.transparent-hover',
         borderRadius: 'r300',
         pointerEvents: 'none',
         opacity: 0,

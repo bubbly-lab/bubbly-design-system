@@ -22,7 +22,7 @@ export const thumbnailRecipe = defineRecipe({
     // Figma renders a 1px inner border on every Thumbnail variant, but many
     // host compositions (small icon rows, skeleton placeholders) want no
     // border. Expose it as opt-in so consumers can match Figma explicitly.
-    bordered: {
+    hasBorder: {
       true: {
         '&::after': {
           content: '""',
@@ -55,7 +55,7 @@ export const thumbnailRecipe = defineRecipe({
   defaultVariants: {
     ratio: '1:1',
     radius: '8px',
-    bordered: false,
+    hasBorder: false,
     zoomed: false,
   },
 });

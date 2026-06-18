@@ -37,8 +37,6 @@ export const infoListRecipe = defineSlotRecipe({
           flexDirection: 'row',
           alignItems: 'center',
           gap: '4',
-          flexWrap: 'nowrap',
-          whiteSpace: 'nowrap',
           overflow: 'visible',
         },
       },
@@ -65,6 +63,8 @@ export const infoListRecipe = defineSlotRecipe({
         },
       },
     },
+    // Figma's horizontal InfoList frame wraps (layoutWrap=WRAP) by default.
+    // `wrapped` owns the wrap behavior so the default can be wrap with an opt-out.
     wrapped: {
       true: {
         root: {
@@ -72,12 +72,17 @@ export const infoListRecipe = defineSlotRecipe({
           whiteSpace: 'normal',
         },
       },
-      false: {},
+      false: {
+        root: {
+          flexWrap: 'nowrap',
+          whiteSpace: 'nowrap',
+        },
+      },
     },
   },
   defaultVariants: {
     direction: 'horizontal',
     color: 'neutral',
-    wrapped: false,
+    wrapped: true,
   },
 });

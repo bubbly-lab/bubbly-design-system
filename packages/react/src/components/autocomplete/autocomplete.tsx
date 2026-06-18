@@ -17,6 +17,7 @@ export interface AutocompleteProps
   extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {
   type?: 'modal' | 'fullScreen';
   state?: 'default' | 'loading' | 'empty';
+  showHeader?: boolean;
   headerTitle?: string;
   emptyTitle?: string;
   emptyDescription?: string;
@@ -24,11 +25,15 @@ export interface AutocompleteProps
   children?: ReactNode;
 }
 
+// Figma 빈 상태 Result의 기본 설명 문구.
+const DEFAULT_EMPTY_DESCRIPTION = '검색 결과가 없어요.';
+
 export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
   function Autocomplete(
     {
       type = 'modal',
       state = 'default',
+      showHeader = true,
       headerTitle,
       emptyTitle,
       emptyDescription,
@@ -48,7 +53,7 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
         aria-busy={state === 'loading' || undefined}
         {...rest}
       >
-        {headerTitle ? (
+        {showHeader && headerTitle ? (
           <div className={styles.header}>
             <SectionHeader title={headerTitle} size="medium" />
           </div>
@@ -59,7 +64,7 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
           {state === 'empty' ? (
             <Result
               title={emptyTitle}
-              description={emptyDescription}
+              description={emptyDescription ?? DEFAULT_EMPTY_DESCRIPTION}
               action={emptyAction}
             />
           ) : null}

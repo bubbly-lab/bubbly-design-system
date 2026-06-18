@@ -34,7 +34,7 @@ const meta: Meta = {
       options: thumbnailVariants.radius,
       description: '썸네일 모서리 둘근 정도.',
     },
-    bordered: {
+    hasBorder: {
       control: 'boolean',
       description: '썸네일에 1px 테두리를 그린다(밝은 이미지 경계 대비).',
     },
@@ -60,7 +60,7 @@ const meta: Meta = {
     zoomed: true,
     ratio: '3:4',
     radius: '8px',
-    bordered: false,
+    hasBorder: false,
     loading: false,
     src: DEMO_IMG,
     cardTitle: 'Title',
@@ -77,7 +77,7 @@ export const Default: Story = {
     zoomed,
     ratio,
     radius,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -93,7 +93,7 @@ export const Default: Story = {
         ratio={ratio}
         radius={radius}
         zoomed={zoomed}
-        bordered={bordered}
+        hasBorder={hasBorder}
         loading={loading}
       />
       <CardHeader
@@ -146,7 +146,7 @@ export const FillsParent: Story = {
     zoomed,
     ratio,
     radius,
-    bordered,
+    hasBorder,
     loading,
     src,
     cardTitle,
@@ -165,7 +165,7 @@ export const FillsParent: Story = {
               ratio={ratio}
               radius={radius}
               zoomed={zoomed}
-              bordered={bordered}
+              hasBorder={hasBorder}
               loading={loading}
             />
             <CardHeader

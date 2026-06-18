@@ -92,7 +92,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
                 <div className={styles.title}>{title}</div>
               ) : null}
               {shouldRenderCount ? (
-                <div className={styles.count}>{count}</div>
+                <div className={styles.count}>{formatCount(count)}</div>
               ) : null}
             </div>
           )}
@@ -136,6 +136,15 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
 
 function hasRenderableCount(count: SectionHeaderBaseProps['count']) {
   return count !== undefined && count !== null && `${count}`.length > 0;
+}
+
+// Figma docs: count는 999까지 표시하고 초과 시 '999+'로 표기.
+// 숫자일 때만 클램프하고, 문자열 count는 호출자가 제어하도록 그대로 둔다.
+function formatCount(count: SectionHeaderBaseProps['count']) {
+  if (typeof count === 'number' && count > 999) {
+    return '999+';
+  }
+  return count;
 }
 
 function hasRenderableNode(node: ReactNode | undefined) {

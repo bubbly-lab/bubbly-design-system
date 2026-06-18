@@ -8,18 +8,22 @@ const StyledLoadingIndicator = styled('span', loadingIndicator);
 
 export type LoadingIndicatorProps = Parameters<
   typeof StyledLoadingIndicator
->[0];
+>[0] & {
+  // Figma: size는 Dimension 토큰을 사용해 사용처마다 유동적. 기본 24px.
+  size?: string | number;
+};
 
 // 270° arc — center (12,12), r=9.75, inset 9.38% per Figma spec
 export const LoadingIndicator = forwardRef<
   HTMLSpanElement,
   LoadingIndicatorProps
->(function LoadingIndicator(props, ref) {
+>(function LoadingIndicator({ size, style, ...props }, ref) {
   return (
     <StyledLoadingIndicator
       ref={ref}
       role="status"
       aria-label="Loading"
+      style={size != null ? { width: size, height: size, ...style } : style}
       {...props}
     >
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
