@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import { Button } from '../button';
 import { IconButton } from '../icon-button';
-import { Thumbnail } from '../thumbnail';
 import { Autocomplete, type AutocompleteProps } from './autocomplete';
 import { AutocompleteHighlight } from './autocomplete-highlight';
 import { AutocompleteItem } from './autocomplete-item';
@@ -227,80 +226,53 @@ export const HighlightMatchPlayground: StoryObj<HighlightMatchPlaygroundArgs> =
 
 export const ItemVariantsMatchingFigma: Story = {
   name: 'AutocompleteItem variants (Figma)',
-  render: args => (
-    <div style={{ fontFamily: 'var(--fonts-sans)' }}>
-      <Autocomplete {...args}>
-        <AutocompleteItem
-          title={highlightMatch('Title', 'e')}
-          leading={<IconTime />}
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove"
-            />
-          }
-        />
-        <AutocompleteItem
-          title={highlightMatch('Title', 'e')}
-          leading={<IconSearch />}
-          bold
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove"
-            />
-          }
-        />
-        <AutocompleteItem
-          title={highlightMatch('Title', 'e')}
-          detail={['Label', 'Label', 'Label']}
-          leading={
-            <Thumbnail
-              src="https://picsum.photos/seed/ac-round/56"
-              alt="thumb"
-              radius="full"
-              style={{ width: '56px' }}
-            />
-          }
-          bold
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove"
-            />
-          }
-        />
-        <AutocompleteItem
-          title={highlightMatch('Title', 'e')}
-          detail={['Label', 'Label', 'Label']}
-          leading={
-            <Thumbnail
-              src="https://picsum.photos/seed/ac-portrait/56/75"
-              alt="thumb"
-              ratio="3:4"
-              radius="8px"
-              style={{ width: '56px' }}
-            />
-          }
-          bold
-          trailing={
-            <IconButton
-              buttonType="standard"
-              color="neutral"
-              icon={<IconClose />}
-              aria-label="Remove"
-            />
-          }
-        />
-      </Autocomplete>
-    </div>
-  ),
+  render: args => {
+    const removeButton = (
+      <IconButton
+        buttonType="standard"
+        color="neutral"
+        icon={<IconClose />}
+        aria-label="Remove"
+      />
+    );
+    return (
+      <div style={{ fontFamily: 'var(--fonts-sans)' }}>
+        <Autocomplete {...args}>
+          <AutocompleteItem
+            type="icon"
+            title={highlightMatch('Title', 'e')}
+            leadingIcon={<IconTime />}
+            trailing={removeButton}
+          />
+          <AutocompleteItem
+            type="largeIcon"
+            title={highlightMatch('Title', 'e')}
+            leadingIcon={<IconSearch />}
+            bold
+            trailing={removeButton}
+          />
+          <AutocompleteItem
+            type="roundThumbnail"
+            title={highlightMatch('Title', 'e')}
+            detail={['Label', 'Label', 'Label']}
+            leadingSrc="https://picsum.photos/seed/ac-round/56"
+            leadingAlt="thumb"
+            bold
+            trailing={removeButton}
+          />
+          <AutocompleteItem
+            type="portraitThumbnail"
+            title={highlightMatch('Title', 'e')}
+            detail={['Label', 'Label', 'Label']}
+            leadingSrc="https://picsum.photos/seed/ac-portrait/60/75"
+            leadingAlt="thumb"
+            bold
+            trailing={removeButton}
+          />
+        </Autocomplete>
+      </div>
+    );
+  },
 };
 
 // Interactive-state matrix. The pseudo-states addon rewrites stylesheets to
