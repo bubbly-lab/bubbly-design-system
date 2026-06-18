@@ -75,6 +75,9 @@
   "opacity": {
     "$type": "number",
 
+    "00": {
+      "$value": 0
+    },
     "07": {
       "$value": 0.07
     },
