@@ -274,13 +274,33 @@ function setNested(obj, path, value) {
   current[path[path.length - 1]] = value;
 }
 
+// Panda breakpoint names, smallest → largest. Used to order the conditional
+// value object emitted for responsive layout tokens.
+const BREAKPOINT_ORDER = ['sm', 'md', 'lg', 'xl', '2xl'];
+
+function buildResponsiveValue(baseValue, entry) {
+  const base = convertRefsInString(baseValue);
+  const responsive =
+    (entry.$extensions ?? entry.extensions ?? {})['bds.responsive'] ?? null;
+
+  if (!responsive) return base;
+
+  const out = { base };
+  for (const bp of BREAKPOINT_ORDER) {
+    if (responsive[bp] !== undefined) {
+      out[bp] = convertRefsInString(String(responsive[bp]));
+    }
+  }
+  return out;
+}
+
 function buildPandaOutput(tree, primitiveMap) {
   const tokens = {};
   const semanticTokens = {};
   const textStyles = {};
   const errors = [];
 
-  function processToken(path, value, type) {
+  function processToken(path, value, type, entry) {
     const rootGroup = path[0];
 
     switch (rootGroup) {
@@ -352,6 +372,14 @@ function buildPandaOutput(tree, primitiveMap) {
         break;
       }
 
+      // Responsive container insets → breakpoint-conditional spacing tokens.
+      // e.g. container.padding-x → semanticTokens.spacing.container['padding-x']
+      case 'container': {
+        const converted = buildResponsiveValue(value, entry);
+        setNested(semanticTokens, ['spacing', ...path], { value: converted });
+        break;
+      }
+
       default:
         if (type !== 'cssImport') {
           errors.push(
@@ -371,7 +399,7 @@ function buildPandaOutput(tree, primitiveMap) {
 
       if (value !== undefined) {
         const type = entry.type ?? entry.$type ?? null;
-        processToken(currentPath, value, type);
+        processToken(currentPath, value, type, entry);
       } else {
         walkTree(entry, currentPath);
       }

@@ -97,7 +97,9 @@ export const tabsRecipe = defineSlotRecipe({
     padded: {
       true: {
         list: {
-          paddingInline: '20',
+          // Responsive container inset (sm 20 / md+ 40) — mirrors Figma's
+          // container/padding-x so the tab list aligns with page gutters.
+          paddingInline: 'container.padding-x',
         },
       },
       false: {
