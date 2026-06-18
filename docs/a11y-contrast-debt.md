@@ -3,6 +3,13 @@
 > 생성: Storybook a11y 게이트(`@storybook/addon-a11y` + `addon-vitest`) 도입 과정에서 자동 검출.
 > 상태: **미해결 (디자인 토큰 차원 결정 필요)**
 
+## 추적 중인 부채
+
+1. **`content.neutral.subtle` 보조 텍스트** (다크 배경, 3.43:1) — 아래 §요약 ~ §"토큰 수정 후 할 일"에서 다룸. a11y 게이트에 검출되어 19개 스토리를 `todo`로 표시.
+2. **Solid 버튼의 흰 텍스트** (브랜드·크리티컬 CTA) — 문서 하단 §"부채 2". 마크업 형태 때문에 현재 게이트엔 **잡히지 않는 잠재 부채**.
+
+> 아래 §요약 ~ §"토큰 수정 후 할 일"은 **부채 1** 기준 서술입니다.
+
 ## 요약
 
 Storybook 스토리를 axe로 검사하는 a11y CI 게이트(`parameters.a11y.test = 'error'`)를
@@ -72,3 +79,50 @@ Storybook 스토리를 axe로 검사하는 a11y CI 게이트(`parameters.a11y.te
    - `packages/react/src/components/tabs/tabs.stories.tsx`
    - `packages/react/src/components/list-row/list-row.stories.tsx` (5개 스토리)
 3. `pnpm --filter @bubbly-design-system/react test-storybook`로 AA 통과 확인.
+
+---
+
+## 부채 2 — Solid 버튼 흰 텍스트 (브랜드·크리티컬 CTA)
+
+> 출처: Figma 시안 정합성 전수조사(#54) 중 발견. 현재 a11y 게이트에는 **검출되지 않는 잠재 부채**.
+
+`type=solid` 버튼은 흰 텍스트(`static.white` = `#ffffff`)를 브랜드/크리티컬 배경 위에
+올리는데, 그 대비가 WCAG 2.1 AA 텍스트 기준에 미달합니다. 버튼 라벨은 16px semibold =
+**일반 텍스트 스케일**이라 4.5:1이 요구됩니다.
+
+| 버튼 | 배경 토큰 | 배경 값 | 흰 텍스트 대비 | AA 정상(4.5) | AA 큰텍스트(3.0) |
+|---|---|---|---|---|---|
+| brand / solid | `surface.brand.default` | `violet.400` `#8566ff` | **3.93:1** | ❌ | ✅ |
+| brand / solid (hover) | `surface.brand.default-hover` | `violet.300` `#9989fc` | **2.86:1** | ❌ | ❌ |
+| critical / solid | `surface.critical.default` | `red.400` `#ff6363` | **2.91:1** | ❌ | ❌ |
+
+- brand/solid는 일반 텍스트(4.5)엔 미달하나 큰 텍스트(3.0)는 통과 — 경계선.
+- **critical/solid는 큰 텍스트 기준(3.0)마저 미달**이고, **hover 시 brand도 3.0 미달**이라
+  brand 단독보다 시급합니다.
+- IconButton solid는 비텍스트(아이콘) 대비 기준(3:1)이 적용돼 흰 아이콘 on 브랜드는
+  통과하지만, critical(2.91)·hover는 동일하게 위험합니다.
+
+### 왜 게이트에 안 잡히나
+
+axe는 텍스트가 `<button>`의 **직접 자식**일 때 이 버튼들의 대비를 플래그하지 않습니다
+(현 구현이 그러함). #54에서 라벨을 `<span>`으로 감싸자 axe가 같은 대비(3.93)를 즉시
+플래그해 인터랙션/a11y 테스트 12건이 실패했고, 해당 변경을 revert했습니다. 즉
+**대비 미달 자체는 실재하지만, 마크업 형태 때문에 게이트가 우연히 통과**하고 있는 상태입니다.
+
+### 해결 옵션 (디자인팀 결정 필요)
+
+1. **solid 버튼 텍스트 색 조정** — 흰색 대신 대비가 충분한 색. 단, 흰 텍스트가
+   브랜드 아이덴티티의 핵심이면 부적합할 수 있음.
+2. **배경 토큰을 어둡게** — `surface.brand.default`(violet.400) /
+   `surface.critical.default`(red.400)를 더 어두운 단계로. 4.5:1을 만족하려면 상당히
+   어두워져 브랜드 톤이 크게 바뀜.
+3. **현행 유지(부채로 관리)** — 본 문서로 추적. 일차 CTA가 AA 미달로 남음.
+
+권장: 최소한 **critical/solid(2.91)와 hover 상태(2.86)** 부터 디자이너와 재검토.
+일차 CTA의 대비라 사용자 영향이 큽니다.
+
+### 참고
+
+- 이 부채는 디자인 토큰(브랜드 색) 값 문제라 코드로는 해결 불가, 시안 변경이 필요합니다.
+- 게이트에 강제로 노출하려면 버튼 라벨을 span으로 감싸면 되나, 그러면 위 대비가 CI를
+  빨갛게 만들므로 **토큰 수정과 함께** 진행해야 합니다.
