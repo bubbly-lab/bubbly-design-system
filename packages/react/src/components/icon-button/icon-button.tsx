@@ -28,12 +28,20 @@ const iconWrapperStyle: CSSProperties = {
 };
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  function IconButton({ icon, disabled, ...props }, ref) {
+  function IconButton({ icon, disabled, size, buttonType, ...props }, ref) {
+    // Background(solid/ghost/outline) defaults to large per Figma; Standard
+    // only defines medium/small, so it falls back to medium. The shared recipe
+    // can hold a single default (large), so Standard's default is resolved here.
+    const resolvedSize =
+      size ?? (buttonType === 'standard' ? 'medium' : 'large');
+
     return (
       <StyledIconButton
         ref={ref}
         disabled={disabled}
         data-disabled={disabled || undefined}
+        size={resolvedSize}
+        buttonType={buttonType}
         {...props}
       >
         <span style={iconWrapperStyle}>{icon}</span>

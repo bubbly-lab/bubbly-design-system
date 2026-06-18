@@ -36,9 +36,9 @@
       "subtle": {
         "$value": "{color.neutral.500}"
       },
-      //   "subtle-hover": {
-      //     "$value": ""
-      //   },
+      "subtle-hover": {
+        "$value": "{color.neutral.300}"
+      },
       "inverse": {
         "$value": "{color.neutral.900}"
       }
