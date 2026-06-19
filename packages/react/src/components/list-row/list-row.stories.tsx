@@ -103,8 +103,6 @@ export const WithIconButton: Story = {
 };
 
 export const WithThumbnail: Story = {
-  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
-  parameters: { a11y: { test: 'todo' } },
   args: {
     title: 'Product name',
     detail: 'Short description of the item',
@@ -122,8 +120,6 @@ export const WithThumbnail: Story = {
 };
 
 export const WithCaption: Story = {
-  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
-  parameters: { a11y: { test: 'todo' } },
   args: {
     detail: 'Supporting caption text describing this row in more detail',
     leading: <IconTime />,
@@ -149,8 +145,6 @@ export const LongTitle: Story = {
 };
 
 export const LongCaption: Story = {
-  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
-  parameters: { a11y: { test: 'todo' } },
   args: {
     title: 'Title',
     detail:
@@ -160,8 +154,6 @@ export const LongCaption: Story = {
 };
 
 export const AllVariants: Story = {
-  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
-  parameters: { a11y: { test: 'todo' } },
   render: () => (
     <div style={{ width: '360px', fontFamily: 'var(--fonts-sans)' }}>
       {variantMap.bold.flatMap(bold =>
@@ -190,9 +182,7 @@ export const AllVariants: Story = {
 // bleeds 8px past the row edges by design — this story makes that visible for
 // designer review without manually hovering.
 export const InteractiveStates: Story = {
-  // TODO(a11y): content.neutral.subtle(#717187) caption 대비 부채 — docs/a11y-contrast-debt.md
   parameters: {
-    a11y: { test: 'todo' },
     pseudo: {
       hover: ['#lr-hover'],
     },
