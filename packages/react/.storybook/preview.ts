@@ -74,8 +74,14 @@ function applyDocumentBackground(backgroundColor: string): void {
 // designed for (dark by default), not the test iframe's white body. Applied to
 // the wrapper AND html/body/#storybook-root so portal-mounted Ark UI content
 // (dialogs, popovers) is also evaluated on the correct background.
+//
+// In `story` viewMode the wrapper fills the viewport (minHeight: 100vh) so axe
+// measures contrast against a full dark surface. In `docs` viewMode the same
+// 100vh would leave every inline preview padded to a full screen height of
+// empty surface, so we drop minHeight there and let the wrapper hug content.
 const withBdsSurface: Decorator = (Story, context) => {
   const backgroundColor = getSelectedBackground(context);
+  const isDocs = context.viewMode === 'docs';
 
   applyDocumentBackground(backgroundColor);
 
@@ -84,7 +90,7 @@ const withBdsSurface: Decorator = (Story, context) => {
     {
       'data-bds-story-surface': true,
       style: {
-        minHeight: '100vh',
+        ...(isDocs ? {} : { minHeight: '100vh' }),
         backgroundColor,
       },
     },
