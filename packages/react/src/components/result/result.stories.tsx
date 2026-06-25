@@ -280,3 +280,14 @@ export const NoSlots: Story = {
     ),
   },
 };
+
+// Result는 action으로 받은 Button에 color=brand / type=weak / size=medium를
+// 주입한다. props 없이 <Button>만 넘겨도 시안과 일치하게 렌더된다(Autocomplete
+// 빈 상태에서 size=large로 잘못 들어가던 회귀를 방지).
+export const ActionDefaultsInjected: Story = {
+  args: {
+    title: '검색 결과가 없어요',
+    description: '다른 키워드로 검색해보세요',
+    action: <Button>다시 검색</Button>,
+  },
+};
