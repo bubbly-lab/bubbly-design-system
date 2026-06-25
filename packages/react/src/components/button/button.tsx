@@ -4,6 +4,7 @@ import { ark } from '@ark-ui/react/factory';
 import { type CSSProperties, forwardRef, type ReactNode } from 'react';
 import { styled } from 'styled-system/jsx';
 import { button } from 'styled-system/recipes';
+import { LoadingIndicator } from '../loading-indicator';
 
 const StyledButton = styled(ark.button, button);
 
@@ -63,7 +64,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }}
         {...props}
       >
-        {loading && <SpinnerOverlay />}
+        {loading && (
+          <span style={spinnerOverlayStyle} aria-hidden="true">
+            <LoadingIndicator
+              color="currentColor"
+              size="var(--button-icon-size)"
+            />
+          </span>
+        )}
         <span style={loading ? hiddenContentStyle : contentWrapperStyle}>
           {prefixIcon && <span style={iconWrapperStyle}>{prefixIcon}</span>}
           {children}
@@ -73,28 +81,3 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
-
-// 270° arc — center (12,12), r=9.75, inset 9.38% per Figma spec
-function SpinnerOverlay() {
-  return (
-    <span style={spinnerOverlayStyle} aria-hidden="true">
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        fill="none"
-        style={{
-          width: 'var(--button-icon-size)',
-          height: 'var(--button-icon-size)',
-          animation: 'spin 0.8s linear infinite',
-        }}
-      >
-        <path
-          d="M12 2.25A9.75 9.75 0 1 1 2.25 12"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    </span>
-  );
-}
