@@ -43,6 +43,11 @@ const overlayPartStyle: CSSProperties = {
   inset: 0,
   zIndex: 2,
   pointerEvents: 'none',
+  // backdrop-filter(Dimmed blur)는 새 stacking context를 만들어 부모의
+  // overflow:clip + border-radius 클립을 모서리에서 탈출한다. overlay 슬롯
+  // 자체에 둥근 모서리 클립을 걸어 자식 오버레이가 새지 않게 한다.
+  borderRadius: 'inherit',
+  overflow: 'clip',
 };
 
 const skeletonOverlayStyle: CSSProperties = {
