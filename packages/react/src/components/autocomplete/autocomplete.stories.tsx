@@ -121,13 +121,32 @@ export const Loading: Story = {
   args: { state: 'loading' },
 };
 
-export const Empty: Story = {
+type EmptyArgs = AutocompleteProps & {
+  emptyActionLabel: string;
+};
+
+export const Empty: StoryObj<EmptyArgs> = {
   args: {
     state: 'empty',
     emptyTitle: '결과 없음',
     emptyDescription: '검색 결과가 없어요.',
-    emptyAction: <Button>다시 검색</Button>,
+    emptyActionLabel: '다시 검색',
   },
+  argTypes: {
+    emptyActionLabel: {
+      control: 'text',
+      description:
+        '빈 상태 액션 버튼의 라벨. 비우면 버튼을 렌더링하지 않는다. (버튼은 Result가 brand/weak/medium으로 강제한다.)',
+    },
+  },
+  render: ({ emptyActionLabel, ...args }) => (
+    <Autocomplete
+      {...args}
+      emptyAction={
+        emptyActionLabel ? <Button>{emptyActionLabel}</Button> : undefined
+      }
+    />
+  ),
 };
 
 export const WithManualHighlight: Story = {
