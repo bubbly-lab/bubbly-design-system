@@ -134,13 +134,6 @@ export const Overflow: Story = {
   },
 };
 
-export const Disabled: Story = {
-  args: {
-    defaultValue: '검색 비활성',
-    disabled: true,
-  },
-};
-
 // Hover/active state preview via the pseudo-states addon. (The focus ring is
 // driven by the `data-keyboard-focus` attribute set on real keyboard focus, so
 // it is exercised in the Controlled story rather than forced here.)
@@ -170,7 +163,6 @@ export const InteractiveStates: Story = {
       <div id="sf-active">
         <SearchField placeholder="active" />
       </div>
-      <SearchField placeholder="disabled" disabled />
     </div>
   ),
 };
