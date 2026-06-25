@@ -41,7 +41,7 @@ export const thumbnailRecipe = defineRecipe({
     zoomed: {
       true: {
         '& [data-part=img]': {
-          transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'transform 150ms ease-out',
         },
         _groupHover: {
           '& [data-part=img]': {
