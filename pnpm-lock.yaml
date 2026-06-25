@@ -135,9 +135,6 @@ importers:
       storybook:
         specifier: ^10.4.2
         version: 10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      storybook-addon-pseudo-states:
-        specifier: 10.4.2
-        version: 10.4.2(storybook@10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       tsdown:
         specifier: ^0.21.4
         version: 0.21.4(oxc-resolver@11.20.0)(typescript@5.9.3)
@@ -3575,11 +3572,6 @@ packages:
 
   std-env@4.0.0:
     resolution: {integrity: sha512-zUMPtQ/HBY3/50VbpkupYHbRroTRZJPRLvreamgErJVys0ceuzMkD44J/QjqhHjOzK42GQ3QZIeFG1OYfOtKqQ==}
-
-  storybook-addon-pseudo-states@10.4.2:
-    resolution: {integrity: sha512-RrraSqpQ0c17NWNsDeCASV9Z+UXHKhb071vguUNZS9/dagF/HnrAbWTcHpHNBpS9SYRAFnlzIhWiSEEKEmcOKg==}
-    peerDependencies:
-      storybook: ^10.4.2
 
   storybook@10.3.0:
     resolution: {integrity: sha512-OpLdng98l7cACuqBoQwewx21Vhgl9XPssgLdXQudW0+N5QPjinWXZpZCquZpXpNCyw5s5BFAcv+jKB3Qkf9jeA==}
@@ -7814,10 +7806,6 @@ snapshots:
   stackback@0.0.2: {}
 
   std-env@4.0.0: {}
-
-  storybook-addon-pseudo-states@10.4.2(storybook@10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)):
-    dependencies:
-      storybook: 10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
   storybook@10.3.0(@testing-library/dom@10.4.1)(prettier@3.6.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:

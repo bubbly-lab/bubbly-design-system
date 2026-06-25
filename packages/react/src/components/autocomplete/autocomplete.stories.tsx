@@ -293,39 +293,3 @@ export const ItemVariantsMatchingFigma: Story = {
     );
   },
 };
-
-// Interactive-state matrix. The pseudo-states addon rewrites stylesheets to
-// force :hover / :focus-visible / :active so designers can review every
-// AutocompleteItem row state without manually hovering each row.
-export const InteractiveStates: Story = {
-  parameters: {
-    pseudo: {
-      hover: ['#state-hover'],
-      focusVisible: ['#state-focus'],
-      active: ['#state-active'],
-    },
-  },
-  render: args => {
-    const states = [
-      { id: undefined, label: 'default' },
-      { id: 'state-hover', label: 'hover' },
-      { id: 'state-focus', label: 'focus' },
-      { id: 'state-active', label: 'active' },
-    ] as const;
-    return (
-      <div style={{ fontFamily: 'var(--fonts-sans)' }}>
-        <Autocomplete {...args}>
-          {states.map(({ id, label }) => (
-            <AutocompleteItem
-              key={label}
-              id={id}
-              title={highlightMatch(`${label}: 제주 카페 추천`, '제주')}
-              leading={<IconSearch />}
-              bold
-            />
-          ))}
-        </Autocomplete>
-      </div>
-    );
-  },
-};
