@@ -176,13 +176,22 @@ export const FillsParent: Story = {
 };
 
 export const LongText: Story = {
+  args: {
+    cardTitle:
+      'This is a very long title text that should also be truncated with ellipsis overflow',
+    caption:
+      'This is a very long caption that should be truncated with ellipsis',
+  },
   render: ({
     size,
     zoomed,
     hasBorder,
     loading,
     src,
+    cardTitle,
+    caption,
     captionPosition,
+    hasBottom,
     ...args
   }) => (
     <HorizontalCard size={size} {...args}>
@@ -196,10 +205,10 @@ export const LongText: Story = {
         loading={loading}
       />
       <CardHeader
-        caption="This is a very long caption that should be truncated with ellipsis"
+        caption={caption}
         captionPosition={captionPosition}
-        title="This is a very long title text that should also be truncated with ellipsis overflow"
-        hasBottom
+        title={cardTitle}
+        hasBottom={hasBottom}
         metadata={['Very Long Label', 'Another Long Label', 'Third Label']}
       />
     </HorizontalCard>
