@@ -49,9 +49,12 @@ function ensureModalityListeners(): void {
   window.addEventListener('keydown', handleKey, true);
 }
 
+// Figma SearchField에는 disabled 상태가 정의돼 있지 않다(state: default/focus/
+// hover/active만 존재). InputHTMLAttributes에서 상속되는 `disabled`를 타입 레벨에서
+// 제거해 시안에 없는 상태를 노출하지 않는다.
 export type SearchFieldProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'type'
+  'type' | 'disabled'
 > & {
   /**
    * Called after the clear button is clicked.

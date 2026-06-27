@@ -4,7 +4,7 @@ import { Thumbnail } from '../thumbnail';
 import { Dimmed } from './dimmed';
 
 const DEMO_IMG =
-  'https://rumyscape-assets.s3.ap-northeast-2.amazonaws.com/uploads/deepthinker_ongyi_dream_ade35e4e8f.jpg';
+  'https://cdn.rumyscape.com/uploads/deepthinker_ongyi_dream_ade35e4e8f.jpg';
 
 const meta: Meta<typeof Dimmed> = {
   title: 'Components/Dimmed',

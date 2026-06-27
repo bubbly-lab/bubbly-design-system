@@ -240,67 +240,6 @@ export const AllStates: Story = {
   ),
 };
 
-// Interactive-state matrix. The pseudo-states addon rewrites stylesheets to
-// force :hover / :focus-visible / :active so designers can review every state
-// against Figma without manually hovering each button.
-export const InteractiveStates: Story = {
-  parameters: {
-    pseudo: {
-      hover: ['#state-hover'],
-      focusVisible: ['#state-focus'],
-      active: ['#state-active'],
-    },
-  },
-  render: () => {
-    const states = [
-      { id: undefined, label: 'default' },
-      { id: 'state-hover', label: 'hover' },
-      { id: 'state-focus', label: 'focus' },
-      { id: 'state-active', label: 'active' },
-    ] as const;
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        {variantMap.color.map(color => (
-          <div key={color}>
-            <div
-              style={{
-                marginBottom: '8px',
-                color: '#999',
-                fontSize: '12px',
-                fontFamily: 'var(--fonts-sans)',
-              }}
-            >
-              {color}
-            </div>
-            <div
-              style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
-            >
-              {variantMap.type
-                .filter(type => isValidCombination(color, type))
-                .map(type => (
-                  <div
-                    key={type}
-                    style={{
-                      display: 'flex',
-                      gap: '12px',
-                      alignItems: 'center',
-                    }}
-                  >
-                    {states.map(({ id, label }) => (
-                      <Button key={label} id={id} color={color} type={type}>
-                        {label}
-                      </Button>
-                    ))}
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  },
-};
-
 export const WidthFull: Story = {
   render: () => (
     <div

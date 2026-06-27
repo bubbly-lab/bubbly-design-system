@@ -7,7 +7,8 @@ import { VerticalCard } from './vertical-card';
 const { variantMap: thumbnailVariants } = thumbnail;
 const { variantMap: cardHeaderVariants } = cardHeader;
 
-const DEMO_IMG = 'https://picsum.photos/seed/bubbly-vcard/300/400';
+const DEMO_IMG =
+  'https://cdn.rumyscape.com/uploads/deepthinker_ongyi_dream_ade35e4e8f.jpg';
 
 const meta: Meta = {
   title: 'Components/VerticalCard',

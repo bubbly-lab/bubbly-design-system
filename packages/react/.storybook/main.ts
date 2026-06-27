@@ -14,7 +14,6 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
-    'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
   ],
   framework: {

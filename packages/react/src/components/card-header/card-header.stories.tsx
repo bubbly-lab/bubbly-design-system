@@ -58,6 +58,22 @@ export const WithoutBottom: Story = {
   },
 };
 
+export const LongTitle: Story = {
+  args: {
+    caption:
+      '아주 길어서 두 줄을 넘어가면 말줄임표로 잘려야 하는 캡션 텍스트입니다',
+    title:
+      '아주 길어서 두 줄까지 늘어난 뒤 말줄임표로 잘려야 하는 카드 제목 텍스트 예시입니다',
+  },
+  decorators: [
+    Story => (
+      <div style={{ width: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>

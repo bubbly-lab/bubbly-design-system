@@ -134,34 +134,3 @@ export const AllStates: Story = {
     </div>
   ),
 };
-
-// Interactive-state matrix via the pseudo-states addon (forces :hover /
-// :focus-visible / :active) so designers can review each state vs Figma.
-export const InteractiveStates: Story = {
-  parameters: {
-    pseudo: {
-      hover: ['#tb-hover'],
-      focusVisible: ['#tb-focus'],
-      active: ['#tb-active'],
-    },
-  },
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        gap: '24px',
-        alignItems: 'center',
-        fontFamily: 'var(--fonts-sans)',
-      }}
-    >
-      <TextButton>default</TextButton>
-      {/* biome-ignore lint/correctness/useUniqueElementIds: pseudo-states addon selector target */}
-      <TextButton id="tb-hover">hover</TextButton>
-      {/* biome-ignore lint/correctness/useUniqueElementIds: pseudo-states addon selector target */}
-      <TextButton id="tb-focus">focus</TextButton>
-      {/* biome-ignore lint/correctness/useUniqueElementIds: pseudo-states addon selector target */}
-      <TextButton id="tb-active">active</TextButton>
-      <TextButton disabled>disabled</TextButton>
-    </div>
-  ),
-};

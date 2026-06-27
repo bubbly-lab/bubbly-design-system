@@ -18,14 +18,9 @@ export type ThumbnailProps = Omit<StyledThumbnailProps, 'children'> & {
   children?: ReactNode;
 };
 
-const imgTagStyle: CSSProperties = {
-  position: 'absolute',
-  inset: 0,
-  width: '100%',
-  height: '100%',
-  display: 'block',
-  objectFit: 'cover',
-};
+// img 기본 배치(absolute/inset/cover)는 thumbnail recipe의 base에서 소유한다.
+// 인라인 스타일이면 zoom의 _groupHover overscan(inset/width)을 덮어써 동작하지
+// 않으므로 CSS(recipe)에 둘다.
 
 const placeholderStyle: CSSProperties = {
   position: 'absolute',
@@ -43,6 +38,11 @@ const overlayPartStyle: CSSProperties = {
   inset: 0,
   zIndex: 2,
   pointerEvents: 'none',
+  // backdrop-filter(Dimmed blur)는 새 stacking context를 만들어 부모의
+  // overflow:clip + border-radius 클립을 모서리에서 탈출한다. overlay 슬롯
+  // 자체에 둥근 모서리 클립을 걸어 자식 오버레이가 새지 않게 한다.
+  borderRadius: 'inherit',
+  overflow: 'clip',
 };
 
 const skeletonOverlayStyle: CSSProperties = {
@@ -65,7 +65,7 @@ export const Thumbnail = forwardRef<HTMLDivElement, ThumbnailProps>(
         ) : (
           <>
             {src ? (
-              <img data-part="img" src={src} alt={alt} style={imgTagStyle} />
+              <img data-part="img" src={src} alt={alt} />
             ) : (
               <div
                 data-part="placeholder"
