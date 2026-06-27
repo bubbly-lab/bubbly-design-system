@@ -18,14 +18,9 @@ export type ThumbnailProps = Omit<StyledThumbnailProps, 'children'> & {
   children?: ReactNode;
 };
 
-const imgTagStyle: CSSProperties = {
-  position: 'absolute',
-  inset: 0,
-  width: '100%',
-  height: '100%',
-  display: 'block',
-  objectFit: 'cover',
-};
+// img 기본 배치(absolute/inset/cover)는 thumbnail recipe의 base에서 소유한다.
+// 인라인 스타일이면 zoom의 _groupHover overscan(inset/width)을 덮어써 동작하지
+// 않으므로 CSS(recipe)에 둘다.
 
 const placeholderStyle: CSSProperties = {
   position: 'absolute',
@@ -70,7 +65,7 @@ export const Thumbnail = forwardRef<HTMLDivElement, ThumbnailProps>(
         ) : (
           <>
             {src ? (
-              <img data-part="img" src={src} alt={alt} style={imgTagStyle} />
+              <img data-part="img" src={src} alt={alt} />
             ) : (
               <div
                 data-part="placeholder"
