@@ -7,7 +7,8 @@ import { HorizontalCard } from './horizontal-card';
 const { variantMap } = horizontalCard;
 const { variantMap: cardHeaderVariants } = cardHeader;
 
-const DEMO_IMG = 'https://picsum.photos/seed/bubbly-hcard/200/200';
+const DEMO_IMG =
+  'https://cdn.rumyscape.com/uploads/deepthinker_ongyi_dream_ade35e4e8f.jpg';
 
 const meta: Meta = {
   title: 'Components/HorizontalCard',
