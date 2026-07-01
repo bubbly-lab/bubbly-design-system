@@ -2,7 +2,6 @@ import { IconClose, IconSearch, IconTime } from '@bubbly-design-system/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button } from '../button';
 import { IconButton } from '../icon-button';
 import { Autocomplete, type AutocompleteProps } from './autocomplete';
 import { AutocompleteHighlight } from './autocomplete-highlight';
@@ -121,32 +120,14 @@ export const Loading: Story = {
   args: { state: 'loading' },
 };
 
-type EmptyArgs = AutocompleteProps & {
-  emptyActionLabel: string;
-};
-
-export const Empty: StoryObj<EmptyArgs> = {
+// Figma 빈 상태: header + description("검색 결과가 없어요.")만 중앙에 표시.
+// Result의 title/action은 optional이라 미지정 시 렌더되지 않는다(시안 일치).
+// consumer가 필요하면 emptyTitle/emptyAction으로 추가할 수 있다.
+export const Empty: Story = {
   args: {
     state: 'empty',
-    emptyTitle: '결과 없음',
     emptyDescription: '검색 결과가 없어요.',
-    emptyActionLabel: '다시 검색',
   },
-  argTypes: {
-    emptyActionLabel: {
-      control: 'text',
-      description:
-        '빈 상태 액션 버튼의 라벨. 비우면 버튼을 렌더링하지 않는다. (버튼은 Result가 brand/weak/medium으로 강제한다.)',
-    },
-  },
-  render: ({ emptyActionLabel, ...args }) => (
-    <Autocomplete
-      {...args}
-      emptyAction={
-        emptyActionLabel ? <Button>{emptyActionLabel}</Button> : undefined
-      }
-    />
-  ),
 };
 
 export const WithManualHighlight: Story = {
