@@ -68,7 +68,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <span style={spinnerOverlayStyle} aria-hidden="true">
             <LoadingIndicator
               color="currentColor"
-              size="var(--button-icon-size)"
+              width="var(--button-icon-size)"
+              height="var(--button-icon-size)"
             />
           </span>
         )}

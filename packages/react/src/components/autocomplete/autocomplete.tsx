@@ -61,7 +61,11 @@ export const Autocomplete = forwardRef<HTMLDivElement, AutocompleteProps>(
         <div className={styles.body}>
           {state === 'default' ? children : null}
           {state === 'loading' ? (
-            <LoadingIndicator color="content.neutral.default" />
+            <LoadingIndicator
+              color="content.neutral.default"
+              width="40"
+              height="40"
+            />
           ) : null}
           {state === 'empty' ? (
             <Result
