@@ -6,24 +6,28 @@ import { loadingIndicator } from 'styled-system/recipes';
 
 const StyledLoadingIndicator = styled('span', loadingIndicator);
 
+// 크기는 panda의 width/height style prop으로 직접 지정한다. 숫자 토큰 키(예:
+// width="40")는 sizes(= dimension) 토큰으로 해석되고, CSS 변수(예:
+// width="var(--button-icon-size)")도 받는다. Figma 문서의 "size는 Dimension token을
+// 사용해 사용처마다 유동적" 스펙을 따른다. 기본 24는 recipe가 소유.
+//
+// 단일 size prop으로 감싸지 않는 이유: panda는 런타임 값을 정적 추출하지
+// 못해 컴포넌트 내부에서 width={size} 처럼 넘기면 CSS가 생성되지 않는다
+// (공식 안티패턴). 정사각 유지를 위해 width·height를 같은 값으로 준다.
 export type LoadingIndicatorProps = Parameters<
   typeof StyledLoadingIndicator
->[0] & {
-  // Figma: size는 Dimension 토큰을 사용해 사용처마다 유동적. 기본 24px.
-  size?: string | number;
-};
+>[0];
 
 // 270° arc — center (12,12), r=9.75, inset 9.38% per Figma spec
 export const LoadingIndicator = forwardRef<
   HTMLSpanElement,
   LoadingIndicatorProps
->(function LoadingIndicator({ size, style, ...props }, ref) {
+>(function LoadingIndicator(props, ref) {
   return (
     <StyledLoadingIndicator
       ref={ref}
       role="status"
       aria-label="Loading"
-      style={size != null ? { width: size, height: size, ...style } : style}
       {...props}
     >
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
