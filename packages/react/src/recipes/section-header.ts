@@ -10,6 +10,9 @@ export const sectionHeaderRecipe = defineSlotRecipe({
     'count',
     'caption',
     'trailing',
+    'skeletonStack',
+    'skeletonTitle',
+    'skeletonCaption',
   ],
   base: {
     root: {
@@ -64,6 +67,20 @@ export const sectionHeaderRecipe = defineSlotRecipe({
       alignItems: 'center',
       paddingLeft: '8',
     },
+    skeletonStack: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      minWidth: '0',
+    },
+    skeletonTitle: {
+      width: '140px',
+      flexShrink: 0,
+    },
+    skeletonCaption: {
+      width: '100%',
+      height: '14px',
+    },
   },
   variants: {
     size: {
@@ -85,6 +102,12 @@ export const sectionHeaderRecipe = defineSlotRecipe({
           lineHeight: 't9',
           fontWeight: 'regular',
         },
+        skeletonStack: {
+          gap: '10px',
+        },
+        skeletonTitle: {
+          height: '34px',
+        },
       },
       medium: {
         content: {
@@ -104,6 +127,12 @@ export const sectionHeaderRecipe = defineSlotRecipe({
           lineHeight: 't7',
           fontWeight: 'regular',
         },
+        skeletonStack: {
+          gap: '8px',
+        },
+        skeletonTitle: {
+          height: '26px',
+        },
       },
       small: {
         content: {
@@ -122,6 +151,12 @@ export const sectionHeaderRecipe = defineSlotRecipe({
           fontSize: 't6',
           lineHeight: 't6',
           fontWeight: 'regular',
+        },
+        skeletonStack: {
+          gap: '8px',
+        },
+        skeletonTitle: {
+          height: '24px',
         },
       },
     },

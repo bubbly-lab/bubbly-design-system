@@ -10,6 +10,7 @@ export const cardHeaderRecipe = defineSlotRecipe({
     'metadata',
     'item',
     'separator',
+    'skeletonStack',
   ],
   base: {
     root: {
@@ -81,6 +82,13 @@ export const cardHeaderRecipe = defineSlotRecipe({
       fontSize: 't4',
       lineHeight: 't4',
       fontWeight: 'regular',
+    },
+    skeletonStack: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      minWidth: '0',
+      gap: '10px',
     },
   },
   variants: {
