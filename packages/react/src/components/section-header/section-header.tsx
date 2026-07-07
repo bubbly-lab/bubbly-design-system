@@ -12,6 +12,7 @@ import {
   sectionHeader,
 } from 'styled-system/recipes';
 import { IconButton } from '../icon-button';
+import { Skeleton } from '../skeleton';
 import { TextButton } from '../text-button';
 
 interface SectionHeaderBaseProps {
@@ -22,6 +23,7 @@ interface SectionHeaderBaseProps {
   showCount?: boolean;
   onTrailingClick?: MouseEventHandler<HTMLButtonElement>;
   trailingDisabled?: boolean;
+  loading?: boolean;
 }
 
 type SectionHeaderNoneTrailingProps = {
@@ -68,6 +70,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
       caption,
       className,
       count,
+      loading,
       onTrailingClick,
       showCaption = true,
       showCount = false,
@@ -80,6 +83,33 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
       ...restProps
     } = localProps;
     const styles = sectionHeader(variantProps);
+
+    if (loading) {
+      return (
+        <div
+          ref={ref}
+          className={cx(styles.root, className)}
+          aria-busy
+          {...restProps}
+        >
+          <div className={styles.skeletonStack} data-testid="sh-skeleton-stack">
+            <Skeleton
+              className={styles.skeletonTitle}
+              data-testid="sh-skeleton-bar"
+              radius="4px"
+            />
+            {showCaption ? (
+              <Skeleton
+                className={styles.skeletonCaption}
+                data-testid="sh-skeleton-bar"
+                radius="4px"
+              />
+            ) : null}
+          </div>
+        </div>
+      );
+    }
+
     const shouldRenderCaption = showCaption && hasRenderableNode(caption);
     const shouldRenderCount = showCount && hasRenderableCount(count);
 
