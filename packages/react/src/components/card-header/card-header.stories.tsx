@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import { cardHeader } from 'styled-system/recipes';
 
 import { CardHeader } from './card-header';
@@ -25,6 +26,11 @@ const meta: Meta<typeof CardHeader> = {
       control: 'boolean',
       description:
         'false면 metadata 하단 영역을 숨긴다(metadata가 있어도 미표시).',
+    },
+    loading: {
+      control: 'boolean',
+      description:
+        'true면 title/caption/metadata를 스켈레톤 바로 대체한다(로딩 상태).',
     },
   },
   args: {
@@ -94,4 +100,150 @@ export const AllVariants: Story = {
       />
     </div>
   ),
+};
+
+export const Loading: Story = {
+  args: {
+    loading: true,
+    captionPosition: 'top',
+    caption: 'Caption',
+    title: 'Title',
+    metadata: ['iOS', 'Finance', '8 min read'],
+  },
+  decorators: [
+    Story => (
+      <div style={{ width: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const root = canvasElement.querySelector('[aria-busy="true"]');
+    expect(root).toBeInTheDocument();
+
+    const stack = canvasElement.querySelector(
+      '[data-testid="ch-skeleton-stack"]',
+    );
+    expect(stack).toBeInstanceOf(HTMLElement);
+    if (stack instanceof HTMLElement) {
+      expect(getComputedStyle(stack).gap).toBe('10px');
+    }
+
+    const bars = canvasElement.querySelectorAll(
+      '[data-testid="ch-skeleton-bar"]',
+    );
+    expect(bars.length).toBe(3);
+
+    const heights = Array.from(bars).map(b => getComputedStyle(b).height);
+    expect(heights).toEqual(['16px', '18px', '16px']);
+
+    const widths = Array.from(bars).map(b =>
+      Math.round(b.getBoundingClientRect().width),
+    );
+    expect(widths).toEqual([200, 140, 70]);
+
+    const radii = Array.from(bars).map(b => getComputedStyle(b).borderRadius);
+    expect(radii).toEqual(['4px', '4px', '4px']);
+
+    expect(canvas.queryByText('Title')).not.toBeInTheDocument();
+    expect(canvas.queryByText('Caption')).not.toBeInTheDocument();
+  },
+};
+
+export const LoadingCaptionBottom: Story = {
+  tags: ['!dev'],
+  args: {
+    loading: true,
+    captionPosition: 'bottom',
+    caption: 'Caption',
+    title: 'Title',
+    metadata: ['iOS', 'Finance', '8 min read'],
+  },
+  decorators: [
+    Story => (
+      <div style={{ width: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const bars = canvasElement.querySelectorAll(
+      '[data-testid="ch-skeleton-bar"]',
+    );
+    expect(bars.length).toBe(3);
+
+    const heights = Array.from(bars).map(b => getComputedStyle(b).height);
+    expect(heights).toEqual(['18px', '16px', '16px']);
+
+    const widths = Array.from(bars).map(b =>
+      Math.round(b.getBoundingClientRect().width),
+    );
+    expect(widths).toEqual([200, 140, 70]);
+  },
+};
+
+export const LoadingCaptionNone: Story = {
+  tags: ['!dev'],
+  args: {
+    loading: true,
+    captionPosition: 'none',
+    caption: undefined,
+    title: 'Title',
+    metadata: ['iOS', 'Finance', '8 min read'],
+  },
+  decorators: [
+    Story => (
+      <div style={{ width: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const bars = canvasElement.querySelectorAll(
+      '[data-testid="ch-skeleton-bar"]',
+    );
+    expect(bars.length).toBe(2);
+
+    const heights = Array.from(bars).map(b => getComputedStyle(b).height);
+    expect(heights).toEqual(['18px', '16px']);
+
+    const widths = Array.from(bars).map(b =>
+      Math.round(b.getBoundingClientRect().width),
+    );
+    expect(widths).toEqual([140, 70]);
+  },
+};
+
+export const LoadingWithoutBottom: Story = {
+  tags: ['!dev'],
+  args: {
+    loading: true,
+    captionPosition: 'top',
+    hasBottom: false,
+    caption: 'Caption',
+    title: 'Title',
+    metadata: ['iOS', 'Finance', '8 min read'],
+  },
+  decorators: [
+    Story => (
+      <div style={{ width: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const bars = canvasElement.querySelectorAll(
+      '[data-testid="ch-skeleton-bar"]',
+    );
+    expect(bars.length).toBe(2);
+
+    const heights = Array.from(bars).map(b => getComputedStyle(b).height);
+    expect(heights).toEqual(['16px', '18px']);
+
+    const widths = Array.from(bars).map(b =>
+      Math.round(b.getBoundingClientRect().width),
+    );
+    expect(widths).toEqual([200, 140]);
+  },
 };
