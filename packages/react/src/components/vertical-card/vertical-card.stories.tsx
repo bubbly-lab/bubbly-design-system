@@ -133,10 +133,22 @@ export const Placeholder: Story = {
 
 export const Loading: Story = {
   args: { loading: true },
-  render: ({ ratio, radius, cardTitle, caption, ...args }) => (
+  render: ({
+    zoomed,
+    ratio,
+    radius,
+    hasBorder,
+    loading,
+    src,
+    cardTitle,
+    caption,
+    captionPosition,
+    hasBottom,
+    ...args
+  }) => (
     <VerticalCard {...args}>
       <Thumbnail loading ratio={ratio} radius={radius} />
-      <CardHeader caption={caption} title={cardTitle} />
+      <CardHeader loading />
     </VerticalCard>
   ),
 };

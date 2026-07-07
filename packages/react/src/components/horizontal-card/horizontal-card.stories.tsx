@@ -256,10 +256,21 @@ export const NarrowContainer: Story = {
 
 export const Loading: Story = {
   args: { loading: true },
-  render: ({ size, cardTitle, caption, ...args }) => (
+  render: ({
+    size,
+    zoomed,
+    hasBorder,
+    loading,
+    src,
+    cardTitle,
+    caption,
+    captionPosition,
+    hasBottom,
+    ...args
+  }) => (
     <HorizontalCard size={size} {...args}>
       <Thumbnail loading ratio="1:1" radius="full" />
-      <CardHeader caption={caption} title={cardTitle} />
+      <CardHeader loading />
     </HorizontalCard>
   ),
 };
